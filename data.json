@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "name": "A Test Plan",
+    "code": "ALCC2011-01",
+    "sections": [
+      {
+        "id": 11,
+        "name": "Contact Info",
+        "plan_id": 1,
+        "groups": [
+          {
+            "id": 111,
+            "name": "Your information",
+            "section_id": 1,
+            "questions": [
+              {
+                "id": 1111,
+                "plan_id": 1,
+                "group_id": 11,
+                "question": "First name"
+              }, {
+                "id": 1112,
+                "plan_id": 1,
+                "group_id": 11,
+                "question": "Last name"
+              }, {
+                "id": 1113,
+                "plan_id": 1,
+                "group_id": 11,
+                "question": "Age",
+                "config": {
+                  "xtype": "numberfield"
+                }
+              }, {
+                "id": 1114,
+                "plan_id": 1,
+                "group_id": 11,
+                "question": "Gender",
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Male",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f",
+                      "checked": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+      , {
+        "name": "Keywords",
+        "groups": [
+          {
+            "id": 12,
+            "name": "Keywords",
+            "section_id": 1,
+            "data": ["Google", "Ad", "Wordofmouth", "Other"],
+            "config": {
+              "xtype": "keywords"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
