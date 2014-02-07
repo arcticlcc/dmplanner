@@ -1,3 +1,4 @@
 /.project
-/build/*
+/build/production
+/build/temp
 /ext/*
