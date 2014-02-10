@@ -387,6 +387,69 @@
         "name": "Section",
         "fields": "id:auto:null,plan_id:auto:null,name:auto:null"
       }
+    },
+    "app/controller/Start.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "DMPlanner",
+        "controllerName": "Start",
+        "controllerFileName": "Start",
+        "name": "Start",
+        "controllerNamespace": "DMPlanner.controller"
+      }
+    },
+    "app/view/PlanList.js": {
+      "source": "{viewFileName}.js.tpl.merge",
+      "version": "acde5ea901286ca2f976bcddea23e159dbaa0e6f",
+      "parameters": {
+        "appName": "DMPlanner",
+        "viewName": "PlanList",
+        "name": "PlanList",
+        "viewFileName": "PlanList"
+      }
+    },
+    "app/view/SectionList.js": {
+      "source": "{viewFileName}.js.tpl.merge",
+      "version": "acde5ea901286ca2f976bcddea23e159dbaa0e6f",
+      "parameters": {
+        "appName": "DMPlanner",
+        "viewName": "SectionList",
+        "name": "SectionList",
+        "viewFileName": "SectionList"
+      }
+    },
+    "app/controller/Plans.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "DMPlanner",
+        "controllerName": "Plans",
+        "controllerFileName": "Plans",
+        "name": "Plans",
+        "controllerNamespace": "DMPlanner.controller"
+      }
+    },
+    "app/view/QuestionsForm.js": {
+      "source": "{viewFileName}.js.tpl.merge",
+      "version": "acde5ea901286ca2f976bcddea23e159dbaa0e6f",
+      "parameters": {
+        "appName": "DMPlanner",
+        "viewName": "QuestionsForm",
+        "name": "QuestionsForm",
+        "viewFileName": "QuestionsForm"
+      }
+    },
+    "app/controller/Questions.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "DMPlanner",
+        "controllerName": "Questions",
+        "controllerFileName": "Questions",
+        "name": "Questions",
+        "controllerNamespace": "DMPlanner.controller"
+      }
     }
   }
 }

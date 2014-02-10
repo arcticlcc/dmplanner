@@ -13,8 +13,19 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
-  "DMPlanner.controller.Main": [],
-  "DMPlanner.view.Main": [],
+  "DMPlanner.controller.Plans": [],
+  "DMPlanner.controller.Start": [],
+  "DMPlanner.model.Group": [],
+  "DMPlanner.model.Plan": [],
+  "DMPlanner.model.Question": [],
+  "DMPlanner.model.Section": [],
+  "DMPlanner.store.Groups": [],
+  "DMPlanner.store.Plans": [],
+  "DMPlanner.store.Questions": [],
+  "DMPlanner.store.Sections": [],
+  "DMPlanner.view.PlanList": [],
+  "DMPlanner.view.SectionList": [],
+  "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -851,11 +862,28 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
-  "DMPlanner.controller.Main": [],
-  "DMPlanner.view.Main": [
-    "widget.app-main"
+  "DMPlanner.controller.Plans": [],
+  "DMPlanner.controller.Start": [],
+  "DMPlanner.model.Group": [],
+  "DMPlanner.model.Plan": [],
+  "DMPlanner.model.Question": [],
+  "DMPlanner.model.Section": [],
+  "DMPlanner.store.Groups": [],
+  "DMPlanner.store.Plans": [],
+  "DMPlanner.store.Questions": [],
+  "DMPlanner.store.Sections": [],
+  "DMPlanner.view.PlanList": [
+    "widget.planlist"
   ],
-  "DMPlanner.view.Viewport": [],
+  "DMPlanner.view.SectionList": [
+    "widget.sectionlist"
+  ],
+  "DMPlanner.view.Start": [
+    "widget.start"
+  ],
+  "DMPlanner.view.Viewport": [
+    "widget.vp"
+  ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
