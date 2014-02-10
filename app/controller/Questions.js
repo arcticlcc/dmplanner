@@ -58,7 +58,9 @@ Ext.define('DMPlanner.controller.Questions', {
     //check for config
     if(Ext.isObject(config)) {
         form.setTitle(record.get('name')+': config');
-
+        //do config stuff, add xtype
+    } else if(groups.count() > 0) {
+        //get an array of fields to add
     }
   },
 
