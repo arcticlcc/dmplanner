@@ -13,7 +13,7 @@ Ext.define("DMPlanner.view.Start", {
     items : [{
         xtype : 'button',
         anchor : '100%',
-        itemId : 'startBtn',
+        itemId : 'startNewBtn',
         text : 'Start a New Plan',
         scale   : 'large'
     }]

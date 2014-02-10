@@ -9,10 +9,13 @@ Ext.define('DMPlanner.Application', {
 
     controllers: [
     // TODO: add controllers here
+        'Start',//
+        'Plans',//
+        'Questions'
     ],
 
     stores: [
     // TODO: add stores here
-    'Plans'//
+        'Plans'//
     ]
 });
