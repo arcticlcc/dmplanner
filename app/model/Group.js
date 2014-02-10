@@ -14,15 +14,14 @@ Ext.define('DMPlanner.model.Group', {
     }, {
         name: 'data',
         type: 'auto'
-    }, {
-        name: 'config'
     }],
 
     associations: [{
         type: 'belongsTo',
         model: 'DMPlanner.model.Section',
         primaryKey: 'id',
-        foreignKey: 'section_id'
+        foreignKey: 'section_id',
+        getterName: 'getDMPSection'
     }, {
         type: 'hasMany',
         model: 'DMPlanner.model.Question',

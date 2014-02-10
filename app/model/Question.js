@@ -25,7 +25,8 @@ Ext.define('DMPlanner.model.Question', {
 
     belongsTo : [{
         model : 'DMPlanner.model.Group',
-        foreignKey : 'group_id'
+        foreignKey : 'group_id',
+        getterName: 'getDMPGroup'
     }],
 
     proxy : {

@@ -3,11 +3,11 @@ Ext.define('DMPlanner.model.Plan', {
 
     requires: ['Ext.data.association.HasMany'],
 
-    uses: ['DMPlanner.model.Group'],
+    uses: ['DMPlanner.model.Section'],
 
     associations: [{
         type: 'hasMany',
-        model: 'DMPlanner.model.Group',
+        model: 'DMPlanner.model.Section',
         primaryKey: 'id',
         foreignKey: 'plan_id',
         autoLoad: true,

@@ -12,13 +12,17 @@ Ext.define('DMPlanner.model.Section', {
     }, {
         name: 'name',
         type: 'auto'
+    }, {
+        name: 'config',
+        type: 'auto'
     }],
 
     associations: [{
         type: 'belongsTo',
         model: 'DMPlanner.model.Plan',
         primaryKey: 'id',
-        foreignKey: 'plan_id'
+        foreignKey: 'plan_id',
+        getterName: 'getDMPPlan'
     }, {
         type: 'hasMany',
         model: 'DMPlanner.model.Group',
