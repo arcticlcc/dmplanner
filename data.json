@@ -58,20 +58,14 @@
             ]
           }
         ]
-      }
-      , {
+      }, {
         "name": "Keywords",
-        "groups": [
-          {
-            "id": 12,
-            "name": "Keywords",
-            "section_id": 1,
-            "data": ["Google", "Ad", "Wordofmouth", "Other"],
-            "config": {
-              "xtype": "keywords"
-            }
-          }
-        ]
+        "id": 12,
+        "plan_id": 1,
+        "config": {
+          "xtype": "keywords",
+          "data": ["Google", "Ad", "Wordofmouth", "Other"]
+        }
       }
     ]
   }
