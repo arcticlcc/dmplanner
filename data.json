@@ -17,17 +17,18 @@
               {
                 "id": 1111,
                 "plan_id": 1,
-                "group_id": 11,
-                "question": "First name"
+                "group_id": 111,
+                "question": "First name",
+                "guidance": "Enter your first name."
               }, {
                 "id": 1112,
                 "plan_id": 1,
-                "group_id": 11,
+                "group_id": 111,
                 "question": "Last name"
               }, {
                 "id": 1113,
                 "plan_id": 1,
-                "group_id": 11,
+                "group_id": 111,
                 "question": "Age",
                 "config": {
                   "xtype": "numberfield"
@@ -35,7 +36,7 @@
               }, {
                 "id": 1114,
                 "plan_id": 1,
-                "group_id": 11,
+                "group_id": 111,
                 "question": "Gender",
                 "config": {
                   "xtype": "radiogroup",
@@ -48,6 +49,57 @@
                       "inputValue": "m"
                     }, {
                       "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f",
+                      "checked": true
+                    }
+                  ]
+                }
+              }
+            ]
+          },{
+            "id": 112,
+            "name": "Other information",
+            "section_id": 1,
+            "width": 800,
+            "questions": [
+              {
+                "id": 1121,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Position",
+                "config": {
+                  "xtype": "htmleditor"
+                }
+              }, {
+                "id": 1122,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Metric"
+              }, {
+                "id": 1123,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Total # Files",
+                "config": {
+                  "xtype": "numberfield"
+                }
+              }, {
+                "id": 1124,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Archived",
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Yes",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "No",
                       "name": "gender",
                       "inputValue": "f",
                       "checked": true
