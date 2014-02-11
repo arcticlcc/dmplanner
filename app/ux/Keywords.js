@@ -9,10 +9,15 @@ Ext.define('DMPlanner.ux.Keywords', {
     //'PTS.view.controls.KeywordTree',
     'Ext.ux.grid.FilterBar',
     'Ext.grid.plugin.DragDrop',
-    'Ext.tree.plugin.TreeViewDragDrop',
     'Ext.grid.column.Template',
+    'Ext.tree.plugin.TreeViewDragDrop',
     'Ext.data.Model',
-    'Ext.data.Store'
+    'Ext.data.Store',
+    'Ext.data.TreeStore',
+    'Ext.data.proxy.Rest',
+    'Ext.layout.container.Border',
+    'Ext.tab.Panel',
+    'Ext.tree.Panel'
     ],
 
     layout: {
@@ -23,48 +28,76 @@ Ext.define('DMPlanner.ux.Keywords', {
     initComponent: function() {
         var me = this, keywordtree;
 
-        Ext.define('DMPlanner.model.KeywordNode', {
-            extend: 'Ext.data.Model',
-            fields: [{
-                name: 'keywordid',
-                type: 'string'
-            }, {
-                name: 'text',
-                type: 'mystring',
-                useNull: true
-            }, {
-                name: 'definition',
-                type: 'mystring',
-                useNull: true
-            }, {
-                name: 'fullname',
-                type: 'mystring',
-                useNull: true
-            }],
-            idProperty: 'keywordid',
+        if(!Ext.ModelManager.getModel('KeywordNode')){
+          Ext.define('KeywordNode', {
+              extend: 'Ext.data.Model',
+              fields: [{
+                  name: 'keywordid',
+                  type: 'string'
+              }, {
+                  name: 'text',
+                  type: 'string',
+                  useNull: true
+              }, {
+                  name: 'definition',
+                  type: 'string',
+                  useNull: true
+              }, {
+                  name: 'fullname',
+                  type: 'string',
+                  useNull: true
+              }],
+              idProperty: 'keywordid',
 
-            proxy: {
-                type: 'rest',
-                url: 'http://localhost/keyword/tree',
-                reader: {
-                    type: 'json'
-                },
-                appendId: true
-            }
-        });
+              proxy: {
+                  type: 'rest',
+                  url: 'resources/kw.json',
+                  reader: {
+                      type: 'json'
+                  },
+                  appendId: true
+              }
+          });
+        }
+
+        if(!Ext.getStore('KeywordNodes')){
+            Ext.create('Ext.data.TreeStore', {
+                    model: 'KeywordNode',
+                    storeId: 'KeywordNodes',
+                    clearOnLoad: true,
+                    autoLoad: false,
+                    defaultRootId: ''
+            }).load();
+        }
+        if(!Ext.getStore('Keywords')){
+            Ext.create('Ext.data.Store', {
+                model: 'KeywordNode',
+                storeId: 'Keywords',
+                autoLoad: false,
+                remoteSort: false,
+                remoteFilter: false,
+                sorters: { property: 'text', direction : 'ASC' },
+
+                proxy: {
+                    type: 'rest',
+                    url : 'resources/kwlist.json',
+                    reader: {
+                        type: 'json',
+                        root: 'data'
+                    }
+                }
+            }).load();
+        }
 
         keywordtree = {
             xtype: 'treepanel',
             itemId: 'keywordTree',
             title: 'Keyword Tree',
             rootVisible: false,
-            store: Ext.create('Ext.data.TreeStore', {
-                model: 'KeywordNode',
-                storeId: 'Keywords'
-            }),
+            store: 'KeywordNodes',
             multiSelect: true,
             singleExpand: true,
-            cls: 'pts-keyword-tree',
+            cls: 'dmp-keyword-tree',
             hideHeaders: true,
             viewConfig: {
                 copy: true,
@@ -80,11 +113,11 @@ Ext.define('DMPlanner.ux.Keywords', {
                 flex: 1
             }, {
                 xtype: 'templatecolumn',
-                width: 20,
+                width: 28,
                 text: '',
                 hideable: false,
                 cls: 'x-action-col-cell',
-                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="pts-col-info"></div></tpl>'
+                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info">?</div></tpl>'
             }]
         };
 
@@ -94,6 +127,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                 itemId: 'projectKeywords',
                 region: 'center',
                 multiSelect: true,
+                hideHeaders: true,
                 viewConfig: {
                     stripeRows: false,
                     plugins: {
@@ -105,15 +139,15 @@ Ext.define('DMPlanner.ux.Keywords', {
                         return record.phantom ? 'pts-grid-row-phantom' : '';
                     }
                 },
-                //store: 'ProjectKeywords',
+                //store: 'PlanKeywords',
                 columns: [{
                     text: "Keyword",
                     flex: 1,
                     sortable: true,
                     dataIndex: 'text'
                 }],
-                title: 'Project Keywords',
-                dockedItems: [{
+                title: 'Keywords',
+                dockedItems: [/*{
                     xtype: 'toolbar',
                     dock: 'top',
                     items: [{
@@ -131,14 +165,9 @@ Ext.define('DMPlanner.ux.Keywords', {
                         iconCls: 'pts-menu-refresh',
                         text: 'Refresh',
                         action: 'refreshkeywords'
-                    }/*,
-                     {
-                     xtype: 'image',
-                     itemId: 'delImage',
-                     src: 'http://www.sencha.com/img/20110215-feat-html5.png'
-                     }*/
+                    }
                     ]
-                }/*,
+                },
                  {
                  xtype: 'pagingtoolbar',
                  store: 'ProjectKeywords',
@@ -153,15 +182,15 @@ Ext.define('DMPlanner.ux.Keywords', {
                 region: 'west',
                 split: true,
                 activeTab: 0,
-                tabPosition: 'bottom',
-                items: [keywordtree, {
+                tabPosition: 'top',
+                items: [
+                  keywordtree,
+                  {
                     xtype: 'gridpanel',
                     itemId: 'keywordSearch',
                     title: 'Search',
-                    store: Ext.create('Ext.data.TreeStore', {
-                        //model: 'Keyword',
-                        storeId: 'Keywords'
-                    }),
+                    store: 'Keywords',
+                    hideHeaders: true,
                     columns: [{
                         xtype: 'gridcolumn',
                         dataIndex: 'text',
@@ -187,14 +216,14 @@ Ext.define('DMPlanner.ux.Keywords', {
                         text: '',
                         hideable: false,
                         cls: 'x-action-col-cell',
-                        tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="pts-col-info"></div></tpl>'
+                        tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info">?</div></tpl>'
                     }, {
                         xtype: 'templatecolumn',
                         width: 28,
                         text: '',
                         hideable: false,
                         cls: 'x-action-col-cell',
-                        tpl: '<tpl if="text"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="pts-col-add"></div></tpl>',
+                        tpl: '<tpl if="text"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="pts-col-add">&gt;</div></tpl>',
                         action: 'addkeyword'
                     }],
                     viewConfig: {

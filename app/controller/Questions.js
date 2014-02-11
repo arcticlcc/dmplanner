@@ -27,7 +27,7 @@ Ext.define('DMPlanner.controller.Questions', {
             },
             '#sectionPrev' : {
                 click : this.showPrevSection
-            },/*
+            }/*,
 
              '#surveyFinish' : {
              click : this.finishSurvey
@@ -68,7 +68,8 @@ Ext.define('DMPlanner.controller.Questions', {
             //form.setTitle(record.get('name') + ': config');
             //do config stuff, add xtype
             questions = {
-                xtype: 'dmpkeywords'
+                xtype: 'dmpkeywords',
+                header: false
             };
 
         } else if (groups.count() > 0) {

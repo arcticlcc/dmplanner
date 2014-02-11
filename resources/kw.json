@@ -1,0 +1,266 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "keywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+          "definition": 'Science is Cool!!!',
+          "text": "EARTH SCIENCE",
+          "parentkeywordid": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999",
+          "fullname": "Science Keywords -> EARTH SCIENCE",
+          "parentname": "Science Keywords",
+          "leaf": false,
+          "cls": "pts-tree-branch",
+          "children": [
+            {
+              "keywordid": "a956d045-3b12-441c-8a18-fac7d33b2b4e",
+              "definition": null,
+              "text": "AGRICULTURE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> AGRICULTURE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "c47f6052-634e-40ef-a5ac-13f69f6f4c2a",
+              "definition": null,
+              "text": "ATMOSPHERE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> ATMOSPHERE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "fbec5145-79e6-4ed0-a804-6228aa6daba5",
+              "definition": null,
+              "text": "BIOLOGICAL CLASSIFICATION",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> BIOLOGICAL CLASSIFICATION",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "91c64c46-d040-4daa-b26c-61952fdfaf50",
+              "definition": null,
+              "text": "BIOSPHERE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> BIOSPHERE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "23703b6b-ee15-4512-b5b2-f441547e2edf",
+              "definition": null,
+              "text": "CLIMATE INDICATORS",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "fa0a36c3-2503-4662-98cd-7f3e74ce9f80",
+              "definition": null,
+              "text": "CRYOSPHERE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "fb93d937-c17c-45d0-a9e3-ca5c8a800ca8",
+              "definition": null,
+              "text": "HUMAN DIMENSIONS",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> HUMAN DIMENSIONS",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "6a426480-c58f-4b6b-8e35-0975b7f6edb5",
+              "definition": null,
+              "text": "LAND SURFACE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> LAND SURFACE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "91697b7d-8f2b-4954-850e-61d5f61c867d",
+              "definition": null,
+              "text": "OCEANS",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> OCEANS",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "c7245882-84a1-4192-acfa-a758b5b9c151",
+              "definition": null,
+              "text": "PALEOCLIMATE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> PALEOCLIMATE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "2b9ad978-d986-4d63-b477-0f5efc8ace72",
+              "definition": null,
+              "text": "SOLID EARTH",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "83150c54-5da8-4ee8-9579-19b95a8dc10c",
+              "definition": null,
+              "text": "SPECTRAL\/ENGINEERING",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> SPECTRAL\/ENGINEERING",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "57383ac5-614c-4b84-9202-e137b000422b",
+              "definition": null,
+              "text": "SUN-EARTH INTERACTIONS",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> SUN-EARTH INTERACTIONS",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "885735f3-121e-4ca0-ac8b-f37dbc972f03",
+              "definition": null,
+              "text": "TERRESTRIAL HYDROSPHERE",
+              "parentkeywordid": "e9f67a66-e9fc-435c-b720-ae32a2c3d8f5",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> TERRESTRIAL HYDROSPHERE",
+              "parentname": "EARTH SCIENCE",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }
+          ]
+        }, {
+          "keywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+          "definition": null,
+          "text": "EARTH SCIENCE SERVICES",
+          "parentkeywordid": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999",
+          "fullname": "Science Keywords -> EARTH SCIENCE SERVICES",
+          "parentname": "Science Keywords",
+          "leaf": false,
+          "cls": "pts-tree-branch",
+          "children": [
+            {
+              "keywordid": "41adc080-c182-4753-9666-435f8b1c913f",
+              "definition": null,
+              "text": "DATA ANALYSIS AND VISUALIZATION",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> DATA ANALYSIS AND VISUALIZATION",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "02d92216-70c6-437c-8c15-2b76f2132921",
+              "definition": null,
+              "text": "DATA MANAGEMENT\/DATA HANDLING",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> DATA MANAGEMENT\/DATA HANDLING",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "dc2088f9-ffb7-41c3-b0a1-856ecfec89de",
+              "definition": null,
+              "text": "EDUCATION\/OUTREACH",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> EDUCATION\/OUTREACH",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "09d00879-6d96-4df4-9f50-73bd761118d9",
+              "definition": null,
+              "text": "ENVIRONMENTAL ADVISORIES",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> ENVIRONMENTAL ADVISORIES",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "464de0a5-2bb9-4172-9fd3-1634cbc4e739",
+              "definition": null,
+              "text": "HAZARDS MANAGEMENT",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> HAZARDS MANAGEMENT",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "a1fedfa9-569f-4313-8ce1-db95513c5469",
+              "definition": null,
+              "text": "METADATA HANDLING",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> METADATA HANDLING",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "e1f20631-b5b9-438c-b5c2-b1fa0fce100a",
+              "definition": null,
+              "text": "MODELS",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> MODELS",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "a3a5d0dd-0e8f-4649-8a55-25f9251e1008",
+              "definition": null,
+              "text": "REFERENCE AND INFORMATION SERVICES",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> REFERENCE AND INFORMATION SERVICES",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }, {
+              "keywordid": "1d550f3a-1c8c-4ef5-beff-74cfe7794f12",
+              "definition": null,
+              "text": "WEB SERVICES",
+              "parentkeywordid": "894f9116-ae3c-40b6-981d-5113de961710",
+              "fullname": "Science Keywords -> EARTH SCIENCE SERVICES -> WEB SERVICES",
+              "parentname": "EARTH SCIENCE SERVICES",
+              "leaf": true,
+              "cls": "pts-tree-branch"
+            }
+          ]
+        }, {
+          "keywordid": "abfdf12c-858d-4b49-a23e-7b1a68ca9d78",
+          "definition": null,
+          "text": "SPACE SCIENCE",
+          "parentkeywordid": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999",
+          "fullname": "Science Keywords -> SPACE SCIENCE",
+          "parentname": "Science Keywords",
+          "leaf": true,
+          "cls": "pts-tree-branch"
+        }
+      ],
+      "text": "Science Keywords",
+      "id": "",
+      "iconCls": "",
+      "leaf": false,
+      "draggable": false,
+      "keywordid": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999",
+      "definition": null,
+      "parentkeywordid": null,
+      "fullname": "Science Keywords",
+      "parentname": null,
+      "cls": "pts-tree-branch",
+      "allowDrag": false
+    }
+  ],
+  "text": ".",
+  "id": "root",
+  "iconCls": "",
+  "leaf": false,
+  "draggable": false
+}

@@ -4,7 +4,7 @@ Ext.define('DMPlanner.view.Viewport', {
     'Ext.resizer.Splitter', //
     'Ext.layout.container.Card', //
     'DMPlanner.view.Start',//
-    'DMPlanner.ux.Keywords'
+    'DMPlanner.ux.*'
     ],
     alias: 'widget.vp',
 
