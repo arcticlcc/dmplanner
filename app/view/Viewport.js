@@ -48,6 +48,8 @@ Ext.define('DMPlanner.view.Viewport', {
             xtype: 'panel',
             itemId: 'sectionContainer',
             header: false,
+            html: '<div style="text-align:center;margin-top:3em;"><b>Please select a plan from the ' +
+                'list on the left.</b><br/><br/>This is a demo.</div>',
             dockedItems: [{
                 xtype: 'toolbar',
                 itemId:'bottomNavBar',
