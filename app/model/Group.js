@@ -14,6 +14,8 @@ Ext.define('DMPlanner.model.Group', {
     }, {
         name: 'data',
         type: 'auto'
+    }, {
+        name: 'width'
     }],
 
     associations: [{

@@ -1,17 +1,17 @@
 Ext.define('DMPlanner.controller.Start', {
-    extend : 'Ext.app.Controller',
+    extend: 'Ext.app.Controller',
 
-    views : ['Start'],
+    views: ['Start'],
 
-    init : function(application) {
+    init: function(application) {
         this.control({
-            "button#startNewBtn" : {
-                click : this.onStartNewClick
+            "button#startNewBtn": {
+                click: this.onStartNewClick
             }
         });
     },
 
-    onStartNewClick : function(button) {
+    onStartNewClick: function(button) {
         // process authentication...
         button.up('vp').getLayout().setActiveItem(1);
     }

@@ -1,54 +1,63 @@
 Ext.define('DMPlanner.view.Viewport', {
-    extend : 'Ext.container.Viewport',
-    requires : [//
+    extend: 'Ext.container.Viewport',
+    requires: [//
     'Ext.resizer.Splitter', //
     'Ext.layout.container.Card', //
-    'DMPlanner.view.Start'//,//
-    //'DMPlanner.view.QuestionsForm',//
+    'DMPlanner.view.Start',//
+    'DMPlanner.ux.Keywords'
     ],
-    alias : 'widget.vp',
+    alias: 'widget.vp',
 
-    layout : {
-        type : 'card'
+    layout: {
+        type: 'card'
     },
-    items : [{
-        xtype : 'start'
+    items: [{
+        xtype: 'start'
     }, {
-        xtype : 'container',
-        itemId : 'mainContainer',
-        layout : {
-            align : 'stretch',
-            type : 'hbox'
+        xtype: 'container',
+        itemId: 'mainContainer',
+        layout: {
+            align: 'stretch',
+            type: 'hbox'
         },
-        items : [{
-            xtype : 'container',
-            minWidth : 200,
-            flex : 1,
-            layout : {
-                align : 'stretch',
-                type : 'vbox'
+        items: [{
+            xtype: 'container',
+            minWidth: 200,
+            flex: 1,
+            layout: {
+                align: 'stretch',
+                type: 'vbox'
             },
-            items : [{
-                xtype : 'planlist',
-                flex : 1,
-                collapsible : true,
-                collapseDirection : 'top'
+            items: [{
+                xtype: 'planlist',
+                flex: 1,
+                collapsible: true,
+                collapseDirection: 'top'
             }, {
-                xtype : 'splitter',
-                collapsible : true,
-                collapseTarget : 'prev'
+                xtype: 'splitter',
+                collapsible: true,
+                collapseTarget: 'prev'
             }, {
-                xtype : 'sectionlist',
-                flex : 2,
-                hidden : true
+                xtype: 'sectionlist',
+                flex: 2,
+                hidden: true
             }]
         }, {
-            xtype : 'splitter'
+            xtype: 'splitter'
         }, {
-            xtype : 'questions',
-            //xtype : 'container',
-            bodyPadding : 10,
-            flex : 3
+            xtype: 'panel',
+            itemId: 'sectionContainer',
+            header: false,
+            dockedItems: [{
+                xtype: 'toolbar',
+                itemId:'bottomNavBar',
+                dock: 'bottom'
+            }],
+            layout: {
+                type: 'fit'
+            },
+            //bodyPadding : 10,
+            flex: 3
         }]
     }]
 });
