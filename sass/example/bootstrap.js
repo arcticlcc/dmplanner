@@ -9,7 +9,12 @@ Ext.Loader.addClassPathMappings({
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "../../ext/src/rtl/EventObject.js",
-  "ExtThemeNeptune": "../../ext/packages/ext-theme-neptune/overrides"
+  "Ext.ux.form": "../../ux/form",
+  "Ext.ux.form.ItemSelector": "../../ext/src/ux/form/ItemSelector.js",
+  "Ext.ux.form.MultiSelect": "../../ext/src/ux/form/MultiSelect.js",
+  "Ext.ux.grid.FilterBar": "../../ux/grid/FilterBar.js",
+  "ExtThemeNeptune": "../../ext/packages/ext-theme-neptune/overrides",
+  "KeywordNode": "../../app/ux/Keywords.js"
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
@@ -24,9 +29,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.store.Questions": [],
   "DMPlanner.store.Sections": [],
+  "DMPlanner.ux.Keywords": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
-  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
@@ -813,6 +818,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.ux.Multiselect"
   ],
   "Ext.ux.form.SearchField": [],
+  "Ext.ux.grid.FilterBar": [],
   "Ext.ux.grid.FiltersFeature": [],
   "Ext.ux.grid.TransformGrid": [],
   "Ext.ux.grid.filter.BooleanFilter": [],
@@ -861,7 +867,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.resizer.Splitter": [],
   "ExtThemeNeptune.tab.Tab": [],
   "ExtThemeNeptune.toolbar.Paging": [],
-  "ExtThemeNeptune.toolbar.Toolbar": []
+  "ExtThemeNeptune.toolbar.Toolbar": [],
+  "KeywordNode": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
@@ -876,13 +883,15 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.store.Questions": [],
   "DMPlanner.store.Sections": [],
+  "DMPlanner.ux.Keywords": [
+    "widget.dmpkeywords"
+  ],
   "DMPlanner.view.PlanList": [
     "widget.planlist"
   ],
   "DMPlanner.view.QuestionsForm": [
     "widget.questions"
   ],
-  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [
     "widget.sectionlist"
   ],
@@ -1821,6 +1830,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.form.SearchField": [
     "widget.searchfield"
   ],
+  "Ext.ux.grid.FilterBar": [
+    "widget.filterbar"
+  ],
   "Ext.ux.grid.FiltersFeature": [
     "feature.filters"
   ],
@@ -1891,7 +1903,8 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.resizer.Splitter": [],
   "ExtThemeNeptune.tab.Tab": [],
   "ExtThemeNeptune.toolbar.Paging": [],
-  "ExtThemeNeptune.toolbar.Toolbar": []
+  "ExtThemeNeptune.toolbar.Toolbar": [],
+  "KeywordNode": []
 });
 Ext.setVersion("ext-theme-base", "4.2.1");
 Ext.setVersion("ext-theme-neptune", "4.2.1");
