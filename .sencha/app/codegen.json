@@ -450,6 +450,16 @@
         "name": "Questions",
         "controllerNamespace": "DMPlanner.controller"
       }
+    },
+    "app/view/Section.js": {
+      "source": "{viewFileName}.js.tpl.merge",
+      "version": "acde5ea901286ca2f976bcddea23e159dbaa0e6f",
+      "parameters": {
+        "appName": "DMPlanner",
+        "viewName": "Section",
+        "name": "Section",
+        "viewFileName": "Section"
+      }
     }
   }
 }

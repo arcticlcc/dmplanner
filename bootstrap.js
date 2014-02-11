@@ -14,6 +14,7 @@ Ext.Loader.addClassPathMappings({
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
   "DMPlanner.controller.Plans": [],
+  "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Start": [],
   "DMPlanner.model.Group": [],
   "DMPlanner.model.Plan": [],
@@ -24,6 +25,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.Questions": [],
   "DMPlanner.store.Sections": [],
   "DMPlanner.view.PlanList": [],
+  "DMPlanner.view.QuestionsForm": [],
+  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
@@ -863,6 +866,7 @@ Ext.ClassManager.addNameAlternateMappings({
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
   "DMPlanner.controller.Plans": [],
+  "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Start": [],
   "DMPlanner.model.Group": [],
   "DMPlanner.model.Plan": [],
@@ -875,6 +879,10 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.view.PlanList": [
     "widget.planlist"
   ],
+  "DMPlanner.view.QuestionsForm": [
+    "widget.questions"
+  ],
+  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [
     "widget.sectionlist"
   ],
