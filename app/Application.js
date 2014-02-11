@@ -1,3 +1,11 @@
+Ext.Loader.setConfig({
+    enabled: true,
+    paths: {
+        'Ext.ux': '../ux',
+        'DMPlanner.ux': 'app/ux'
+    }
+});
+
 Ext.define('DMPlanner.Application', {
     name: 'DMPlanner',
 
