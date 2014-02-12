@@ -27,6 +27,11 @@
                 "group_id": 111,
                 "question": "Last name"
               }, {
+                "id": 11167,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "Occupation"
+              }, {
                 "id": 1113,
                 "plan_id": 1,
                 "group_id": 111,
@@ -114,6 +119,14 @@
       }, {
         "name": "Keywords",
         "id": 12,
+        "plan_id": 1,
+        "config": {
+          "xtype": "keywords",
+          "data": ["Google", "Ad", "Wordofmouth", "Other"]
+        }
+      }, {
+        "name": "More Keywords",
+        "id": 13,
         "plan_id": 1,
         "config": {
           "xtype": "keywords",

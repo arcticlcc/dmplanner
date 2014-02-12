@@ -15,6 +15,7 @@ Ext.define('DMPlanner.ux.Keywords', {
     'Ext.data.Store',
     'Ext.data.TreeStore',
     'Ext.data.proxy.Rest',
+    'Ext.data.proxy.JsonP',
     'Ext.layout.container.Border',
     'Ext.tab.Panel',
     'Ext.tree.Panel'
@@ -50,8 +51,9 @@ Ext.define('DMPlanner.ux.Keywords', {
               idProperty: 'keywordid',
 
               proxy: {
-                  type: 'rest',
-                  url: 'resources/kw.json',
+                  type: 'jsonp',
+                  //url: 'resources/kw.json',
+                  url: 'http://localhost:8088/keyword/tree',
                   reader: {
                       type: 'json'
                   },
@@ -74,13 +76,14 @@ Ext.define('DMPlanner.ux.Keywords', {
                 model: 'KeywordNode',
                 storeId: 'Keywords',
                 autoLoad: false,
-                remoteSort: false,
-                remoteFilter: false,
+                remoteSort: true,
+                remoteFilter: true,
                 sorters: { property: 'text', direction : 'ASC' },
 
                 proxy: {
-                    type: 'rest',
-                    url : 'resources/kwlist.json',
+                    type: 'jsonp',
+                    //url : 'resources/kwlist.json',
+                    url : 'http://localhost:8088/keywordlist',
                     reader: {
                         type: 'json',
                         root: 'data'

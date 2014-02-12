@@ -32,6 +32,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
+  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
@@ -892,6 +893,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.view.QuestionsForm": [
     "widget.questions"
   ],
+  "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [
     "widget.sectionlist"
   ],

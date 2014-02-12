@@ -62,6 +62,7 @@ Ext.define("Ext.ux.grid.FilterBar", {
             }, {
                 xtype: 'searchfield',
                 //width: 250,
+                paramName: 'filter',
                 flex: 1,
                 disabled: true,
                 store: me.searchStore,
@@ -96,8 +97,11 @@ Ext.define("Ext.ux.grid.FilterBar", {
                     }
                     //proxy.extraParams[me.paramName] = value;
                     //proxy.extraParams.start = 0;
-                    store.filters.clear();
-                    store.filter(field, ['ilike', value]);
+                    store.clearFilter(true);
+                    store.filter({
+                        "property": field,
+                        "value":['ilike', value]
+                     });
                     //store.load();
                     me.hasSearch = true;
                     me.triggerEl.item(0).setDisplayed('block');
