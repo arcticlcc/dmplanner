@@ -17,7 +17,8 @@ Ext.define('DMPlanner.ux.Keywords', {
     'Ext.data.proxy.JsonP',
     'Ext.layout.container.Border',
     'Ext.tab.Panel',
-    'Ext.tree.Panel'
+    'Ext.tree.Panel',
+    'Ext.LoadMask'
     ],
 
     layout: {
@@ -105,7 +106,8 @@ Ext.define('DMPlanner.ux.Keywords', {
                 plugins: {
                     ptype: 'treeviewdragdrop',
                     dragGroup: 'keywords'
-                }
+                },
+                loadMask: false
             },
             columns: [{
                 xtype: 'treecolumn',
@@ -119,7 +121,25 @@ Ext.define('DMPlanner.ux.Keywords', {
                 hideable: false,
                 cls: 'x-action-col-cell',
                 tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info">?</div></tpl>'
-            }]
+            }],
+            listeners:{
+                afterLayout: function(tree){
+                    var store = tree.getStore();
+                    //since root is invisible,mask on initial load
+                    if (store.isLoading() && !tree.getRootNode().hasChildNodes()) {
+                        myMask = new Ext.LoadMask({
+                            target:tree,
+                            msg:"Please wait..."
+                        });
+                        myMask.show();
+                        store.on('load', function() {
+                            myMask.destroy();
+                        }, this, {
+                            single: true
+                        });
+                    }
+                }
+            }
         };
 
         Ext.applyIf(me, {
