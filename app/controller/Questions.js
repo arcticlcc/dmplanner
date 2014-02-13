@@ -93,16 +93,14 @@ Ext.define('DMPlanner.controller.Questions', {
             buttons.push({
                 xtype : 'button',
                 text : 'Previous',
-                itemId : 'sectionPrev',
-                width : 200
+                itemId : 'sectionPrev'
             });
         }
 
         buttons.push({
             xtype : 'button',
             text : isLastSection ? 'Save' : 'Next',
-            itemId : isLastSection ? 'planFinish' : 'sectionNext',
-            width : 200
+            itemId : isLastSection ? 'planFinish' : 'sectionNext'
         });
 
         bbar.add(buttons);

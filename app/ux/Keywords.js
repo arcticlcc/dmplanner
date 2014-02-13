@@ -6,7 +6,6 @@ Ext.define('DMPlanner.ux.Keywords', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.dmpkeywords',
     requires: [
-    //'PTS.view.controls.KeywordTree',
     'Ext.ux.grid.FilterBar',
     'Ext.grid.plugin.DragDrop',
     'Ext.grid.column.Template',
@@ -52,8 +51,7 @@ Ext.define('DMPlanner.ux.Keywords', {
 
               proxy: {
                   type: 'jsonp',
-                  //url: 'resources/kw.json',
-                  url: 'http://localhost:8088/keyword/tree',
+                  url: 'http://gcmd.herokuapp.com/keyword/tree',
                   reader: {
                       type: 'json'
                   },
@@ -82,8 +80,8 @@ Ext.define('DMPlanner.ux.Keywords', {
 
                 proxy: {
                     type: 'jsonp',
-                    //url : 'resources/kwlist.json',
-                    url : 'http://localhost:8088/keywordlist',
+                    //url : 'http://localhost:8088/keywordlist',
+                    url : 'http://gcmd.herokuapp.com/keywordlist',
                     reader: {
                         type: 'json',
                         root: 'data'
@@ -173,8 +171,9 @@ Ext.define('DMPlanner.ux.Keywords', {
                 },
                  {
                  xtype: 'pagingtoolbar',
-                 store: 'ProjectKeywords',
-                 displayInfo: true
+                 store: 'Keywords',
+                 displayInfo: true,
+                 dock: 'top'
                  }*/
                 ]
             }, {
@@ -240,12 +239,12 @@ Ext.define('DMPlanner.ux.Keywords', {
                         xtype: 'filterbar',
                         searchStore: 'Keywords',
                         dock: 'top'
-                    }/*, {
+                    }, {
                         xtype: 'pagingtoolbar',
                         displayInfo: true,
                         store: 'Keywords',
                         dock: 'top'
-                    }*/]
+                    }]
                 }]
             }]
         });

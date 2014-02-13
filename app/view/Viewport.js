@@ -4,6 +4,7 @@ Ext.define('DMPlanner.view.Viewport', {
     'Ext.resizer.Splitter', //
     'Ext.layout.container.Card', //
     'DMPlanner.view.Start',//
+    'DMPlanner.view.Section',//
     'DMPlanner.ux.*'
     ],
     alias: 'widget.vp',
@@ -34,9 +35,9 @@ Ext.define('DMPlanner.view.Viewport', {
                 collapsible: true,
                 collapseDirection: 'top'
             }, {
-                xtype: 'splitter',
-                collapsible: true,
-                collapseTarget: 'prev'
+                xtype: 'splitter'//,
+                //collapsible: true,
+                //collapseTarget: 'prev'
             }, {
                 xtype: 'sectionlist',
                 flex: 2,
@@ -45,20 +46,8 @@ Ext.define('DMPlanner.view.Viewport', {
         }, {
             xtype: 'splitter'
         }, {
-            xtype: 'panel',
+            xtype: 'sectionpanel',
             itemId: 'sectionContainer',
-            header: false,
-            html: '<div style="text-align:center;margin-top:3em;"><b>Please select a plan from the ' +
-                'list on the left.</b><br/><br/>This is a demo.</div>',
-            dockedItems: [{
-                xtype: 'toolbar',
-                itemId:'bottomNavBar',
-                dock: 'bottom'
-            }],
-            layout: {
-                type: 'fit'
-            },
-            //bodyPadding : 10,
             flex: 3
         }]
     }]

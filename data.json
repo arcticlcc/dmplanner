@@ -124,14 +124,6 @@
           "xtype": "keywords",
           "data": ["Google", "Ad", "Wordofmouth", "Other"]
         }
-      }, {
-        "name": "More Keywords",
-        "id": 13,
-        "plan_id": 1,
-        "config": {
-          "xtype": "keywords",
-          "data": ["Google", "Ad", "Wordofmouth", "Other"]
-        }
       }
     ]
   }

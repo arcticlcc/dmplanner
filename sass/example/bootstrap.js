@@ -893,7 +893,9 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.view.QuestionsForm": [
     "widget.questions"
   ],
-  "DMPlanner.view.Section": [],
+  "DMPlanner.view.Section": [
+    "widget.sectionpanel"
+  ],
   "DMPlanner.view.SectionList": [
     "widget.sectionlist"
   ],
