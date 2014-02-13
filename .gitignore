@@ -2,3 +2,4 @@
 /build/production
 /build/temp
 /ext/*
+!ext/cmd
