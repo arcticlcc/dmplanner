@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "name": "A Demo Plan",
+    "code": "ALCC2011-01",
+    "sections": [
+      {
+        "id": 11,
+        "name": "Contact Info",
+        "plan_id": 1,
+        "groups": [
+          {
+            "id": 111,
+            "name": "Your information",
+            "section_id": 1,
+            "questions": [
+              {
+                "id": 1111,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "First name",
+                "guidance": "Enter your first name.",
+                "answer": "Joe"
+              }, {
+                "id": 1112,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "Last name"
+              }, {
+                "id": 11167,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "Occupation"
+              }, {
+                "id": 1113,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "Age",
+                "config": {
+                  "xtype": "numberfield"
+                }
+              }, {
+                "id": 1114,
+                "plan_id": 1,
+                "group_id": 111,
+                "question": "Gender",
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Male",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f",
+                      "checked": true
+                    }
+                  ]
+                }
+              }
+            ]
+          },{
+            "id": 112,
+            "name": "Other information",
+            "section_id": 1,
+            "width": 800,
+            "questions": [
+              {
+                "id": 1121,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Position",
+                "config": {
+                  "xtype": "htmleditor"
+                }
+              }, {
+                "id": 1122,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Metric"
+              }, {
+                "id": 1123,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Total # Files",
+                "config": {
+                  "xtype": "numberfield"
+                }
+              }, {
+                "id": 1124,
+                "plan_id": 1,
+                "group_id": 112,
+                "question": "Archived",
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Yes",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "No",
+                      "name": "gender",
+                      "inputValue": "f",
+                      "checked": true
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }, {
+        "name": "Keywords",
+        "id": 12,
+        "plan_id": 1,
+        "config": {
+          "xtype": "keywords",
+          "data": ["Google", "Ad", "Wordofmouth", "Other"]
+        }
+      }
+    ]
+  }
+]
