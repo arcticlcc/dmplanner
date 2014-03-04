@@ -120,7 +120,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                 text: '',
                 hideable: false,
                 cls: 'x-action-col-cell',
-                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info">?</div></tpl>'
+                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info fa">&#xf05a;</div></tpl>'
             }],
             listeners:{
                 afterLayout: function(tree){
@@ -238,14 +238,14 @@ Ext.define('DMPlanner.ux.Keywords', {
                         text: '',
                         hideable: false,
                         cls: 'x-action-col-cell',
-                        tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info">?</div></tpl>'
+                        tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info fa">&#xf05a;</div></tpl>'
                     }, {
                         xtype: 'templatecolumn',
                         width: 28,
                         text: '',
                         hideable: false,
                         cls: 'x-action-col-cell',
-                        tpl: '<tpl if="text"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="pts-col-add">&gt;</div></tpl>',
+                        tpl: '<tpl if="text"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa">&#xf138;</div></tpl>',
                         action: 'addkeyword'
                     }],
                     viewConfig: {
