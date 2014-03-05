@@ -120,7 +120,7 @@ Ext.define('DMPlanner.controller.Questions', {
                         question: question,
                         anchor: '100%',
                         xtype: 'textfield',
-                        afterLabelTextTpl: !!info ? '<span class="dmp-icon-guidance sup" data-qtip="' + info + '">?</span>' : undefined,
+                        afterLabelTextTpl: !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
                         //afterSubTpl: !!info ? '<span class="dmp-icon-guidance" data-qtip="' + info + '">?</span>' : undefined,
                         //afterBodyEl: !!info ? '<span class="dmp-icon-guidance" data-qtip="' + info + '">?</span>' : undefined,
                         //msgTarget         : 'side',

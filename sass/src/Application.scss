@@ -1,1 +1,10 @@
 @import "../fonts/font-awesome-4.0.3/scss/font-awesome.scss";
+
+.fa {
+  color: #999;
+
+  &:hover {
+      color: $panel-base-color;
+      opacity: $tool-opacity-over;
+  }
+}
