@@ -6,19 +6,19 @@ Ext.define('DMPlanner.ux.Keywords', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.dmpkeywords',
     requires: [
-    'Ext.ux.grid.FilterBar',
-    'Ext.grid.plugin.DragDrop',
-    'Ext.grid.column.Template',
-    'Ext.tree.plugin.TreeViewDragDrop',
-    'Ext.data.Model',
-    'Ext.data.Store',
-    'Ext.data.TreeStore',
-    'Ext.data.proxy.Rest',
-    'Ext.data.proxy.JsonP',
-    'Ext.layout.container.Border',
-    'Ext.tab.Panel',
-    'Ext.tree.Panel',
-    'Ext.LoadMask'
+        'Ext.ux.grid.FilterBar', //
+        'Ext.grid.plugin.DragDrop', //
+        'Ext.grid.column.Template', //
+        'Ext.tree.plugin.TreeViewDragDrop', //
+        'Ext.data.Model', //
+        'Ext.data.Store', //
+        'Ext.data.TreeStore', //
+        'Ext.data.proxy.Rest', //
+        'Ext.data.proxy.JsonP', //
+        'Ext.layout.container.Border', //
+        'Ext.tab.Panel', //
+        'Ext.tree.Panel', //
+        'Ext.LoadMask'
     ],
 
     layout: {
@@ -27,62 +27,134 @@ Ext.define('DMPlanner.ux.Keywords', {
     title: 'Keywords',
 
     initComponent: function() {
-        var me = this, keywordtree;
+        var me = this, keywordtree,
+            addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>',
+            removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>',
+            helpCol = {
+                xtype: 'templatecolumn',
+                width: 28,
+                text: '',
+                hideable: false,
+                style: {cursor: 'help'},
+                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="fa dmp-col-info">&#xf05a;</div></tpl>'
+            },
+            testDuplicate = function(node, data, overModel, dropPosition, dropHandlers) {
+                var store = this.down('#planKeywords').getStore(),
+                    draggedRecords = data.records,
+                    ln = draggedRecords.length;
 
-        if(!Ext.ModelManager.getModel('KeywordNode')){
-          Ext.define('KeywordNode', {
-              extend: 'Ext.data.Model',
-              fields: [{
-                  name: 'keywordid',
-                  type: 'string'
-              }, {
-                  name: 'text',
-                  type: 'string',
-                  useNull: true
-              }, {
-                  name: 'definition',
-                  type: 'string',
-                  useNull: true
-              }, {
-                  name: 'fullname',
-                  type: 'string',
-                  useNull: true
-              }],
-              idProperty: 'keywordid',
+                for (i = 0; i < ln; i++) {
+                    record = draggedRecords[i];
+                    //reject duplicates
+                    if(store.findExact('keywordid',record.getId()) !== -1) {
+                        return false;
+                    }
 
-              proxy: {
-                  type: 'jsonp',
-                  url: 'http://gcmd.herokuapp.com/keyword/tree',
-                  reader: {
-                      type: 'json'
-                  },
-                  appendId: true
-              }
-          });
+                    return true;
+                }
+            },
+            addKeyword = function (view, el, idx, col){
+                var store = this.down('#planKeywords').getStore(),
+                    sel = view.getSelectionModel().getSelection(),
+                    data = {records: sel};
+
+                if(testDuplicate.call(this,null, data)){
+                    store.add(sel);
+                }
+            },
+            addCol = {
+                xtype: 'templatecolumn',
+                width: 28,
+                text: '',
+                hideable: false,
+                tpl: addTpl,
+                action: 'addkeyword',
+                listeners: {
+                    click: {
+                        fn: addKeyword,
+                        scope: this
+                    }
+                }
+            },
+            rmKeyword = function (view, el, idx, col){
+                var sel = view.getSelectionModel().getSelection();
+                view.getStore().remove(sel);
+            };
+
+
+        if (!Ext.ModelManager.getModel('KeywordNode')) {
+            Ext.define('KeywordNode', {
+                extend: 'Ext.data.Model',
+                fields: [{
+                    name: 'keywordid',
+                    type: 'string'
+                }, {
+                    name: 'text',
+                    type: 'string',
+                    useNull: true
+                }, {
+                    name: 'definition',
+                    type: 'string',
+                    useNull: true
+                }, {
+                    name: 'fullname',
+                    type: 'string',
+                    useNull: true
+                }],
+                idProperty: 'keywordid',
+
+                proxy: {
+                    type: 'jsonp',
+                    url: 'http://gcmd.herokuapp.com/keyword/tree',
+                    reader: {
+                        type: 'json'
+                    },
+                    appendId: true
+                }
+            });
         }
 
-        if(!Ext.getStore('KeywordNodes')){
+        if (!Ext.getStore('PlanKeywords')) {
+            Ext.create('Ext.data.Store', {
+                model: 'KeywordNode',
+                storeId: 'PlanKeywords',
+                autoLoad: false,
+
+                proxy: {
+                    type: 'memory',
+                    reader: {
+                        type: 'json',
+                        root: 'data'
+                    }
+                }
+            });
+        }
+
+        if (!Ext.getStore('KeywordNodes')) {
             Ext.create('Ext.data.TreeStore', {
-                    model: 'KeywordNode',
-                    storeId: 'KeywordNodes',
-                    clearOnLoad: true,
-                    autoLoad: false,
-                    defaultRootId: ''
+                model: 'KeywordNode',
+                storeId: 'KeywordNodes',
+                clearOnLoad: true,
+                autoLoad: false,
+                defaultRootId: ''
             }).load();
         }
-        if(!Ext.getStore('Keywords')){
+        if (!Ext.getStore('Keywords')) {
             Ext.create('Ext.data.Store', {
                 model: 'KeywordNode',
                 storeId: 'Keywords',
                 autoLoad: false,
                 remoteSort: true,
                 remoteFilter: true,
-                sorters: { property: 'text', direction : 'ASC' },
+                sorters: {
+                    property: 'text',
+                    direction: 'ASC'
+                },
 
                 proxy: {
                     type: 'jsonp',
                     //url : 'http://localhost:8088/keywordlist',
-                    url : 'http://gcmd.herokuapp.com/keywordlist',
+                    url: 'http://gcmd.herokuapp.com/keywordlist',
                     reader: {
                         type: 'json',
                         root: 'data'
@@ -114,22 +186,15 @@ Ext.define('DMPlanner.ux.Keywords', {
                 text: 'Keyword',
                 dataIndex: 'text',
                 flex: 1
-            }, {
-                xtype: 'templatecolumn',
-                width: 28,
-                text: '',
-                hideable: false,
-                cls: 'x-action-col-cell',
-                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info fa">&#xf05a;</div></tpl>'
-            }],
-            listeners:{
-                afterLayout: function(tree){
+            }, helpCol, addCol],
+            listeners: {
+                afterLayout: function(tree) {
                     var store = tree.getStore();
                     //since root is invisible,mask on initial load
                     if (store.isLoading() && !tree.getRootNode().hasChildNodes()) {
                         myMask = new Ext.LoadMask({
-                            target:tree,
-                            msg:"Please wait..."
+                            target: tree,
+                            msg: "Please wait..."
                         });
                         myMask.show();
                         store.on('load', function() {
@@ -145,7 +210,7 @@ Ext.define('DMPlanner.ux.Keywords', {
         Ext.applyIf(me, {
             items: [{
                 xtype: 'gridpanel',
-                itemId: 'projectKeywords',
+                itemId: 'planKeywords',
                 region: 'center',
                 multiSelect: true,
                 hideHeaders: true,
@@ -154,48 +219,49 @@ Ext.define('DMPlanner.ux.Keywords', {
                     plugins: {
                         ptype: 'gridviewdragdrop',
                         dropGroup: 'keywords',
-                        dragGroup: 'deletekeywords'
+                        dragGroup: 'deletekeywords',
+                        pluginId: 'ddkeywords'
                     },
-                    getRowClass: function(record, rowIndex, rowParams, store) {
-                        return record.phantom ? 'pts-grid-row-phantom' : '';
+                    listeners: {
+                        beforedrop: {
+                            fn: testDuplicate,
+                            scope: this
+                        }
                     }
                 },
-                //store: 'PlanKeywords',
+                store: 'PlanKeywords',
                 columns: [{
+                        xtype: 'templatecolumn',
+                        width: 28,
+                        text: '',
+                        hideable: false,
+                        tpl: removeTpl,
+                        action: 'removekeyword',
+                        listeners: {
+                            click: {
+                                fn: rmKeyword
+                            }
+                        }
+                    },{
                     text: "Keyword",
                     flex: 1,
                     sortable: true,
                     dataIndex: 'text'
                 }],
                 title: 'Keywords',
-                dockedItems: [/*{
+                dockedItems: [{
                     xtype: 'toolbar',
                     dock: 'top',
-                    items: [{
+                    items:[{
                         xtype: 'button',
-                        iconCls: 'pts-menu-deletebasic',
-                        text: 'Remove',
-                        action: 'removekeywords'
-                    }, {
-                        xtype: 'button',
-                        iconCls: 'pts-menu-savebasic',
-                        text: 'Save',
-                        action: 'savekeywords'
-                    }, {
-                        xtype: 'button',
-                        iconCls: 'pts-menu-refresh',
-                        text: 'Refresh',
-                        action: 'refreshkeywords'
-                    }
-                    ]
-                },
-                 {
-                 xtype: 'pagingtoolbar',
-                 store: 'Keywords',
-                 displayInfo: true,
-                 dock: 'top'
-                 }*/
-                ]
+                        glyph:  'xf100@FontAwesome',
+                        text: 'Remove All',
+                        action: 'removeallkeywords',
+                        handler: function(btn){
+                            btn.up('gridpanel').getStore().removeAll();
+                        }
+                    }]
+                }]
             }, {
                 xtype: 'tabpanel',
                 flex: 1,
@@ -205,11 +271,10 @@ Ext.define('DMPlanner.ux.Keywords', {
                 split: true,
                 activeTab: 0,
                 tabPosition: 'top',
-                items: [
-                  keywordtree,
-                  {
+                items: [keywordtree, {
                     xtype: 'gridpanel',
                     itemId: 'keywordSearch',
+                    cls: 'dmp-keyword-grid',
                     title: 'Search',
                     store: 'Keywords',
                     hideHeaders: true,
@@ -222,7 +287,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                             var fullname = record.get('fullname');
 
                             if (fullname) {
-                                return '<span data-qtip="' + fullname + '">' + value + '</span>';
+                                return '<span class="dmp-row-draggable" data-qtip="' + fullname + '">' + value + '</span>';
                             }
                             return value;
                         }
@@ -232,22 +297,10 @@ Ext.define('DMPlanner.ux.Keywords', {
                         dataIndex: 'fullname',
                         flex: 2,
                         text: 'Full Path'
-                    }, {
-                        xtype: 'templatecolumn',
-                        width: 28,
-                        text: '',
-                        hideable: false,
-                        cls: 'x-action-col-cell',
-                        tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="dmp-col-info fa">&#xf05a;</div></tpl>'
-                    }, {
-                        xtype: 'templatecolumn',
-                        width: 28,
-                        text: '',
-                        hideable: false,
-                        cls: 'x-action-col-cell',
-                        tpl: '<tpl if="text"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa">&#xf138;</div></tpl>',
-                        action: 'addkeyword'
-                    }],
+                    },//
+                         helpCol,//
+                         addCol//
+                    ],
                     viewConfig: {
                         copy: true,
                         plugins: {
