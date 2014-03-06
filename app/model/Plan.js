@@ -1,7 +1,11 @@
 Ext.define('DMPlanner.model.Plan', {
-    extend: 'Ext.data.Model',
+    extend: 'Ext.ux.data.DeepModel',
 
-    requires: ['Ext.data.association.HasMany'],
+    requires: [//
+    'Ext.data.association.HasMany', //
+    'Ext.ux.data.DeepJsonWriter', //
+    'Ext.ux.data.DeepModel'//
+    ],
 
     uses: ['DMPlanner.model.Section'],
 
@@ -16,8 +20,10 @@ Ext.define('DMPlanner.model.Plan', {
     }],
 
     proxy: {
-        type: 'ajax',
-        url: 'data.json',
+        //type: 'ajax',
+        //url: 'data.json',
+        type: 'memory',
+        //id: 'dmp-plans',
         reader: {
             type: 'json'
         }

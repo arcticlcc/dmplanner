@@ -1,6 +1,6 @@
 Ext.define('DMPlanner.model.Group', {
-    extend: 'Ext.data.Model',
-    requires: ['Ext.data.association.HasMany', 'Ext.data.association.BelongsTo'],
+    extend: 'Ext.ux.data.DeepModel',
+    requires: ['Ext.data.association.HasMany', 'Ext.data.association.BelongsTo', 'Ext.ux.data.DeepModel'],
     uses: ['DMPlanner.model.Section', 'DMPlanner.model.Question'],
 
     fields: [{

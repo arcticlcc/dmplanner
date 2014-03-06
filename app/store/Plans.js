@@ -4,6 +4,6 @@ Ext.define('DMPlanner.store.Plans', {
     requires: ['DMPlanner.model.Plan'],
 
     storeId: 'Plans',
-    autoLoad: true,
+    autoLoad: false,
     model: 'DMPlanner.model.Plan'
 });

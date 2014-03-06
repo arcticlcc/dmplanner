@@ -6,13 +6,43 @@
  */
 Ext.Loader.addClassPathMappings({
   "DMPlanner": "app",
+  "DMPlanner.data.PlanTemplate": "app/Application.js",
   "Ext": "ext/src",
   "Ext.Msg": "ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "ext/src/rtl/EventObject.js",
-  "Ext.ux.form": "ux/form",
+  "Ext.ux": "ux",
+  "Ext.ux.BoxReorderer": "ext/src/ux/BoxReorderer.js",
+  "Ext.ux.CellDragDrop": "ext/src/ux/CellDragDrop.js",
+  "Ext.ux.DataTip": "ext/src/ux/DataTip.js",
+  "Ext.ux.DataView": "ext/src/ux/DataView",
+  "Ext.ux.FieldReplicator": "ext/src/ux/FieldReplicator.js",
+  "Ext.ux.GMapPanel": "ext/src/ux/GMapPanel.js",
+  "Ext.ux.GroupTabPanel": "ext/src/ux/GroupTabPanel.js",
+  "Ext.ux.GroupTabRenderer": "ext/src/ux/GroupTabRenderer.js",
+  "Ext.ux.IFrame": "ext/src/ux/IFrame.js",
+  "Ext.ux.LiveSearchGridPanel": "ext/src/ux/LiveSearchGridPanel.js",
+  "Ext.ux.PreviewPlugin": "ext/src/ux/PreviewPlugin.js",
+  "Ext.ux.ProgressBarPager": "ext/src/ux/ProgressBarPager.js",
+  "Ext.ux.RowExpander": "ext/src/ux/RowExpander.js",
+  "Ext.ux.SlidingPager": "ext/src/ux/SlidingPager.js",
+  "Ext.ux.Spotlight": "ext/src/ux/Spotlight.js",
+  "Ext.ux.TabCloseMenu": "ext/src/ux/TabCloseMenu.js",
+  "Ext.ux.TabReorderer": "ext/src/ux/TabReorderer.js",
+  "Ext.ux.TabScrollerMenu": "ext/src/ux/TabScrollerMenu.js",
+  "Ext.ux.ToolbarDroppable": "ext/src/ux/ToolbarDroppable.js",
+  "Ext.ux.TreePicker": "ext/src/ux/TreePicker.js",
+  "Ext.ux.ajax": "ext/src/ux/ajax",
+  "Ext.ux.data": "ext/src/ux/data",
+  "Ext.ux.data.DeepJsonWriter": "ux/data/DeepJsonWriter.js",
+  "Ext.ux.data.DeepModel": "ux/data/DeepModel.js",
+  "Ext.ux.dd": "ext/src/ux/dd",
+  "Ext.ux.event": "ext/src/ux/event",
   "Ext.ux.form.ItemSelector": "ext/src/ux/form/ItemSelector.js",
   "Ext.ux.form.MultiSelect": "ext/src/ux/form/MultiSelect.js",
+  "Ext.ux.grid": "ext/src/ux/grid",
   "Ext.ux.grid.FilterBar": "ux/grid/FilterBar.js",
+  "Ext.ux.layout": "ext/src/ux/layout",
+  "Ext.ux.statusbar": "ext/src/ux/statusbar",
   "ExtThemeNeptune": "ext/packages/ext-theme-neptune/overrides",
   "KeywordNode": "app/ux/Keywords.js"
 });
@@ -21,6 +51,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Start": [],
+  "DMPlanner.data.PlanTemplate": [],
   "DMPlanner.model.Group": [],
   "DMPlanner.model.Plan": [],
   "DMPlanner.model.Question": [],
@@ -29,6 +60,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.store.Questions": [],
   "DMPlanner.store.Sections": [],
+  "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
@@ -802,6 +834,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.ajax.SimXhr": [],
   "Ext.ux.ajax.Simlet": [],
   "Ext.ux.ajax.XmlSimlet": [],
+  "Ext.ux.data.DeepJsonWriter": [],
+  "Ext.ux.data.DeepModel": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "Ext.data.PagingMemoryProxy"
   ],
@@ -836,6 +870,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.ux.StatusBar"
   ],
   "Ext.ux.statusbar.ValidationStatus": [],
+  "Ext.ux.window.Notification": [],
   "Ext.view.AbstractView": [],
   "Ext.view.BoundList": [
     "Ext.BoundList"
@@ -876,6 +911,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Start": [],
+  "DMPlanner.data.PlanTemplate": [],
   "DMPlanner.model.Group": [],
   "DMPlanner.model.Plan": [],
   "DMPlanner.model.Question": [],
@@ -884,6 +920,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.store.Questions": [],
   "DMPlanner.store.Sections": [],
+  "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"
   ],
@@ -1811,6 +1848,10 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ajax.XmlSimlet": [
     "simlet.xml"
   ],
+  "Ext.ux.data.DeepJsonWriter": [
+    "writer.json"
+  ],
+  "Ext.ux.data.DeepModel": [],
   "Ext.ux.data.PagingMemoryProxy": [
     "proxy.pagingmemory"
   ],
@@ -1869,6 +1910,9 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.statusbar"
   ],
   "Ext.ux.statusbar.ValidationStatus": [],
+  "Ext.ux.window.Notification": [
+    "widget.uxNotification"
+  ],
   "Ext.view.AbstractView": [],
   "Ext.view.BoundList": [
     "widget.boundlist"
