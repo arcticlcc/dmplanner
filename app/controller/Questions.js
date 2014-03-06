@@ -27,15 +27,15 @@ Ext.define('DMPlanner.controller.Questions', {
             },
             '#sectionPrev' : {
                 click : this.showPrevSection
-            }/*,
+            },
 
-             '#surveyFinish' : {
+             /*'#surveyFinish' : {
              click : this.finishSurvey
-             },
+             },*/
 
              'questions field' : {
-             change : this.saveItem
-             }*/
+                change : this.saveItem
+             }
         });
 
         /*this.listen({
@@ -162,27 +162,28 @@ Ext.define('DMPlanner.controller.Questions', {
          if (prev) {
             selModel.select([prev]);
          }
-     }/*,
+     },
 
-     finishSurvey : function() {
+     /*finishSurvey : function() {
      var groups = this.getGroups();
      this.getForm().removeAll();
      groups.getSelectionModel().deselectAll();
      groups.hide();
      groups.up().down('surveylist').getSelectionModel().deselectAll();
 
-     },
+     },*/
 
-     saveItem : function(field) {
-     var question = field.question;
+    saveItem : function(field) {
+        var question = field.question;
 
-     if (!question) {
-     field = field.up('[question]');
-     question = field.question;
-     }
+        if (!question) {
+            field = field.up('[question]');
+            question = field.question;
+        }
 
-     if (question) {
-     question.set('answer', field.getValue());
-     }
-     }*/
+        if (question) {
+            question.set('answer', field.getValue());
+        }
+    }
+
 });
