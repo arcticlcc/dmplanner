@@ -20,10 +20,7 @@ Ext.define('DMPlanner.model.Plan', {
     }],
 
     proxy: {
-        //type: 'ajax',
-        //url: 'data.json',
         type: 'memory',
-        //id: 'dmp-plans',
         reader: {
             type: 'json'
         }
@@ -31,6 +28,8 @@ Ext.define('DMPlanner.model.Plan', {
 
     fields: [{
         name: 'id'
+    }, {
+        name: 'version'
     }, {
         name: 'name'
     }, {
