@@ -26,7 +26,8 @@ Ext.define('DMPlanner.Application', {
 
     stores: [
     // TODO: add stores here
-        'Plans'//
+        'Plans',//
+        'LocalPlans'
     ],
 
     launch: function() {
@@ -47,11 +48,23 @@ Ext.define('DMPlanner.Application', {
                     plans: obj
                 });
 
+                this.getLocalPlansStore().load({
+                    callback: function(records, op, success) {
+                        if(!success) {
+                            //console.info(arguments);
+                        //}else {
+                            var err = 'Failed to load local data.';
+                            DMPlanner.app.showError(err);
+                        }
+                    }
+                });
+
             },
             failure: function(response, opts) {
                 var err = 'Server-side failure with status code ' + response.status;
                 DMPlanner.app.showError(err);
-            }
+            },
+            scope: this
         });
     },
 
@@ -81,38 +94,5 @@ Ext.define('DMPlanner.Application', {
             glyph: 'xf12a@FontAwesome',
             html: txt
         }).show();
-    },
-
-    /**
-     * Creates a DMP template.
-     * Assigns UUIDs to ensure uniqueness.
-     * @param {Object} plan The plan template to use.
-     */
-    getPlanTemplate: function(plan) {
-        var uuid = DMPlanner.util.UUID.uuid;
-
-        //assign plan id
-        plan.id = uuid();
-        //loop sections
-        Ext.each(plan.sections, function(section) {
-            section.id = uuid();
-            section.plan_id = plan.id;
-
-            Ext.each(section.groups, function(group) {
-                group.id = uuid();
-                group.plan_id = plan.id;
-                group.section_id = section.id;
-
-                Ext.each(section.questions, function(question) {
-                    question.id = uuid();
-                    question.plan_id = plan.id;
-                    question.section_id = section.id;
-                    question.group_id = group.id;
-                });
-            });
-
-        });
-
-        return plan;
     }
 });
