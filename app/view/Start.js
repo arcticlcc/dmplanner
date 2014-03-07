@@ -10,11 +10,23 @@ Ext.define("DMPlanner.view.Start", {
         type : 'vbox'
     },
 
+    defaults: {
+        margin: 5
+    },
     items : [{
         xtype : 'button',
         anchor : '100%',
         itemId : 'startNewBtn',
         text : 'Start a New Plan',
+        glyph: 'xf067@FontAwesome',
         scale   : 'large'
+    }, {
+        xtype : 'button',
+        anchor : '100%',
+        itemId : 'startEditBtn',
+        text : 'Edit Existing Plan',
+        glyph: 'xf044@FontAwesome',
+        scale   : 'large',
+        disabled: true
     }]
 });

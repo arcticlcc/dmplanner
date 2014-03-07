@@ -23,7 +23,8 @@ Ext.define("DMPlanner.view.PlanList", {
     collapseFirst: false,
     tools : [{
         type : 'plus',
-        tooltip : 'Add a New Plan'
+        tooltip : 'Add a New Plan',
+        itemId: 'addPlan'
     }, {
         type : 'print',
         tooltip : 'Print to PDF'
