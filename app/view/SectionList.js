@@ -5,7 +5,7 @@ Ext.define("DMPlanner.view.SectionList", {
     title : 'Sections',
     columnLines : false,
     hideHeaders : true,
-    store : 'Sections',
+    store : null,//'Sections',
     cls : 'sectionList',
 
     columns : [{
@@ -13,4 +13,4 @@ Ext.define("DMPlanner.view.SectionList", {
         dataIndex : 'name',
         text : 'Section'
     }]
-}); 
+});

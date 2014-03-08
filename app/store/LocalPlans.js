@@ -5,5 +5,6 @@ Ext.define('DMPlanner.store.LocalPlans', {
 
     storeId: 'LocalPlans',
     autoLoad: false,
+    autoSync: true,
     model: 'DMPlanner.model.LocalPlan'
 });

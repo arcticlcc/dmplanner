@@ -16,7 +16,10 @@ Ext.define('DMPlanner.model.Plan', {
         foreignKey: 'plan_id',
         autoLoad: true,
         associationKey: 'sections',
-        name: 'sections'
+        name: 'sections',
+        storeConfig: {
+            storeId: 'Sections'
+        }
     }],
 
     proxy: {

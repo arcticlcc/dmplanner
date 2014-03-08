@@ -1,6 +1,6 @@
 Ext.define('DMPlanner.controller.Plans', {
     extend : 'Ext.app.Controller',
-    requires: ['Ext.app.domain.Store'],
+    requires: ['DMPlanner.util.UUID'],
 
     models : [//
     'Plan', //
@@ -9,13 +9,12 @@ Ext.define('DMPlanner.controller.Plans', {
     ],
     stores : [//
     'Plans', //
-    'Sections',//
+    //'Sections',//
     'LocalPlans'//
     ],
     views : [//
     'PlanList', //
     'SectionList'//, //
-    //'QuestionsForm'//
     ],
 
     refs : [{
@@ -33,6 +32,9 @@ Ext.define('DMPlanner.controller.Plans', {
             },
             'planlist tool#addPlan':{
                 click: this.onAddNewPlan
+            },
+            'planlist tool[type=help]':{
+                click: this.onHelpClick
             }
         });
 
@@ -46,12 +48,19 @@ Ext.define('DMPlanner.controller.Plans', {
 
             store: {
                 '#Plans': {
-                    //add: this.onAddPlan,
-                    //load: this.onAddPlan,
+                    update: this.onDataUpdate
+                },
+                '#Sections': {
+                    update: this.onDataUpdate
+                },
+                '#Groups': {
                     update: this.onDataUpdate
                 },
                 '#Questions': {
                     update: this.onDataUpdate
+                },
+                '#LocalPlans': {
+                    load: this.onLoadLocalPlans
                 }
             }
         });
@@ -71,7 +80,34 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     /**
+     * Fires whenever the {@link DMPlanner.store.LocalPlans LocalPlans} store
+     * is loaded from a remote data source. Loads the records into the
+     * {@link DMPlanner.store.Plans Plans store}.
+     * @param {Ext.data.Store} store
+     * @param {Ext.data.Model[]} records An array of records
+     * @param {Boolean} success True if the load operation was successful.
+     */
+    onLoadLocalPlans: function(store, records, success) {
+        console.info(arguments);
+        var plans = this.getPlansStore();
+
+        Ext.each(records, function(record){
+            var raw = record.get('plan');
+            plans.loadRawData(raw, true);
+        });
+    },
+
+    /**
+     * Click event handler for help button.
+     */
+    onHelpClick: function(btn) {
+        var err = 'I wish I could help, but the help section hasn\'t been implemented. :-(';
+        DMPlanner.app.showError(err);
+    },
+
+    /**
      * Add new plan event handler.
+     * TODO: Show window to allow edit of code and name?
      */
     onAddNewPlan: function() {
         this.addPlan();
@@ -83,7 +119,14 @@ Ext.define('DMPlanner.controller.Plans', {
      * @param {Ext.data.Model} record The Model instance that was updated
      */
     onDataUpdate: function(store, record) {
-        var local = this.getLocalPlansStore();
+        var local = this.getLocalPlansStore(),
+            planid = record.get('plan_id') || record.getId(),
+            plan = this.getPlansStore().getById(planid),
+            localRec = local.findRecord('planid',planid,0,true,true,true),
+            data = plan.getWriteData();
+
+            localRec.set('plan', data);
+            local.sync();
     },
 
     /**
@@ -106,7 +149,7 @@ Ext.define('DMPlanner.controller.Plans', {
                 group.plan_id = plan.id;
                 group.section_id = section.id;
 
-                Ext.each(section.questions, function(question) {
+                Ext.each(group.questions, function(question) {
                     question.id = uuid();
                     question.plan_id = plan.id;
                     question.section_id = section.id;
@@ -156,8 +199,8 @@ Ext.define('DMPlanner.controller.Plans', {
         Ext.each(records, function(rec) {
             var data = rec.getWriteData(),
                 newPlan = ctr.getLocalPlanModel().create({
-                    //id: data.id,
-                    plan: Ext.encode(data)
+                    planid: data.id,
+                    plan: data
                 });
 
             newPlan.setDirty();

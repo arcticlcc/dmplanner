@@ -8,6 +8,8 @@ Ext.define('DMPlanner.model.Group', {
     }, {
         name: 'section_id'
     }, {
+        name : 'plan_id'
+    }, {
         name: 'name'
     }, {
         name: 'index'
@@ -31,7 +33,10 @@ Ext.define('DMPlanner.model.Group', {
         foreignKey: 'group_id',
         autoLoad: true,
         associationKey: 'questions',
-        name: 'questions'
+        name: 'questions',
+        storeConfig: {
+            storeId: 'Questions'
+        }
     }],
 
     proxy: {

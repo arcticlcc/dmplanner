@@ -15,6 +15,9 @@ Ext.define('DMPlanner.model.Section', {
     }, {
         name: 'config',
         type: 'auto'
+    }, {
+        name: 'data',
+        type: 'auto'
     }],
 
     associations: [{
@@ -30,7 +33,10 @@ Ext.define('DMPlanner.model.Section', {
         foreignKey: 'section_id',
         autoLoad: true,
         associationKey: 'groups',
-        name: 'groups'
+        name: 'groups',
+        storeConfig: {
+            storeId: 'Groups'
+        }
     }],
 
     proxy: {

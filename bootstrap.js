@@ -57,11 +57,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.model.Plan": [],
   "DMPlanner.model.Question": [],
   "DMPlanner.model.Section": [],
-  "DMPlanner.store.Groups": [],
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
-  "DMPlanner.store.Questions": [],
-  "DMPlanner.store.Sections": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.view.PlanList": [],
@@ -919,11 +916,8 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.model.Plan": [],
   "DMPlanner.model.Question": [],
   "DMPlanner.model.Section": [],
-  "DMPlanner.store.Groups": [],
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
-  "DMPlanner.store.Questions": [],
-  "DMPlanner.store.Sections": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"

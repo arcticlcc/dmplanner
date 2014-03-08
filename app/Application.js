@@ -11,7 +11,7 @@ Ext.define('DMPlanner.Application', {
 
     extend: 'Ext.app.Application',
 
-    requires:['Ext.ux.window.Notification', 'DMPlanner.util.UUID'],
+    requires:['Ext.ux.window.Notification'],
 
     views: [
     // TODO: add views here
@@ -51,8 +51,6 @@ Ext.define('DMPlanner.Application', {
                 this.getLocalPlansStore().load({
                     callback: function(records, op, success) {
                         if(!success) {
-                            //console.info(arguments);
-                        //}else {
                             var err = 'Failed to load local data.';
                             DMPlanner.app.showError(err);
                         }

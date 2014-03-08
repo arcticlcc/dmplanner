@@ -11,7 +11,7 @@ Ext.define("DMPlanner.view.Section", {
         height: 50,
         padding: 10,
         defaults: {
-            width: 100
+            minWidth: 60
         },
         layout: {
             type: 'hbox',
