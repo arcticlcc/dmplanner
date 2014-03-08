@@ -35,7 +35,7 @@ Ext.define('DMPlanner.controller.Questions', {
              click : this.finishPlsn
              },*/
 
-             'questions field' : {
+             'questions field, questions htmleditor' : {
                 change : this.saveItem
              }
         });
