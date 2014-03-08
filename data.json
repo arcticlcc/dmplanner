@@ -1,97 +1,114 @@
 {
-  "default": {
-    "templateTitle": "",
-    "version": '0.0.0',
-    "name": null,
-    "code": null,
-    "sections": [
-      {
-        "name": "Contact Info",
-        "groups": [
-          {
-            "name": "Your information",
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "answer": "Joe"
-              }, {
-                "question": "Last name"
-              }, {
+    "default": {
+        "templateTitle": "",
+        "version": '0.0.0',
+        "name": null,
+        "code": null,
+        "sections": [
+            {
+                "name": "Contact Info",
+                "groups": [
+                    {
+                        "name": "Your information",
+                        "questions": [
+                            {
+                                "question": "First name",
+                                "guidance": "Enter your first name.",
+                                "answer": "Joe"
+                            }, {
+                                "question": "Last name"
+                            }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield"
-                }
-              }, {
-                "question": "Gender",
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
+                                "question": "Occupation"
+                            }, {
+                                "question": "Age",
+                                "config": {
+                                    "xtype": "numberfield"
+                                }
+                            }, {
+                                "question": "Gender",
+                                "config": {
+                                    "xtype": "radiogroup",
+                                    "columns": 2,
+                                    "vertical": true,
+                                    "items": [
+                                        {
+                                            "boxLabel": "Male",
+                                            "name": "gender",
+                                            "inputValue": "m"
+                                        }, {
+                                            "boxLabel": "Female",
+                                            "name": "gender",
+                                            "inputValue": "f",
+                                            "checked": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
                     }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f",
-                      "checked": true
+                        "name": "Other information",
+                        "width": 800,
+                        "questions": [
+                            {
+                                "question": "Position",
+                                "config": {
+                                    "xtype": "htmleditor"
+                                }
+                            }, {
+                                "question": "Metric"
+                            }, {
+                                "question": "Total # Files",
+                                "config": {
+                                    "xtype": "numberfield"
+                                }
+                            }, {
+                                "question": "Archived",
+                                "config": {
+                                    "xtype": "radiogroup",
+                                    "columns": 2,
+                                    "vertical": true,
+                                    "items": [
+                                        {
+                                            "boxLabel": "Yes",
+                                            "name": "gender",
+                                            "inputValue": "m"
+                                        }, {
+                                            "boxLabel": "No",
+                                            "name": "gender",
+                                            "inputValue": "f",
+                                            "checked": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
                     }
-                  ]
-                }
-              }
-            ]
-          }, {
-            "name": "Other information",
-            "width": 800,
-            "questions": [
-              {
-                "question": "Position",
+                ]
+            }, {
+                "name": "Keywords",
                 "config": {
-                  "xtype": "htmleditor"
-                }
-              }, {
-                "question": "Metric"
-              }, {
-                "question": "Total # Files",
-                "config": {
-                  "xtype": "numberfield"
-                }
-              }, {
-                "question": "Archived",
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
+                    "xtype": "dmpkeywords"
+                },
+                "data": [
                     {
-                      "boxLabel": "Yes",
-                      "name": "gender",
-                      "inputValue": "m"
+                        "keywordid": "690be4e9-c48c-4442-8b86-3d0a51abb0c1",
+                        "text": "AAO",
+                        "definition": null,
+                        "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS -> ATMOSPHERIC/OCEAN INDICATORS -> TELECONNECTIONS -> ANTARCTIC OSCILLATION -> AAO"
                     }, {
-                      "boxLabel": "No",
-                      "name": "gender",
-                      "inputValue": "f",
-                      "checked": true
+                        "keywordid": "99db4dca-4d07-48fd-8ba3-393532d04aa6",
+                        "text": "ABLATION",
+                        "definition": "The process of removal of material from the surface of an object by vaporization, chipping, or other erosive processes. The term occurs in spaceflight associated with atmospheric reentry, in glaciology, medicine, and passive fire protection.",
+                        "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH -> GEOMORPHIC LANDFORMS/PROCESSES -> GLACIAL PROCESSES -> ABLATION"
+                    }, {
+                        "keywordid": "95fbaefd-1afe-4887-a1ba-fc338a8109bb",
+                        "text": "ABLATION ZONES/ACCUMULATION ZONES",
+                        "definition": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation. \r\n",
+                        "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
                     }
-                  ]
-                }
-              }
-            ]
-          }
+                ]
+            }
         ]
-      }, {
-        "name": "Keywords",
-        "config": {
-          "xtype": "keywords",
-          "data": ["Google", "Ad", "Wordofmouth", "Other"]
-        }
-      }
-    ]
-  }
+    }
 }

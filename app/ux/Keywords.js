@@ -18,7 +18,8 @@ Ext.define('DMPlanner.ux.Keywords', {
         'Ext.layout.container.Border', //
         'Ext.tab.Panel', //
         'Ext.tree.Panel', //
-        'Ext.LoadMask'
+        'Ext.LoadMask',//
+        'Ext.data.writer.Json'//
     ],
 
     layout: {
@@ -26,8 +27,23 @@ Ext.define('DMPlanner.ux.Keywords', {
     },
     title: 'Keywords',
 
+    dmpSerialize: function(records) {
+        var obj = [];
+
+        Ext.each(records, function(record) {
+            var s = Ext.data.writer.Json.prototype.getRecordData(record);
+            //don't want to save these
+            delete s.leaf;
+            delete s.parentId;
+
+            obj.push(s);
+        });
+
+        return obj;
+    },
+
     initComponent: function() {
-        var me = this, keywordtree,
+        var me = this, keywordtree, keywords,
             addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>',
             removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>',
             helpCol = {
@@ -118,14 +134,26 @@ Ext.define('DMPlanner.ux.Keywords', {
             Ext.create('Ext.data.Store', {
                 model: 'KeywordNode',
                 storeId: 'PlanKeywords',
-                autoLoad: false,
-
+                //autoLoad: false,
+                autoDestroy: true,
+                data: me.data,
                 proxy: {
                     type: 'memory',
                     reader: {
                         type: 'json',
                         root: 'data'
                     }
+                },
+
+                listeners: {
+                    datachanged: function(store) {
+                        var me = this,
+                            recs = store.getRange(),
+                            data = me.dmpSerialize(recs);
+
+                        me.fireEvent('sectiondatachanged', me.itemId, me.planId, data);
+                    },
+                    scope: me
                 }
             });
         }

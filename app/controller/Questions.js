@@ -1,10 +1,10 @@
 Ext.define('DMPlanner.controller.Questions', {
     extend: 'Ext.app.Controller',
 
-    //stores : [//
-    //'Sections'//
-    //],
-    views: ['QuestionsForm', 'SectionList'],
+    stores : [//
+        'Plans'//
+    ],
+    views: ['QuestionsForm', 'SectionList', 'Section'],
 
     refs: [{
         ref: 'container',
@@ -28,9 +28,11 @@ Ext.define('DMPlanner.controller.Questions', {
             '#sectionPrev' : {
                 click : this.showPrevSection
             },
-
-             /*'#surveyFinish' : {
-             click : this.finishSurvey
+            'sectionpanel>component': {
+                sectiondatachanged: this.onSectionDataChanged
+            },
+             /*'#planFinish' : {
+             click : this.finishPlsn
              },*/
 
              'questions field' : {
@@ -45,6 +47,20 @@ Ext.define('DMPlanner.controller.Questions', {
          }
          }
          });*/
+    },
+
+    /**
+     * Fired when any updates are made to a Section's data.
+     * @param {String} sectionId
+     * @param {String} planId
+     * @param {Array} Array of all data records for this section.
+     */
+    onSectionDataChanged: function(sectionId, planId, data) {
+        console.info(arguments);
+        var section = this.getPlansStore().getById(planId).sections().getById(sectionId);
+
+        section.set('data', data);
+
     },
 
     showSection: function(grid, record, index) {
@@ -65,12 +81,15 @@ Ext.define('DMPlanner.controller.Questions', {
 
         //check for config
         if (Ext.isObject(config)) {
-            //form.setTitle(record.get('name') + ': config');
-            //do config stuff, add xtype
-            questions = {
-                xtype: 'dmpkeywords',
+            //do config stuff, add sectionId(itemId), planId
+            clone = Ext.clone(config);
+            Ext.applyIf(clone, {
+                itemId: record.getId(),
+                planId: record.get('plan_id'),
+                data: record.get('data'),
                 header: false
-            };
+            });
+            questions = clone;
 
         } else if (groups.count() > 0) {
             //create questions form
@@ -93,14 +112,17 @@ Ext.define('DMPlanner.controller.Questions', {
             buttons.push({
                 xtype : 'button',
                 text : 'Previous',
-                itemId : 'sectionPrev'
+                itemId : 'sectionPrev',
+                glyph: 'xf060@FontAwesome'
             });
         }
 
         buttons.push({
             xtype : 'button',
-            text : isLastSection ? 'Save' : 'Next',
-            itemId : isLastSection ? 'planFinish' : 'sectionNext'
+            text : isLastSection ? 'Finished' : 'Next',
+            itemId : isLastSection ? 'planFinish' : 'sectionNext',
+            glyph : isLastSection ? 'xf164@FontAwesome' : 'xf061@FontAwesome',
+            iconAlign: 'right'
         });
 
         bbar.add(buttons);
