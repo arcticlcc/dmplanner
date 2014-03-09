@@ -2,7 +2,8 @@ Ext.Loader.setConfig({
     enabled: true,
     paths: {
         'Ext.ux': '../ux',
-        'DMPlanner.ux': 'app/ux'
+        'DMPlanner.ux': 'app/ux',
+        'GeoExt': './lib/geoext2/src/GeoExt'
     }
 });
 

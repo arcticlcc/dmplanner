@@ -207,5 +207,5 @@ Ext.define('DMPlanner.controller.Plans', {
             local.add(newPlan);
             local.sync();
         });
-    },
+    }
 });
