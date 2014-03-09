@@ -1,0 +1,3 @@
+[submodule "lib/geoext2"]
+	path = lib/geoext2
+	url = git@github.com:geoext/geoext2.git
