@@ -6,7 +6,10 @@
 
     "resources": [
         "data.json",
-        "favicon.ico"
+        "favicon.ico",
+        "lib/openlayers/img",
+        "lib/openlayers/theme/default/style.css",
+        "lib/openlayers/theme/default/img"
     ],
 
     "id": "f713af83-b3fe-4d6a-a5b4-e9a73b93d936"

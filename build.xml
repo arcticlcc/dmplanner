@@ -11,32 +11,68 @@
     The following targets can be provided to inject logic before and/or after key steps
     of the build process:
 
-        The "init-local" target is used to initialize properties that may be personalized
-        for the local machine.
+    The "init-local" target is used to initialize properties that may be personalized
+    for the local machine.
 
-            <target name="-before-init-local"/>
-            <target name="-after-init-local"/>
+    <target name="-before-init-local"/>
+    <target name="-after-init-local"/>
 
-        The "clean" target is used to clean build output from the build.dir.
+    The "clean" target is used to clean build output from the build.dir.
 
-            <target name="-before-clean"/>
-            <target name="-after-clean"/>
+    <target name="-before-clean"/>
+    <target name="-after-clean"/>
 
-        The general "init" target is used to initialize all other properties, including
-        those provided by Sencha Cmd.
+    The general "init" target is used to initialize all other properties, including
+    those provided by Sencha Cmd.
 
-            <target name="-before-init"/>
-            <target name="-after-init"/>
-        
-        The "page" target performs the call to Sencha Cmd to build the 'all-classes.js' file.
+    <target name="-before-init"/>
+    <target name="-after-init"/>
 
-            <target name="-before-page"/>
-            <target name="-after-page"/>
+    The "page" target performs the call to Sencha Cmd to build the 'all-classes.js' file.
 
-        The "build" target performs the call to Sencha Cmd to build the application.
+    <target name="-before-page"/>
+    <target name="-after-page"/>
 
-            <target name="-before-build"/>
-            <target name="-after-build"/>
+    The "build" target performs the call to Sencha Cmd to build the application.
+
+    <target name="-before-build"/>
+    <target name="-after-build"/>
     -->
-
+    <!--
+    This target minifies and concatenates the OpenLayers js with the ExtJS js.
+    -->
+    <target name="-after-page">
+        <x-run-if-true value="${enable.openlayers.build}">
+            <move file="${build.classes.file}" tofile="${build.classes.file}.tmp"/>
+            <x-sencha-command>fs
+                minify
+                --from=${basedir}/lib/openlayers/OpenLayers.debug.js
+                --to=${build.compile.temp.dir}/out.js
+                --compressor=closurecompiler
+                and
+                concatenate
+                --from=${build.compile.temp.dir}/out.js,${build.classes.file}.tmp
+                --to=${build.classes.file}
+            </x-sencha-command>
+            <delete file="${build.compile.temp.dir}/out.js" />
+            <delete file="${build.classes.file}.tmp" />
+        </x-run-if-true>
+    </target>
+    <!--
+    This target compresses and concatenates the OpenLayers css with the ExtJS css.
+    -->
+    <target name="-after-build">
+        <x-run-if-true value="${enable.openlayers.build}">
+            <move file="${app.out.css.compressed}" tofile="${app.out.css.compressed}.tmp"/>
+            <x-compress-css srcfile="${app.dir}/lib/openlayers/theme/default/style.css"
+                            outfile="${build.compile.temp.dir}/ol.css"/>
+            <x-sencha-command>fs
+                concatenate
+                --from=${build.compile.temp.dir}/ol.css,${app.out.css.compressed}.tmp
+                --to=${app.out.css.compressed}
+            </x-sencha-command>
+            <delete file="${build.compile.temp.dir}/ol.css" />
+            <delete file="${app.out.css.compressed}.tmp" />
+        </x-run-if-true>
+    </target>
 </project>
