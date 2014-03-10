@@ -60,18 +60,19 @@
     </target>
     <!--
     This target compresses and concatenates the OpenLayers css with the ExtJS css.
+    We need to @include the ol.css due to css file splitting.
     -->
     <target name="-after-build">
         <x-run-if-true value="${enable.openlayers.build}">
             <move file="${app.out.css.compressed}" tofile="${app.out.css.compressed}.tmp"/>
-            <x-compress-css srcfile="${app.dir}/lib/openlayers/theme/default/style.css"
-                            outfile="${build.compile.temp.dir}/ol.css"/>
-            <x-sencha-command>fs
-                concatenate
-                --from=${build.compile.temp.dir}/ol.css,${app.out.css.compressed}.tmp
-                --to=${app.out.css.compressed}
-            </x-sencha-command>
-            <delete file="${build.compile.temp.dir}/ol.css" />
+            <x-compress-css srcfile="${app.dir}/lib/openlayers/theme/default/${openlayers.stylesheet.name}"
+                            outfile="${build.resources.dir}/ol.css"/>
+            <concat destfile="${app.out.css.compressed}">
+                <header filtering="no" trimleading="yes" trim="true">
+                    @import 'ol.css';
+                </header>
+                <fileset file="${app.out.css.compressed}.tmp"/>
+            </concat>
             <delete file="${app.out.css.compressed}.tmp" />
         </x-run-if-true>
     </target>
