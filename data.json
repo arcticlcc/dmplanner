@@ -81,12 +81,22 @@
                                         }
                                     ]
                                 }
+                            }, {
+                                "question": "Rate Me",
+                                "config": {
+                                    "xtype": "slider",
+                                    'width': 200,
+                                    'increment': 10,
+                                    'minValue': 0,
+                                    'maxValue': 10
+                                }
                             }
                         ]
                     }
                 ]
             }, {
                 "name": "Keywords",
+
                 "config": {
                     "xtype": "dmpkeywords"
                 },
@@ -108,6 +118,12 @@
                         "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
                     }
                 ]
+            }, {
+                "name": "Map",
+                "config": {
+                    "xtype": "dmpmap",
+                    "displayTools": true
+                }
             }
         ]
     }

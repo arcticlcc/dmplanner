@@ -62,6 +62,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
+  "DMPlanner.ux.MapToolbar": [],
   "DMPlanner.ux.PlanMap": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
@@ -910,7 +911,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "GeoExt.Form": [],
   "GeoExt.Lang": [],
   "GeoExt.LegendImage": [],
-  "GeoExt.Version": [],
   "GeoExt.container.LayerLegend": [
     "GeoExt.LayerLegend"
   ],
@@ -1025,7 +1025,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "GeoExt.slider.LayerOpacity": [
     "GeoExt.LayerOpacitySlider"
   ],
-  "GeoExt.slider.MapPanelItem": [],
   "GeoExt.slider.Tip": [
     "GeoExt.SliderTip"
   ],
@@ -1062,6 +1061,9 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"
+  ],
+  "DMPlanner.ux.MapToolbar": [
+    "widget.maptoolbar"
   ],
   "DMPlanner.ux.PlanMap": [
     "widget.dmpmap"
@@ -2105,7 +2107,6 @@ Ext.ClassManager.addNameAliasMappings({
   "GeoExt.LegendImage": [
     "widget.gx_legendimage"
   ],
-  "GeoExt.Version": [],
   "GeoExt.container.LayerLegend": [
     "widget.gx_layerlegend"
   ],
@@ -2221,7 +2222,6 @@ Ext.ClassManager.addNameAliasMappings({
   "GeoExt.slider.LayerOpacity": [
     "widget.gx_opacityslider"
   ],
-  "GeoExt.slider.MapPanelItem": [],
   "GeoExt.slider.Tip": [],
   "GeoExt.slider.Zoom": [
     "widget.gx_zoomslider"

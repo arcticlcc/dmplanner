@@ -52,8 +52,7 @@
                 and
                 concatenate
                 --from=${build.compile.temp.dir}/out.js,${build.classes.file}.tmp
-                --to=${build.classes.file}
-            </x-sencha-command>
+                --to=${build.classes.file}</x-sencha-command>
             <delete file="${build.compile.temp.dir}/out.js" />
             <delete file="${build.classes.file}.tmp" />
         </x-run-if-true>
@@ -65,12 +64,13 @@
     <target name="-after-build">
         <x-run-if-true value="${enable.openlayers.build}">
             <move file="${app.out.css.compressed}" tofile="${app.out.css.compressed}.tmp"/>
+            <copy todir="${build.dir}/img">
+                <fileset dir="${app.dir}/lib/openlayers/img"/>
+            </copy>
             <x-compress-css srcfile="${app.dir}/lib/openlayers/theme/default/${openlayers.stylesheet.name}"
-                            outfile="${build.resources.dir}/ol.css"/>
+            outfile="${build.resources.dir}/ol.css"/>
             <concat destfile="${app.out.css.compressed}">
-                <header filtering="no" trimleading="yes" trim="true">
-                    @import 'ol.css';
-                </header>
+                <header filtering="no" trimleading="yes" trim="true">@import 'ol.css';</header>
                 <fileset file="${app.out.css.compressed}.tmp"/>
             </concat>
             <delete file="${app.out.css.compressed}.tmp" />
