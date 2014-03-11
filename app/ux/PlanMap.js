@@ -10,8 +10,10 @@ Ext.define('DMPlanner.ux.PlanMap', {
         'GeoExt.slider.Zoom',//
         'GeoExt.slider.Tip',//
         'GeoExt.slider.LayerOpacity',//
+        'GeoExt.data.FeatureStore',//
         'Ext.toolbar.Toolbar',//
-        'DMPlanner.ux.MapToolbar'//
+        'DMPlanner.ux.MapToolbar',//
+        'DMPlanner.ux.MapFeatureGrid'//
     ],
 
     title: 'Map',
@@ -26,6 +28,12 @@ Ext.define('DMPlanner.ux.PlanMap', {
      * True to show the map toolbar.
      */
     displayTools: true,
+
+    /**
+     * @cfg {boolean} displayGrid
+     * True to show the feature grid.
+     */
+    displayGrid: true,
 
     /**
      * @cfg {string} commonStore
@@ -331,8 +339,232 @@ Ext.define('DMPlanner.ux.PlanMap', {
                 }]
             };
 
-        me.on('render', function(){this.up('sectionpanel').add(sliders);});
 
+        me.on('beforerender', function() {
+            var pnl = this.up('sectionpanel'),
+                ctl,
+                grid = this.down('featuregrid');
+
+            //add Sliders
+            pnl.add(sliders);
+
+            //select on hover, proper way to do this would be to extend
+            //the SelectFeature control
+            ctl = new OpenLayers.Control.SelectFeature(vector,{
+                id: 'dmp-select-hover',
+                hover: true,
+                highlightOnly: true,
+                renderIntent: "temporary",
+                //add beforefeatureunhighlighted event
+                unhighlight: function(feature) {
+                    var layer = feature.layer,
+                        cont = this.events.triggerEvent("beforefeatureunhighlighted", {
+                            feature : feature
+                        });
+
+                    if(cont !== false) {
+                        // three cases:
+                        // 1. there's no other highlighter, in that case _prev is undefined,
+                        //    and we just need to undef _last
+                        // 2. another control highlighted the feature after we did it, in
+                        //    that case _last references this other control, and we just
+                        //    need to undef _prev
+                        // 3. another control highlighted the feature before we did it, in
+                        //    that case _prev references this other control, and we need to
+                        //    set _last to _prev and undef _prev
+                        if(feature._prevHighlighter == undefined) {
+                            delete feature._lastHighlighter;
+                        } else if(feature._prevHighlighter == this.id) {
+                            delete feature._prevHighlighter;
+                        } else {
+                            feature._lastHighlighter = feature._prevHighlighter;
+                            delete feature._prevHighlighter;
+                        }
+                        layer.drawFeature(feature, feature.style || feature.layer.style ||
+                            "default");
+                        this.events.triggerEvent("featureunhighlighted", {feature : feature});
+                    }
+                },
+                //highlight gridrow
+                overFeature: function(feature,noHilite) {
+                    var layer = feature.layer;
+
+                    if(this.hover) {
+                        if(this.highlightOnly) {
+                            this.highlight(feature);
+                        } else if(OpenLayers.Util.indexOf(
+                            layer.selectedFeatures, feature) == -1) {
+                            this.select(feature);
+                        }
+                    }
+
+                    if(!noHilite) {
+                        var rec = grid.getStore().getByFeature(feature),
+                            row = grid.getView().getNode(rec),
+                            rowEl = Ext.get(row);
+
+                        if(rowEl) {rowEl.addCls('dmp-vector-highlight');}
+                    }
+                },
+                //remove row highlight ad beforeunhighlight event
+                outFeature: function(feature) {
+                    if(this.hover) {
+                        if(this.highlightOnly) {
+                            var cont = this.events.triggerEvent("beforefeatureunhighlighted", {
+                                    feature : feature
+                                });
+                            if(cont !== false) {
+                                // we do nothing if we're not the last highlighter of the
+                                // feature
+                                if(feature._lastHighlighter == this.id) {
+                                    // if another select control had highlighted the feature before
+                                    // we did it ourself then we use that control to highlight the
+                                    // feature as it was before we highlighted it, else we just
+                                    // unhighlight it
+                                    if(feature._prevHighlighter &&
+                                       feature._prevHighlighter != this.id) {
+                                        delete feature._lastHighlighter;
+                                        var control = this.map.getControl(
+                                            feature._prevHighlighter);
+                                        if(control) {
+                                            control.highlight(feature);
+                                        }
+                                    } else {
+                                        this.unhighlight(feature);
+                                    }
+                                }
+                            }
+                        } else {
+                            this.unselect(feature);
+                        }
+
+                        var rec = grid.getStore().getByFeature(feature),
+                            row = grid.getView().getNode(rec),
+                            rowEl = Ext.get(row);
+
+                        if(rowEl) {rowEl.removeCls('dmp-vector-highlight');}
+                    }
+                }
+            });
+
+            ctl.events.on({
+                "beforefeatureunhighlighted": function(evt) {
+                    var mod = ctl.map.getControlsBy('id','dmp-modify-feature')[0].feature;
+                    //redraw the feature with appropriate style if it's being modified
+                    if (ctl.highlightOnly && evt.feature === mod) {
+                        ctl.layer.drawFeature(evt.feature, "select");
+                        return false;
+                    }
+                },
+                "beforefeaturehighlighted": function(evt) {
+                    //don't do anything if this is a vertex
+                    if(evt.feature.renderIntent === 'vertex') {
+                        var mod = ctl.map.getControlsBy('id','dmp-modify-feature')[0].feature;
+                        //just redraw the feature if it's being modified
+                        if(ctl.highlightOnly && evt.feature === mod) {
+                            ctl.layer.drawFeature(evt.feature, "temporary");
+                            return false;
+                        }
+                    return false;
+                    }
+                },
+                scope: this
+            });
+
+            this.map.addControl(ctl);
+
+            ctl.activate();
+
+            grid.getStore().bind(vector);
+        });
+
+        me.on('afterlayout', function(mapPanel) {
+
+            //add projectid param to planVectors protocol
+            /*mapPanel.planVectors.protocol.options.params = {
+                projectid: this.getProjectWindow().projectId
+            };*/
+
+            //listeners for project vector layer
+            mapPanel.planVectors.events.on({
+                "beforedeletetoggle": function(evt) {
+                    if(evt.feature.state !== OpenLayers.State.DELETE) {
+                        this.getSelectionModel().deselect(this.getStore().getByFeature(evt.feature),true);
+                    }
+                },
+                "deletetoggle": function(evt) {
+                    var rec = this.getStore().getByFeature(evt.feature),
+                        row = this.getView().getNode(rec),
+                        rowEl = Ext.get(row);
+
+                    if(evt.feature.state === OpenLayers.State.DELETE) {
+                        if(rowEl) {rowEl.addCls('dmp-delete-highlight');}
+                    } else {
+                        if(rowEl) {rowEl.removeCls('dmp-delete-highlight');}
+                    }
+                },
+                "loadstart": function(evt) {
+                    mapPanel.ownerCt.getEl().mask('Loading project features...');
+                },
+                "loadend": function(evt) {
+                    var resp = evt.response,
+                        bnd, map, zoom;
+
+                    if(resp.code !== OpenLayers.Protocol.Response.SUCCESS) {
+                        DMPlanner.app.showError('There was an error loading the features.</br>Error: ' + Ext.decode(resp.priv.responseText).message);
+                    }
+
+                    if(mapPanel.zoomOnLoad && evt.object.features.length) {
+                        bnd = evt.object.getDataExtent();
+                        map = mapPanel.map;
+                        zoom = map.getZoomForExtent(bnd);
+
+                        if(zoom <= mapPanel.maxZoomOnLoad) {
+                            map.zoomToExtent(bnd);
+                        } else {
+                            map.setCenter(bnd.getCenterLonLat(),
+                                mapPanel.maxZoomOnLoad,
+                                false, false);
+                        }
+                    }
+                    mapPanel.zoomOnLoad = false;
+                    mapPanel.ownerCt.getEl().unmask();
+                },
+                "refresh": function(evt) {
+                    //deselect feature row before refresh to prevent grid selection events
+                    //from trying to access non-existent objects after refresh
+                    this.getSelectionModel().deselectAll();
+                },
+                /*"ptsfeaturesupdated": function(resp) {
+                    var store = this.getStore(),
+                        type = resp.requestType.toLowerCase(),
+                        features;
+
+                    //update the state of the grid records
+                    if(type === 'create') {
+                        features = resp.reqFeatures;
+                        //create does not return an array for single record
+                        if(Ext.typeOf(features) !== 'array') {
+                            features = [features];
+                        }
+                        Ext.each(features, function(f) {
+                            store.getById(f.id).commit();
+                        });
+                    } else {
+                        features = resp.features;
+                        Ext.each(features, function(f) {
+                            store.data.findBy(function(record) {
+                                return record.raw.fid === f.fid;
+                            }).commit();
+                        });
+                    }
+                },*/
+                scope: this.down('featuregrid')
+            });
+
+            //load planVectors
+            mapPanel.planVectors.setVisibility(true);
+        });
 
         me.map.addControl(new OpenLayers.Control.LayerSwitcher());
         me.map.addControl(new OpenLayers.Control.Attribution());
@@ -349,6 +581,15 @@ Ext.define('DMPlanner.ux.PlanMap', {
                 dock: 'top'
             };
             me.addDocked(me.mapToolbar);
+        }
+
+        if(me.displayTools) {
+            //add feature grid
+            grid = Ext.create('DMPlanner.ux.MapFeatureGrid',{
+                layer: me.planVectors,
+                dock: 'bottom'
+            });
+            me.addDocked(grid);
         }
     },
 

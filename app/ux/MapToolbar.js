@@ -91,8 +91,8 @@ Ext.define('DMPlanner.ux.MapToolbar', {
             SelectHover;
 
         //select on hover
-        SelectHover = new OpenLayers.Control.SelectFeature(vector,{
-            itemId: 'dmp-select-hover',//'PTS-Select-Hover',
+        /*SelectHover = new OpenLayers.Control.SelectFeature(vector,{
+            id: 'dmp-select-hover',//'PTS-Select-Hover',
             hover: true,
             highlightOnly: true,
             renderIntent: "temporary",
@@ -158,7 +158,7 @@ Ext.define('DMPlanner.ux.MapToolbar', {
                     }
                 }
             }
-        });
+        });*/
 
         // ZoomToMaxExtent control, a "button" control
         /*items.push(Ext.create('Ext.button.Button', Ext.create('GeoExt.Action', {
@@ -265,7 +265,7 @@ Ext.define('DMPlanner.ux.MapToolbar', {
         });
 
         ModifyFeature = new OpenLayers.Control.ModifyFeature(vector,{
-            itemId: 'dmp-modify-feature',
+            id: 'dmp-modify-feature',
             //id:'PTS-Modify-Feature',
             vertexRenderIntent: 'vertex'
         });
