@@ -51,9 +51,16 @@ Ext.define('DMPlanner.Application', {
 
                 this.getLocalPlansStore().load({
                     callback: function(records, op, success) {
-                        if(!success) {
+                        if (!success) {
                             var err = 'Failed to load local data.';
                             DMPlanner.app.showError(err);
+                        } else {
+                            setTimeout(function() {
+                                Ext.get('loading').remove();
+                                Ext.get('loading-mask').fadeOut({
+                                    remove: true
+                                });
+                            }, 250);
                         }
                     }
                 });
