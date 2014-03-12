@@ -220,13 +220,13 @@ Ext.define('DMPlanner.ux.Keywords', {
                     var store = tree.getStore();
                     //since root is invisible,mask on initial load
                     if (store.isLoading() && !tree.getRootNode().hasChildNodes()) {
-                        myMask = new Ext.LoadMask({
+                        store.myMask = new Ext.LoadMask({
                             target: tree,
                             msg: "Please wait..."
                         });
-                        myMask.show();
+                        store.myMask.show();
                         store.on('load', function() {
-                            myMask.destroy();
+                            store.myMask.destroy();
                         }, this, {
                             single: true
                         });
@@ -294,7 +294,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                 xtype: 'tabpanel',
                 flex: 1,
                 title: 'Keywords',
-                preventHeader: true,
+                header: false,
                 region: 'west',
                 split: true,
                 activeTab: 0,

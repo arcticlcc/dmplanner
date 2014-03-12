@@ -86,8 +86,8 @@ Ext.define('DMPlanner.controller.Questions', {
             Ext.applyIf(clone, {
                 itemId: record.getId(),
                 planId: record.get('plan_id'),
-                data: record.get('data'),
-                header: false
+                data: record.get('data')//,
+                //header: record.get('title') ? undefined : false
             });
             questions = clone;
 

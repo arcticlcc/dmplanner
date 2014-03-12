@@ -35,6 +35,9 @@ Ext.define('DMPlanner.controller.Plans', {
             },
             'planlist tool[type=help]':{
                 click: this.onHelpClick
+            },
+            'planlist templatecolumn[action=deleteplan]':{
+                click: this.onDeleteClick
             }
         });
 
@@ -48,7 +51,8 @@ Ext.define('DMPlanner.controller.Plans', {
 
             store: {
                 '#Plans': {
-                    update: this.onDataUpdate
+                    update: this.onDataUpdate,
+                    remove: this.onDataRemove
                 },
                 '#Sections': {
                     update: this.onDataUpdate
@@ -98,6 +102,25 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     /**
+     * Click event handler for delete button.
+     */
+    onDeleteClick: function(view, td, rowIdx, cellIdx, e, rec) {
+        //var store =
+        console.info(arguments);
+        Ext.Msg.show({
+             title:'Delete Plan?',
+             msg: 'Are you sure you want to delete plan: ' + rec.get('name'),
+             buttons: Ext.Msg.YESNO,
+             icon: Ext.Msg.QUESTION,
+             fn: function(btn) {
+                 if(btn === 'yes') {
+                     view.getStore().remove(rec);
+                 }
+             }
+        });
+    },
+
+    /**
      * Click event handler for help button.
      */
     onHelpClick: function(btn) {
@@ -126,6 +149,23 @@ Ext.define('DMPlanner.controller.Plans', {
             data = plan.getWriteData();
 
             localRec.set('plan', data);
+            local.sync();
+    },
+
+    /**
+     * Fired when a Plan record is removed.
+     * @param {Ext.data.Store} store The store
+     * @param {Ext.data.Model} record The Model instance that was removed
+     */
+    onDataRemove: function(store, record) {
+        var local = this.getLocalPlansStore(),
+            planid = record.get('plan_id') || record.getId(),
+            localRec = local.findRecord('planid',planid,0,true,true,true);
+
+            local.remove(localRec);
+            if(store.count()) {
+                this.getPlanList().getSelectionModel().select(0);
+            }
             local.sync();
     },
 

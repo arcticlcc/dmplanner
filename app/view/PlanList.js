@@ -32,6 +32,14 @@ Ext.define("DMPlanner.view.PlanList", {
             xtype : 'textfield',
             allowBlank : true
         }
+    }, {
+        xtype: 'templatecolumn',
+        width: 28,
+        text: '',
+        hideable: false,
+        style: {cursor: 'pointer'},
+        action: 'deleteplan',
+        tpl: '<tpl><div data-qtip="Delete Plan: {[values.name]}" class="fa">&#xf00d;</div></tpl>'
     }],
     collapseFirst : false,
     tools : [{

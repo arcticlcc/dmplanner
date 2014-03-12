@@ -86,7 +86,7 @@
                                 "config": {
                                     "xtype": "slider",
                                     'width': 200,
-                                    'increment': 10,
+                                    'increment': 1,
                                     'minValue': 0,
                                     'maxValue': 10
                                 }
@@ -98,7 +98,8 @@
                 "name": "Keywords",
 
                 "config": {
-                    "xtype": "dmpkeywords"
+                    "xtype": "dmpkeywords",
+                    "header": false
                 },
                 "data": [
                     {
@@ -121,8 +122,13 @@
             }, {
                 "name": "Map",
                 "config": {
-                    "xtype": "dmpmap",
-                    "displayTools": true
+                    "xtype": "dmpmappanel"
+                }
+            }, {
+                "name": "Map with title",
+                "config": {
+                    "xtype": "dmpmappanel",
+                    "title": "Plan Features"
                 }
             }
         ]

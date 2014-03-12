@@ -7,6 +7,7 @@
 Ext.Loader.addClassPathMappings({
   "DMPlanner": "../../app",
   "DMPlanner.data.PlanTemplate": "../../app/Application.js",
+  "DMPlanner.ux.map.Map": "../../app/ux/map/PlanMap.js",
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "../../ext/src/rtl/EventObject.js",
@@ -62,9 +63,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
-  "DMPlanner.ux.MapFeatureGrid": [],
-  "DMPlanner.ux.MapToolbar": [],
-  "DMPlanner.ux.PlanMap": [],
+  "DMPlanner.ux.map.Map": [],
+  "DMPlanner.ux.map.MapFeatureGrid": [],
+  "DMPlanner.ux.map.MapPanel": [],
+  "DMPlanner.ux.map.MapToolbar": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
   "DMPlanner.view.Section": [],
@@ -1063,14 +1065,17 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"
   ],
-  "DMPlanner.ux.MapFeatureGrid": [
-    "widget.featuregrid"
-  ],
-  "DMPlanner.ux.MapToolbar": [
-    "widget.maptoolbar"
-  ],
-  "DMPlanner.ux.PlanMap": [
+  "DMPlanner.ux.map.Map": [
     "widget.dmpmap"
+  ],
+  "DMPlanner.ux.map.MapFeatureGrid": [
+    "widget.dmpfeaturegrid"
+  ],
+  "DMPlanner.ux.map.MapPanel": [
+    "widget.dmpmappanel"
+  ],
+  "DMPlanner.ux.map.MapToolbar": [
+    "widget.maptoolbar"
   ],
   "DMPlanner.view.PlanList": [
     "widget.planlist"
