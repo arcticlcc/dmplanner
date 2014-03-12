@@ -92,7 +92,6 @@ Ext.define('DMPlanner.controller.Plans', {
      * @param {Boolean} success True if the load operation was successful.
      */
     onLoadLocalPlans: function(store, records, success) {
-        console.info(arguments);
         var plans = this.getPlansStore();
 
         Ext.each(records, function(record){
@@ -105,8 +104,6 @@ Ext.define('DMPlanner.controller.Plans', {
      * Click event handler for delete button.
      */
     onDeleteClick: function(view, td, rowIdx, cellIdx, e, rec) {
-        //var store =
-        console.info(arguments);
         Ext.Msg.show({
              title:'Delete Plan?',
              msg: 'Are you sure you want to delete plan: ' + rec.get('name'),

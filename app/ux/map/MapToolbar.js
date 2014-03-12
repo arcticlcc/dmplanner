@@ -302,7 +302,7 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
                     vector.destroyFeatures(remove);
                     if (persisted) {
                         //me.saveStrategy.save();
-                        console.info(format.write(vector.features));
+                        //console.info(format.write(vector.features));
                         mapPanel.fireEvent('sectiondatachanged', mapPanel.itemId, mapPanel.planId,
                             format.write(vector.features));
                             DMPlanner.app.showInfo('Features Saved.');

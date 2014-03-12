@@ -56,7 +56,6 @@ Ext.define('DMPlanner.controller.Questions', {
      * @param {Array} Array of all data records for this section.
      */
     onSectionDataChanged: function(sectionId, planId, data) {
-        console.info(arguments);
         var section = this.getPlansStore().getById(planId).sections().getById(sectionId);
 
         section.set('data', data);
