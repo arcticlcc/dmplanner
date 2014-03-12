@@ -1,9 +1,9 @@
 /**
  * Grid for use with GeoExt map panels.
  */
-Ext.define('DMPlanner.ux.MapFeatureGrid', {
+Ext.define('DMPlanner.ux.map.MapFeatureGrid', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.featuregrid',
+    alias: 'widget.dmpfeaturegrid',
     requires: [
         'Ext.grid.Panel',//
         'Ext.data.Model',//
@@ -50,8 +50,8 @@ Ext.define('DMPlanner.ux.MapFeatureGrid', {
                     'name'
                 ]
             }),
-            height: 250,
-            split: true,
+            height: 225,
+            //split: true,
             autoScroll: true,
             title: 'Feature List',
             columns: [
@@ -76,12 +76,12 @@ Ext.define('DMPlanner.ux.MapFeatureGrid', {
                     }
                 }
             ],
-            selModel: {
+            selModel: Ext.create('GeoExt.selection.FeatureModel',{
                 //autoPanMapOnSelection: true,
                 selectControl: {
                     id: 'dmplanner-select-row'
                 }
-            },
+            }),
             selType: 'featuremodel',
             plugins: [
                 Ext.create('Ext.grid.plugin.CellEditing', {
@@ -96,7 +96,7 @@ Ext.define('DMPlanner.ux.MapFeatureGrid', {
             var ctl,
                 addId,
                 sel  = view.getSelectionModel().selectControl,
-                hover = this.up('dmpmap').map.getControlsBy('id','dmp-select-hover')[0],
+                hover = this.up('dmpmappanel').down('dmpmap').map.getControlsBy('id','dmp-select-hover')[0],
                 store = view.getStore(),
                 edit = view.getPlugin('cellEdit');
 
@@ -108,11 +108,19 @@ Ext.define('DMPlanner.ux.MapFeatureGrid', {
                 }
             };
 
+            /*sel.unSelect = function(feature) {
+                ctl = this.map.getControlsBy('id','dmp-modify-feature')[0];
+
+                if(ctl.active) {
+                    ctl.unselectfeature(feature);
+                }
+            };*/
+
             //add the plan_id to new records
             addId = function(store, records) {
                     Ext.each(records, function(r) {
                         r.beginEdit();
-                        r.set('planid',view.up('dmpmap').planId);
+                        r.set('planid',view.up('dmpmappanel').planId);
                         r.endEdit();
                     });
                 };

@@ -2,7 +2,7 @@
  * Plan map with optional toolbar.
  */
 
-Ext.define('DMPlanner.ux.PlanMap', {
+Ext.define('DMPlanner.ux.map.Map', {
     extend: 'GeoExt.panel.Map',
     alias: 'widget.dmpmap',
     requires: [
@@ -12,8 +12,8 @@ Ext.define('DMPlanner.ux.PlanMap', {
         'GeoExt.slider.LayerOpacity',//
         'GeoExt.data.FeatureStore',//
         'Ext.toolbar.Toolbar',//
-        'DMPlanner.ux.MapToolbar',//
-        'DMPlanner.ux.MapFeatureGrid'//
+        'DMPlanner.ux.map.MapToolbar',//
+        'DMPlanner.ux.map.MapFeatureGrid'//
     ],
 
     title: 'Map',
@@ -21,6 +21,11 @@ Ext.define('DMPlanner.ux.PlanMap', {
     /**
      * @property {OpenLayers.Layer.Vector} planVectors
      * The map layer containing the plan vector features.
+     */
+
+    /**
+     * @cfg {string} data
+     * Serialized vector features to load into the map.
      */
 
     /**
@@ -33,7 +38,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
      * @cfg {boolean} displayGrid
      * True to show the feature grid.
      */
-    displayGrid: true,
+    //displayGrid: true,
 
     /**
      * @cfg {string} commonStore
@@ -97,24 +102,10 @@ Ext.define('DMPlanner.ux.PlanMap', {
                         }
                         return url + path;
                 }}),
-            saveStrategy = new OpenLayers.Strategy.Save(),
-            fixedStrategy = new OpenLayers.Strategy.Fixed(),
-            refreshStrategy = new OpenLayers.Strategy.Refresh(),
-            vector = new OpenLayers.Layer.Vector("Plan Features",{
-                visibility: true/*,
-                strategies: [
-                    refreshStrategy,
-                    fixedStrategy,
-                    saveStrategy
-                ],
-                protocol: new OpenLayers.Protocol.HTTP({
-                    url: '../projectfeature',
-                    format: new OpenLayers.Format.GeoJSON({
-                        ignoreExtraDims: true
-                    }),
-                    deleteWithPOST: true
-                })*/
-            });//,
+            //saveStrategy = new OpenLayers.Strategy.Save(),
+            //fixedStrategy = new OpenLayers.Strategy.Fixed(),
+            //refreshStrategy = new OpenLayers.Strategy.Refresh(),
+            vector = me.vector;
             /*protoCallBack = function(resp) {
                 //console.info(arguments);
                 if(resp.code !== OpenLayers.Protocol.Response.SUCCESS) {
@@ -204,8 +195,8 @@ Ext.define('DMPlanner.ux.PlanMap', {
             layerInfo.fullExtent.ymax
         );
 
-        var resolutions = [];
-        for (var i=0; i<layerInfo.tileInfo.lods.length; i++) {
+        var resolutions = [], i;
+        for (i=0; i<layerInfo.tileInfo.lods.length; i++) {
             resolutions.push(layerInfo.tileInfo.lods[i].resolution);
         }
         var topo = new OpenLayers.Layer.ArcGISCache( "Topo",
@@ -258,15 +249,31 @@ Ext.define('DMPlanner.ux.PlanMap', {
         var plain = new OpenLayers.Layer( "Empty",
                     {sphericalMercator: true,isBaseLayer: true,wrapDateLine: true, displayInLayerSwitcher:false});
 
-        me.map = new OpenLayers.Map('map', {
-            maxExtent: maxExtent,
-            //StartBounds: layerMaxExtent,
-            units: (layerInfo.units == "esriFeet") ? 'ft' : 'm',
-            resolutions: resolutions,
-            tileSize: new OpenLayers.Size(layerInfo.tileInfo.cols, layerInfo.tileInfo.rows),
-            projection: 'EPSG:' + layerInfo.spatialReference.wkid,
-            layers: [plain,topoBdl,bdlMerc,topo,nmap,vector]
+        var myMap = new OpenLayers.Map({
+                maxExtent: maxExtent,
+                theme: null,
+                //StartBounds: layerMaxExtent,
+                units: (layerInfo.units == "esriFeet") ? 'ft' : 'm',
+                resolutions: resolutions,
+                tileSize: new OpenLayers.Size(layerInfo.tileInfo.cols, layerInfo.tileInfo.rows),
+                projection: 'EPSG:' + layerInfo.spatialReference.wkid
         });
+
+        myMap.addLayers([plain,topoBdl,bdlMerc,topo,nmap,vector]);
+
+        Ext.apply(me, {
+//            center: '12.3046875,51.48193359375',
+//            zoom: 6,
+//            stateful: true,
+//            stateId: 'mappanel',
+//            extent: '12.87,52.35,13.96,52.66',
+            map: myMap,
+            minHeight: 400,
+            items:[],
+            planVectors: vector
+        });
+
+        me.callParent(arguments);
 
         //prevent selection of feature with state === 'Deleted'
         vector.events.on({
@@ -276,18 +283,6 @@ Ext.define('DMPlanner.ux.PlanMap', {
                 }
             }
         });
-
-        Ext.applyIf(me, {
-//            center: '12.3046875,51.48193359375',
-//            zoom: 6,
-//            stateful: true,
-//            stateId: 'mappanel',
-//            extent: '12.87,52.35,13.96,52.66',
-            items:[],
-            planVectors: vector
-        });
-
-        me.callParent(arguments);
 
         var sliders = {
                 xtype: 'panel',
@@ -341,9 +336,9 @@ Ext.define('DMPlanner.ux.PlanMap', {
 
 
         me.on('beforerender', function() {
-            var pnl = this.up('sectionpanel'),
+            var pnl = this.ownerCt,
                 ctl,
-                grid = this.down('featuregrid');
+                grid = me.up('dmpmappanel').down('dmpfeaturegrid');
 
             //add Sliders
             pnl.add(sliders);
@@ -424,7 +419,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
                                     if(feature._prevHighlighter &&
                                        feature._prevHighlighter != this.id) {
                                         delete feature._lastHighlighter;
-                                        var control = this.map.getControl(
+                                        var control = me.map.getControl(
                                             feature._prevHighlighter);
                                         if(control) {
                                             control.highlight(feature);
@@ -471,11 +466,13 @@ Ext.define('DMPlanner.ux.PlanMap', {
                 scope: this
             });
 
-            this.map.addControl(ctl);
+            me.map.addControl(ctl);
 
             ctl.activate();
 
             grid.getStore().bind(vector);
+
+            me.addVectors(pnl.data);
         });
 
         me.on('afterlayout', function(mapPanel) {
@@ -503,7 +500,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
                         if(rowEl) {rowEl.removeCls('dmp-delete-highlight');}
                     }
                 },
-                "loadstart": function(evt) {
+                /*"loadstart": function(evt) {
                     mapPanel.ownerCt.getEl().mask('Loading project features...');
                 },
                 "loadend": function(evt) {
@@ -529,7 +526,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
                     }
                     mapPanel.zoomOnLoad = false;
                     mapPanel.ownerCt.getEl().unmask();
-                },
+                },*/
                 "refresh": function(evt) {
                     //deselect feature row before refresh to prevent grid selection events
                     //from trying to access non-existent objects after refresh
@@ -559,7 +556,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
                         });
                     }
                 },*/
-                scope: this.down('featuregrid')
+                scope: me.up('dmpmappanel').down('dmpfeaturegrid')
             });
 
             //load planVectors
@@ -574,8 +571,8 @@ Ext.define('DMPlanner.ux.PlanMap', {
                 xtype: 'maptoolbar',
                 map: me.map,
                 vectorLayer: vector,
-                saveStrategy: saveStrategy,
-                refreshStrategy: refreshStrategy,
+                //saveStrategy: saveStrategy,
+                //refreshStrategy: refreshStrategy,
                 commonStore: me.commonStore,
                 maskCmp: true,
                 dock: 'top'
@@ -583,33 +580,40 @@ Ext.define('DMPlanner.ux.PlanMap', {
             me.addDocked(me.mapToolbar);
         }
 
-        if(me.displayTools) {
+        /*if(me.displayGrid) {
             //add feature grid
-            grid = Ext.create('DMPlanner.ux.MapFeatureGrid',{
-                layer: me.planVectors,
-                dock: 'bottom'
-            });
-            me.addDocked(grid);
-        }
+            if(!me.up('dmpmappanel')) {
+            } else {
+                grid = Ext.create('DMPlanner.ux.map.MapFeatureGrid',{
+                    layer: me.planVectors,
+                    dock: 'bottom'
+                });
+                me.addDocked(grid);
+            }
+        }*/
     },
 
     /**
      * Add features to the plan vector layer.
+     * @param {string} data Serialized vector features.
      */
 
-    addVector: function(wkt) {
-        var me = this,
+    addVectors: function(data) {
+        if (!data) {return;}
+
+        var me = this,i,
             vectors = me.planVectors,
-            format = new OpenLayers.Format.WKT(),
+            mapPanel = me.up('dmpmappanel'),
+            format = new OpenLayers.Format[mapPanel.format](),
             bounds, features;
 
-        features = format.read(wkt);
+        features = format.read(data);
 
         if(features) {
             if(features.constructor != Array) {
                 features = [features];
             }
-            for(var i=0; i<features.length; ++i) {
+            for(i=0; i<features.length; ++i) {
 
                 features[i].state = OpenLayers.State.INSERT;
 
@@ -621,6 +625,7 @@ Ext.define('DMPlanner.ux.PlanMap', {
 
             }
             vectors.addFeatures(features);
+            mapPanel.down('dmpfeaturegrid').getStore().sync();
             me.map.zoomToExtent(bounds);
         }
     }

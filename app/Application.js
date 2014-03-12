@@ -93,5 +93,17 @@ Ext.define('DMPlanner.Application', {
             glyph: 'xf12a@FontAwesome',
             html: txt
         }).show();
+    },
+
+    /**
+     * Creates an info notification.
+     * @param {String} txt The error string.
+     */
+    showInfo: function(txt, title) {
+        Ext.create('widget.uxNotification', {
+            title: title || 'Info',
+            glyph: 'xf129@FontAwesome',
+            html: txt
+        }).show();
     }
 });
