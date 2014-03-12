@@ -61,7 +61,7 @@
     This target compresses and concatenates the OpenLayers css with the ExtJS css.
     We need to @include the ol.css due to css file splitting.
     -->
-    <target name="-after-build">
+    <target name="-after-sass">
         <x-run-if-true value="${enable.openlayers.build}">
             <move file="${app.out.css.compressed}" tofile="${app.out.css.compressed}.tmp"/>
             <copy todir="${build.dir}/img">
