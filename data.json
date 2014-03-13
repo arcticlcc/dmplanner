@@ -83,6 +83,7 @@
                                 }
                             }, {
                                 "question": "Rate Me",
+                                "guidance": "Use the slider to enter a rating",
                                 "config": {
                                     "xtype": "slider",
                                     'width': 200,

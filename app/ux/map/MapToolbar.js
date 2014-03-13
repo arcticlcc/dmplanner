@@ -276,14 +276,17 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
         items.push({
             xtype: 'button',
             text: 'Save',
+            enableToggle: false,
             glyph: 'xf0c7@FontAwesome',
-            handler: function() {
+            handler: function(btn) {
                 var remove = [], persisted,
                     mapPanel = me.up('dmpmappanel'),
                     format = new OpenLayers.Format[mapPanel.format](),
                     dirty = Ext.Array.some(vector.features, function(f) {
                         return f.state;
                     });
+                //prevent modify handles from being saved
+                btn.up('toolbar').down('#modify').toggle(false);
 
                 if (dirty) {
                     Ext.each(vector.features, function(feature) {
