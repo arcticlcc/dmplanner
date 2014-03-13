@@ -9,6 +9,16 @@
   }
 }
 
+.x-tool .fa {
+  color: $panel-header-glyph-color;
+  opacity: $panel-header-glyph-opacity;
+  font-size: 15px;
+
+  &:hover {
+      opacity: $tool-opacity-over;
+  }
+}
+
 .ux-notification-window .x-window-body {
   text-align: center;
   padding: 15px 5px 15px 5px;

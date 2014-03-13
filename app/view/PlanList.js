@@ -55,6 +55,26 @@ Ext.define("DMPlanner.view.PlanList", {
     }, {
         type : 'help',
         tooltip : 'Get Help'
+    },{
+        type: 'mytool',
+        tooltip: 'GitHub',
+        width: 'auto',
+        renderTpl: [
+            '<img id="{id}-toolEl" src="{blank}" class="{baseCls}-{type}" role="presentation"/>',
+            '<span class="fa">&#xf09b;</span>'
+        ],
+        handler: function () {
+            var ico = '<span class="fa" style="font-size:30px;margin-right:5px;">&#xf09b;</span>';
+            Ext.Msg.show({
+                 title:'Fork Me!',
+                 target: this.getEl(),
+                 msg: 'I\'m an open source project.<br /><br />' +
+                    '<a href="https://github.com/arcticlcc/dmplanner" class="" target="_blank">' + ico
+                    + 'Fork me on Github.</a>',
+                 buttons: Ext.Msg.OK,
+                 glyph: 'xf09b@FontAwesome'
+            });
+        }
     }]/*,
 
      tbar : [{

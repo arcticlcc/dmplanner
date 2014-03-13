@@ -28,5 +28,13 @@ Ext.define("DMPlanner.view.Start", {
         glyph: 'xf044@FontAwesome',
         scale   : 'large',
         disabled: true
+    }, {
+        xtype : 'button',
+        anchor : '100%',
+        itemId : 'startLoadBtn',
+        text : 'Load Plan from File',
+        glyph: 'xf093@FontAwesome',
+        scale   : 'large',
+        disabled: true
     }]
 });
