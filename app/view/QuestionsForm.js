@@ -15,6 +15,9 @@ Ext.define("DMPlanner.view.QuestionsForm", {
         type : 'vbox',
         align : 'left'
     },
+    defaults: {
+        margin: '5 0 10 0'
+    },
     autoScroll: true,
     bodyPadding : 10
 });

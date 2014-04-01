@@ -1,5 +1,6 @@
 Ext.define('DMPlanner.controller.Questions', {
     extend: 'Ext.app.Controller',
+    requires: ['Ext.tab.Panel','DMPlanner.util.UUID'],
 
     stores : [//
         'Plans'//
@@ -84,7 +85,7 @@ Ext.define('DMPlanner.controller.Questions', {
             clone = Ext.clone(config);
             Ext.applyIf(clone, {
                 itemId: record.getId(),
-                planId: record.get('plan_id'),
+                planId: record.get('planId'),
                 data: record.get('data')//,
                 //header: record.get('title') ? undefined : false
             });
@@ -129,35 +130,150 @@ Ext.define('DMPlanner.controller.Questions', {
     },
 
     getGroupQuestions: function(groups) {
-        var fieldsets = [];
+        var fieldsets = [],
+            grouped, createTab, createFields;
 
-        groups.each(function(group) {
+        createTab = function(fields, title, width) {
+            return {
+                xtype : 'fieldcontainer',
+                title : title,
+                width : width || 600,
+                defaults : {
+                    anchor : '100%'
+                },
+                layout : 'anchor',
+                items : fields
+            };
+        };
+
+        createFields = function(group) {
             var fields = [];
+
             group.questions().each(function(question) {
-                var info = question.get('guidance'),
-                    field = Ext.apply({
-                        fieldLabel: question.get('question'),
-                        value: question.get('answer'),
-                        question: question,
-                        anchor: '100%',
-                        xtype: 'textfield',
-                        afterLabelTextTpl: !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
-                        //afterSubTpl: !!info ? '<span class="dmp-icon-guidance" data-qtip="' + info + '">?</span>' : undefined,
-                        //afterBodyEl: !!info ? '<span class="dmp-icon-guidance" data-qtip="' + info + '">?</span>' : undefined,
-                        //msgTarget         : 'side',
-                        labelAttrTpl: 'data-qtip="' + info + '"'
-                    }, question.get('config'));
+                var info = question.get('guidance'), field = Ext.apply({
+                    fieldLabel : question.get('question'),
+                    value : question.get('answer') || question.get('defAnswer'),
+                    question : question,
+                    anchor : '100%',
+                    xtype : 'textfield',
+                    afterLabelTextTpl : !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
+                    //afterSubTpl: !!info ? '<span class="dmp-icon-guidance"
+                    // data-qtip="' + info + '">?</span>' : undefined,
+                    //afterBodyEl: !!info ? '<span class="dmp-icon-guidance"
+                    // data-qtip="' + info + '">?</span>' : undefined,
+                    //msgTarget         : 'side',
+                    labelAttrTpl : 'data-qtip="' + info + '"'
+                }, question.get('config'));
 
                 fields.push(field);
             });
-            fieldsets.push({
-                xtype: 'fieldset',
-                title: group.get('name'),
-                items: fields,
-                maxWidth: group.get('width') || 600,
-                width: '100%'
+
+            return fields;
+        };
+
+        groups.group('index', 'ASC');
+        grouped = groups.getGroups();
+
+        Ext.each(grouped, function(g){
+            var children = g.children,
+                repeat = !!children[0].get('repeatable'),
+                tabs;
+
+            tabs = !repeat ? undefined : {
+                xtype: 'tabpanel',
+                //width: 500,
+                //height: 400,
+                plain: true,
+                bodyPadding: 15,
+                bodyCls: 'dmp-group-tab',
+                defaults: {
+                    closable: false
+                },
+                dockedItems: [{
+                    xtype: 'toolbar',
+                    dock: 'right',
+                    cls: 'dmp-group-toolbar',
+                    items: [{
+                        xtype: 'button',
+                        tooltip: 'Add',
+                        glyph: 'xf067@FontAwesome',
+                        //text: '+',
+                        handler: function(b) {
+                            var tabs = b.up('tabpanel'),
+                                pos = tabs.items.length + 1,
+                                uuid = DMPlanner.util.UUID.uuid,
+                                groupId = uuid(),
+                                template= tabs.groupTemplate,
+                                store = Ext.getStore('Plans').getById(template.planId).sections().getById(template.sectionId).groups(),
+                                insTab;
+
+                            template.id = groupId;
+                            Ext.each(template.questions, function(q){
+                                q.id = uuid();
+                                q.groupId = groupId;
+                                q.answer = q.defAnswer;
+                            });
+
+                            store.loadRawData(template, true);
+
+                            insTab = createTab(
+                                createFields(store.getById(groupId)),
+                                Ext.String.format('{0} {1}',template.name, tabs.items.length + 1),
+                                template.width
+                            );
+                            tabs.setActiveTab(tabs.add(insTab));
+                        }
+                    }, {
+                        xtype: 'button',
+                        //text: 'x',
+                        glyph: 'xf00d@FontAwesome',
+                        tooltip: 'Remove',
+                        handler: function(b) {
+                            var tabs = b.up('tabpanel'),
+                                remTab = tabs.getActiveTab(),
+                                template= tabs.groupTemplate,
+                                store = Ext.getStore('Plans').getById(template.planId).sections().getById(template.sectionId).groups(),
+                                groupId = remTab.down('field[question]').question.get('groupId');
+
+                            store.remove(store.getById(groupId));
+                            tabs.remove(remTab);
+                        }
+                    }]
+                }],
+                items: []
+            };
+
+            Ext.each(children, function(group, idx) {
+                var fields = createFields(group);
+
+                if(repeat) {
+                    //set the index based on order of appearance
+                    group.set('repeatIdx', idx);
+
+                    //set the template for new groups
+                    if(idx === 0) {
+                        tabs.groupTemplate = Ext.clone(group.raw);
+                        console.info(tabs.groupTemplate);
+                    }
+
+                    tabs.items.push(createTab(fields,
+                        Ext.String.format('{0} {1}',group.get('name'), group.get('repeatIdx') + 1),
+                        group.get('width')
+                    ));
+                }else {
+                    fieldsets.push({
+                        xtype : 'fieldset',
+                        title : group.get('name'),
+                        items : fields,
+                        maxWidth : group.get('width') || 600,
+                        width : '100%'
+                    });
+                }
             });
+
+            fieldsets.push(tabs);
         });
+
         return fieldsets;
     },
      showNextSection: function() {

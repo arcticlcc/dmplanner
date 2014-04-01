@@ -10,6 +10,7 @@
                 "groups": [
                     {
                         "name": "Your information",
+                        "repeatable": true,
                         "questions": [
                             {
                                 "question": "First name",

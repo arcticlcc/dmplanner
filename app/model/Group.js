@@ -14,6 +14,10 @@ Ext.define('DMPlanner.model.Group', {
     }, {
         name: 'index'
     }, {
+        name: 'repeatable'
+    }, {
+        name: 'repeatIdx'
+    }, {
         name: 'data',
         type: 'auto'
     }, {

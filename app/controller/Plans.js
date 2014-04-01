@@ -52,13 +52,14 @@ Ext.define('DMPlanner.controller.Plans', {
             store: {
                 '#Plans': {
                     update: this.onDataUpdate,
-                    remove: this.onDataRemove
+                    remove: this.onPlanRemove
                 },
                 '#Sections': {
                     update: this.onDataUpdate
                 },
                 '#Groups': {
-                    update: this.onDataUpdate
+                    update: this.onDataUpdate,
+                    remove: this.onDataUpdate
                 },
                 '#Questions': {
                     update: this.onDataUpdate
@@ -140,7 +141,7 @@ Ext.define('DMPlanner.controller.Plans', {
      */
     onDataUpdate: function(store, record) {
         var local = this.getLocalPlansStore(),
-            planid = record.get('plan_id') || record.getId(),
+            planid = record.get('planId') || record.getId(),
             plan = this.getPlansStore().getById(planid),
             localRec = local.findRecord('planid',planid,0,true,true,true),
             data = plan.getWriteData();
@@ -154,9 +155,9 @@ Ext.define('DMPlanner.controller.Plans', {
      * @param {Ext.data.Store} store The store
      * @param {Ext.data.Model} record The Model instance that was removed
      */
-    onDataRemove: function(store, record) {
+    onPlanRemove: function(store, record) {
         var local = this.getLocalPlansStore(),
-            planid = record.get('plan_id') || record.getId(),
+            planid = record.get('planId') || record.getId(),
             localRec = local.findRecord('planid',planid,0,true,true,true);
 
             local.remove(localRec);
@@ -179,18 +180,20 @@ Ext.define('DMPlanner.controller.Plans', {
         //loop sections
         Ext.each(plan.sections, function(section) {
             section.id = uuid();
-            section.plan_id = plan.id;
+            section.planId = plan.id;
 
-            Ext.each(section.groups, function(group) {
+            Ext.each(section.groups, function(group, index) {
                 group.id = uuid();
-                group.plan_id = plan.id;
-                group.section_id = section.id;
+                group.index = index;
+                group.planId = plan.id;
+                group.sectionId = section.id;
 
-                Ext.each(group.questions, function(question) {
+                Ext.each(group.questions, function(question, index) {
                     question.id = uuid();
-                    question.plan_id = plan.id;
-                    question.section_id = section.id;
-                    question.group_id = group.id;
+                    question.index = index;
+                    question.planId = plan.id;
+                    question.sectionId = section.id;
+                    question.groupId = group.id;
                 });
             });
 

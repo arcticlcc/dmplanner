@@ -30,3 +30,9 @@
   cursor: help;
   color: $panel-header-background-color;
 }
+.dmp-group-tab {
+  background-color: lighten($panel-base-color, 54);
+}
+.dmp-group-toolbar {
+  background-color: lighten($panel-base-color, 50);
+}
