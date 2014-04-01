@@ -69,8 +69,8 @@ Ext.define("DMPlanner.view.PlanList", {
                  title:'Fork Me!',
                  target: this.getEl(),
                  msg: 'I\'m an open source project.<br /><br />' +
-                    '<a href="https://github.com/arcticlcc/dmplanner" class="" target="_blank">' + ico
-                    + 'Fork me on Github.</a>',
+                    '<a href="https://github.com/arcticlcc/dmplanner" class="" target="_blank">' + ico +
+                      'Fork me on Github.</a>',
                  buttons: Ext.Msg.OK,
                  glyph: 'xf09b@FontAwesome'
             });
