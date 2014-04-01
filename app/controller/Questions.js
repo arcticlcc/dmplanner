@@ -253,7 +253,6 @@ Ext.define('DMPlanner.controller.Questions', {
                     //set the template for new groups
                     if(idx === 0) {
                         tabs.groupTemplate = Ext.clone(group.raw);
-                        console.info(tabs.groupTemplate);
                     }
 
                     tabs.items.push(createTab(fields,
