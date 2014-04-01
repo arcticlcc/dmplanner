@@ -116,7 +116,7 @@ Ext.define('DMPlanner.ux.map.MapFeatureGrid', {
                 }
             };*/
 
-            //add the plan_id to new records
+            //add the planId to new records
             addId = function(store, records) {
                     Ext.each(records, function(r) {
                         r.beginEdit();

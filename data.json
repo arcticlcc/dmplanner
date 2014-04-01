@@ -14,7 +14,7 @@
                             {
                                 "question": "First name",
                                 "guidance": "Enter your first name.",
-                                "answer": "Joe"
+                                "defAnswer": "Joe"
                             }, {
                                 "question": "Last name"
                             }, {
@@ -84,6 +84,7 @@
                             }, {
                                 "question": "Rate Me",
                                 "guidance": "Use the slider to enter a rating",
+                                "defAnswer": 5,
                                 "config": {
                                     "xtype": "slider",
                                     'width': 200,

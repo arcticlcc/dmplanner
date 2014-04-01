@@ -8,9 +8,9 @@ Ext.define('DMPlanner.model.Question', {
     fields : [{
         name : 'id'
     }, {
-        name : 'group_id'
+        name : 'groupId'
     }, {
-        name : 'plan_id'
+        name : 'planId'
     }, {
         name : 'index'
     }, {
@@ -18,14 +18,19 @@ Ext.define('DMPlanner.model.Question', {
     }, {
         name : 'guidance'
     }, {
-        name : 'answer'
+        name : 'defAnswer'
+    }, {
+        name : 'answer',
+        convert: function(value, record) {
+            return value || record.get('defAnswer');
+        }
     }, {
         name : 'config'
     }],
 
     belongsTo : [{
         model : 'DMPlanner.model.Group',
-        foreignKey : 'group_id',
+        foreignKey : 'groupId',
         getterName: 'getDMPGroup'
     }],
 

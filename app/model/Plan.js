@@ -13,7 +13,7 @@ Ext.define('DMPlanner.model.Plan', {
         type: 'hasMany',
         model: 'DMPlanner.model.Section',
         primaryKey: 'id',
-        foreignKey: 'plan_id',
+        foreignKey: 'planId',
         autoLoad: true,
         associationKey: 'sections',
         name: 'sections',
