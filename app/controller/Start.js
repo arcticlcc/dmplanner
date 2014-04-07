@@ -32,7 +32,7 @@ Ext.define('DMPlanner.controller.Start', {
     },
 
     onStartNewClick: function(button) {
-        this.fireEvent("clickAddPlanBtn");
+        this.fireEvent("clickaddplanbtn");
         button.up('vp').getLayout().setActiveItem(1);
     },
 

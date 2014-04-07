@@ -45,7 +45,8 @@ Ext.define('DMPlanner.controller.Plans', {
         this.listen({
             controller: {
                 '*': {
-                    clickAddPlanBtn: this.onAddNewPlan
+                    clickaddplanbtn: this.onAddNewPlan,
+                    planupdate: this.onPlanUpdate
                 }
             },
 
@@ -135,19 +136,22 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     /**
+     * Update plan event handler.
+     * @param {string} planid The id of the plan to update
+     */
+    onPlanUpdate: function(planid) {
+        this.updatePlan(planid);
+    },
+
+    /**
      * Fired when any updates are made to a Plan record.
      * @param {Ext.data.Store} store The store
      * @param {Ext.data.Model} record The Model instance that was updated
      */
     onDataUpdate: function(store, record) {
-        var local = this.getLocalPlansStore(),
-            planid = record.get('planId') || record.getId(),
-            plan = this.getPlansStore().getById(planid),
-            localRec = local.findRecord('planid',planid,0,true,true,true),
-            data = plan.getWriteData();
+        var planid = record.get('planId') || record.getId();
 
-            localRec.set('plan', data);
-            local.sync();
+        this.updatePlan(planid);
     },
 
     /**
@@ -209,7 +213,7 @@ Ext.define('DMPlanner.controller.Plans', {
      * @param {String} [templateId='default'] The id of the template to use for new Plan
      */
     addPlan: function(planName, planCode, templateId) {
-        var ctr = this,
+        var ctr = this, newRec,
             plans = DMPlanner.data.PlanTemplate.plans,
             store = ctr.getPlansStore(),
             count = store.count() + 1,
@@ -226,6 +230,20 @@ Ext.define('DMPlanner.controller.Plans', {
         //select in grid
         ctr.getPlanList().getSelectionModel().select(newRec);
     },
+
+    /**
+     * Updates the local store.
+     * @param {string} planid The id of the plan to update
+     */
+    updatePlan: function(planid) {
+        var local = this.getLocalPlansStore(),
+            plan = this.getPlansStore().getById(planid),
+            localRec = local.findRecord('planid',planid,0,true,true,true),
+            data = plan.getWriteData();
+
+            localRec.set('plan', data);
+            local.sync();
+        },
 
     /**
      * Add Plans to localstorage.
