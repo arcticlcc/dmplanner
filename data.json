@@ -6,7 +6,7 @@
         "code": null,
         "sections": [
             {
-                "name": "Contact Info",
+                "name": "Single Group",
                 "groups": [
                     {
                         "name": "Your information",
@@ -24,12 +24,59 @@
                             }, {
                                 "question": "Age",
                                 "config": {
-                                    "xtype": "numberfield"
+                                    "xtype": "numberfield",
+                                    "maxWidth": 250
                                 }
                             }, {
                                 "question": "Gender",
                                 "config": {
                                     "xtype": "radiogroup",
+                                    "columns": 2,
+                                    "vertical": true,
+                                    "items": [
+                                        {
+                                            "boxLabel": "Male",
+                                            "name": "gender",
+                                            "inputValue": "m"
+                                        }, {
+                                            "boxLabel": "Female",
+                                            "name": "gender",
+                                            "inputValue": "f",
+                                            "checked": true
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }, {
+                "name": "Contact Info",
+                "groups": [
+                    {
+                        "name": "Your information",
+                        "repeatable": true,
+                        "questions": [
+                            {
+                                "question": "First name",
+                                "guidance": "Enter your first name.",
+                                "defAnswer": "First"
+                            }, {
+                                "question": "Last name"
+                            }, {
+
+                                "question": "Occupation"
+                            }, {
+                                "question": "Age",
+                                "config": {
+                                    "xtype": "numberfield",
+                                    "maxWidth": 250
+                                }
+                            }, {
+                                "question": "Gender",
+                                "config": {
+                                    "xtype": "radiogroup",
+                                    "maxWidth": 300,
                                     "columns": 2,
                                     "vertical": true,
                                     "items": [
