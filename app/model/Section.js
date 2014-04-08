@@ -10,6 +10,9 @@ Ext.define('DMPlanner.model.Section', {
         name: 'planId',
         type: 'auto'
     }, {
+        name: 'groupId',
+        type: 'auto'
+    }, {
         name: 'name',
         type: 'auto'
     }, {
@@ -26,6 +29,12 @@ Ext.define('DMPlanner.model.Section', {
         primaryKey: 'id',
         foreignKey: 'planId',
         getterName: 'getDMPPlan'
+    }, {
+        type: 'belongsTo',
+        model: 'DMPlanner.model.Group',
+        primaryKey: 'id',
+        foreignKey: 'groupId',
+        getterName: 'getDMPGroup'
     }, {
         type: 'hasMany',
         model: 'DMPlanner.model.Group',

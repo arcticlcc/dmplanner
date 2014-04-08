@@ -306,7 +306,7 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
                     if (persisted) {
                         //me.saveStrategy.save();
                         //console.info(format.write(vector.features));
-                        mapPanel.fireEvent('sectiondatachanged', mapPanel.itemId, mapPanel.planId,
+                        mapPanel.fireEvent('plugindatachanged', mapPanel, mapPanel.planId,
                             format.write(vector.features));
                             DMPlanner.app.showInfo('Features Saved.');
                             mapPanel.down('dmpfeaturegrid').getStore().sync();

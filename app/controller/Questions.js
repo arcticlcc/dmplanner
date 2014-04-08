@@ -30,13 +30,13 @@ Ext.define('DMPlanner.controller.Questions', {
                 click : this.showPrevSection
             },
             'sectionpanel>component': {
-                sectiondatachanged: this.onSectionDataChanged
+                plugindatachanged: this.onPluginDataChanged
             },
              /*'#planFinish' : {
              click : this.finishPlsn
              },*/
 
-             'questions field, questions htmleditor' : {
+             'questions field, questions htmleditor, #sectionContainer>#questionTabs field, #sectionContainer>#questionTabs htmleditor' : {
                 change : this.saveItem
              }
         });
@@ -56,8 +56,8 @@ Ext.define('DMPlanner.controller.Questions', {
      * @param {String} planId
      * @param {Array} Array of all data records for this section.
      */
-    onSectionDataChanged: function(sectionId, planId, data) {
-        var section = this.getPlansStore().getById(planId).sections().getById(sectionId);
+    onPluginDataChanged: function(plugin, planId, data) {
+        var section = this.getPlansStore().getById(planId).sections().getById(plugin.itemId);
 
         section.set('data', data);
 
@@ -150,10 +150,10 @@ Ext.define('DMPlanner.controller.Questions', {
             cntrl = this,
             grouped, createTab, createFields;
 
-        createTab = function(fields, title, width) {
-            return {
-                xtype : 'fieldcontainer',
-                title : title,
+        createTab = function(fields, title, width, sections) {
+            var cfg = {
+                xtype : sections ? 'panel' : 'fieldcontainer',
+                title : 'Questions',
                 width : width || 600,
                 defaults : {
                     anchor : '100%'
@@ -161,26 +161,43 @@ Ext.define('DMPlanner.controller.Questions', {
                 layout : 'anchor',
                 items : fields
             };
+
+            if (sections) {
+                return {
+                    xtype: 'panel',
+                    title: title,
+                    layout: {
+                        type: 'accordion'//,
+                        //titleCollapse: false,
+                        //animate: true,
+                        //activeOnTop: true
+                    },
+                    items: [cfg,{xtype:'dmpkeywords'}]
+                };
+            }
+
+            return cfg;
         };
 
         createFields = function(group) {
             var fields = [];
 
             group.questions().each(function(question) {
-                var info = question.get('guidance'), field = Ext.apply({
-                    fieldLabel : question.get('question'),
-                    value : question.get('answer') || question.get('defAnswer'),
-                    question : question,
-                    anchor : '100%',
-                    xtype : 'textfield',
-                    afterLabelTextTpl : !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
-                    //afterSubTpl: !!info ? '<span class="dmp-icon-guidance"
-                    // data-qtip="' + info + '">?</span>' : undefined,
-                    //afterBodyEl: !!info ? '<span class="dmp-icon-guidance"
-                    // data-qtip="' + info + '">?</span>' : undefined,
-                    //msgTarget         : 'side',
-                    labelAttrTpl : 'data-qtip="' + info + '"'
-                }, question.get('config'));
+                var info = question.get('guidance'),
+                    field = Ext.apply({
+                        fieldLabel : question.get('question'),
+                        value : question.get('answer') || question.get('defAnswer'),
+                        question : question,
+                        anchor : '100%',
+                        xtype : 'textfield',
+                        afterLabelTextTpl : !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
+                        //afterSubTpl: !!info ? '<span class="dmp-icon-guidance"
+                        // data-qtip="' + info + '">?</span>' : undefined,
+                        //afterBodyEl: !!info ? '<span class="dmp-icon-guidance"
+                        // data-qtip="' + info + '">?</span>' : undefined,
+                        //msgTarget         : 'side',
+                        labelAttrTpl : 'data-qtip="' + info + '"'
+                    }, question.get('config'));
 
                 fields.push(field);
             });
@@ -198,13 +215,14 @@ Ext.define('DMPlanner.controller.Questions', {
 
             tabs = !repeat ? undefined : {
                 xtype: 'tabpanel',
+                itemId: 'questionTabs',
                 //width: 500,
                 //height: 400,
                 plain: !plain,
-                bodyPadding: 15,
+                //bodyPadding: 15,
                 bodyCls: plain ? '' : 'dmp-group-tab',
                 defaults: {
-                    closable: false
+                    //closable: false
                 },
                 dockedItems: [{
                     xtype: 'toolbar',
@@ -265,7 +283,7 @@ Ext.define('DMPlanner.controller.Questions', {
 
             Ext.each(children, function(group, idx) {
                 var fields = createFields(group),
-                    fieldCont;
+                    fieldCont, tab;
 
                 if(repeat) {
                     //set the index based on order of appearance
@@ -276,10 +294,14 @@ Ext.define('DMPlanner.controller.Questions', {
                         tabs.groupTemplate = Ext.clone(group.raw);
                     }
 
-                    tabs.items.push(createTab(fields,
+                    tab = createTab(fields,
                         Ext.String.format('{0} {1}',group.get('name'), group.get('repeatIdx') + 1),
-                        group.get('width')
-                    ));
+                        group.get('width'),
+                        grouped.length === 1
+                    );
+
+                    tabs.items.push(tab);
+
                 }else {
                     if(plain) {
                         fieldCont = createTab(fields, group.get('name'), group.get('width'));

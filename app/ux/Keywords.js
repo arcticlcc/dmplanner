@@ -151,7 +151,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                             recs = store.getRange(),
                             data = me.dmpSerialize(recs);
 
-                        me.fireEvent('sectiondatachanged', me.itemId, me.planId, data);
+                        me.fireEvent('plugindatachanged', me, me.planId, data);
                     },
                     scope: me
                 }

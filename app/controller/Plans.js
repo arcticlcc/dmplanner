@@ -184,20 +184,20 @@ Ext.define('DMPlanner.controller.Plans', {
         //loop sections
         Ext.each(plan.sections, function(section) {
             section.id = uuid();
-            section.planId = plan.id;
+            //section.planId = plan.id;
 
             Ext.each(section.groups, function(group, index) {
                 group.id = uuid();
                 group.index = index;
                 group.planId = plan.id;
-                group.sectionId = section.id;
+                //group.sectionId = section.id;
 
                 Ext.each(group.questions, function(question, index) {
                     question.id = uuid();
                     question.index = index;
                     question.planId = plan.id;
                     question.sectionId = section.id;
-                    question.groupId = group.id;
+                    //question.groupId = group.id;
                 });
             });
 

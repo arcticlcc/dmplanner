@@ -41,6 +41,17 @@ Ext.define('DMPlanner.model.Group', {
         storeConfig: {
             storeId: 'Questions'
         }
+    }, {
+        type: 'hasMany',
+        model: 'DMPlanner.model.Section',
+        primaryKey: 'id',
+        foreignKey: 'groupId',
+        autoLoad: true,
+        associationKey: 'sections',
+        name: 'sections',
+        storeConfig: {
+            storeId: 'GroupSections'
+        }
     }],
 
     proxy: {
