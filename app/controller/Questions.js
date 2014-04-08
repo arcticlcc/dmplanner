@@ -172,7 +172,7 @@ Ext.define('DMPlanner.controller.Questions', {
                         //animate: true,
                         //activeOnTop: true
                     },
-                    items: [cfg,{xtype:'dmpkeywords'}]
+                    items: [cfg,{xtype:'dmpkeywords'},{xtype:'dmpmappanel'}]
                 };
             }
 
@@ -364,7 +364,7 @@ Ext.define('DMPlanner.controller.Questions', {
 
         if (!question) {
             field = field.up('[question]');
-            question = field.question;
+            question = field ? field.question : false;
         }
 
         if (question) {
