@@ -1,6 +1,6 @@
 Ext.define('DMPlanner.controller.Questions', {
     extend: 'Ext.app.Controller',
-    requires: ['Ext.tab.Panel','DMPlanner.util.UUID'],
+    requires: ['Ext.tab.Panel','Ext.form.FieldContainer','Ext.form.FieldSet','DMPlanner.util.UUID', 'Ext.layout.container.Accordion'],
 
     stores : [//
         'Plans'//
@@ -152,14 +152,16 @@ Ext.define('DMPlanner.controller.Questions', {
 
         createTab = function(fields, title, width, sections) {
             var cfg = {
-                xtype : sections ? 'panel' : 'fieldcontainer',
-                title : 'Questions',
-                width : width || 600,
-                defaults : {
-                    anchor : '100%'
+                xtype: sections ? 'panel' : 'fieldcontainer',
+                bodyPadding: sections ? 15 : undefined,
+                padding: sections ? undefined : 15,
+                title: sections ? 'Questions' : title,
+                width: width || 600,
+                defaults: {
+                    anchor: '100%'
                 },
-                layout : 'anchor',
-                items : fields
+                layout: 'anchor',
+                items: fields
             };
 
             if (sections) {
@@ -172,7 +174,7 @@ Ext.define('DMPlanner.controller.Questions', {
                         //animate: true,
                         //activeOnTop: true
                     },
-                    items: [cfg,{xtype:'dmpkeywords'},{xtype:'dmpmappanel'}]
+                    items: [cfg,{xtype:'dmpkeywords'},{xtype:'dmpmappanel', title:'Embedded Map'}]
                 };
             }
 
@@ -222,7 +224,7 @@ Ext.define('DMPlanner.controller.Questions', {
                 //bodyPadding: 15,
                 bodyCls: plain ? '' : 'dmp-group-tab',
                 defaults: {
-                    //closable: false
+                    closable: false
                 },
                 dockedItems: [{
                     xtype: 'toolbar',
@@ -257,8 +259,8 @@ Ext.define('DMPlanner.controller.Questions', {
                             insTab = createTab(
                                 createFields(store.getById(groupId)),
                                 Ext.String.format('{0} {1}',template.name, tabs.items.length + 1),
-                                template.width
-                            );
+                                template.width,false
+                            ); testy=insTab;
                             tabs.setActiveTab(tabs.add(insTab));
                         }
                     }, {
@@ -283,6 +285,8 @@ Ext.define('DMPlanner.controller.Questions', {
 
             Ext.each(children, function(group, idx) {
                 var fields = createFields(group),
+                    single = grouped.length === 1,
+                    sections = group.sections,
                     fieldCont, tab;
 
                 if(repeat) {
@@ -297,26 +301,31 @@ Ext.define('DMPlanner.controller.Questions', {
                     tab = createTab(fields,
                         Ext.String.format('{0} {1}',group.get('name'), group.get('repeatIdx') + 1),
                         group.get('width'),
-                        grouped.length === 1
+                        single ? sections : false
                     );
 
                     tabs.items.push(tab);
+                    tabs.bodyPadding = single ? undefined : 15;
 
                 }else {
                     if(plain) {
-                        fieldCont = createTab(fields, group.get('name'), group.get('width'));
-                        fieldCont.padding = 15;
+                        fieldCont = createTab(fields, group.get('name'), group.get('width'), sections);
+                        if(sections) {
+                            fieldCont.header = false;
+                            fieldsets = [fieldCont];
+                        }
                     } else {
                         fieldCont = {
                             xtype : 'fieldset',
                             title : group.get('name'),
+                            padding: 15,
                             items : fields,
                             maxWidth : group.get('width') || 600,
                             width : '100%'
                         };
-                    }
 
-                    fieldsets.push(fieldCont);
+                        fieldsets.push(fieldCont);
+                    }
                 }
             });
 

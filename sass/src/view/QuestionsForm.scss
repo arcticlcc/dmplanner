@@ -34,5 +34,5 @@
   background-color: lighten($panel-base-color, 54);
 }
 .dmp-group-toolbar {
-  background-color: lighten($panel-base-color, 50);
+  background-color: $tab-base-color-active; //lighten($panel-base-color, 50);
 }
