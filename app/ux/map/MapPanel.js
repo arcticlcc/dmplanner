@@ -32,6 +32,7 @@ Ext.define('DMPlanner.ux.map.MapPanel', {
         });
 
         Ext.applyIf(me, {
+            dmpPlugin: true,
             format: 'GeoJSON',
             items: [{
                 xtype: 'dmpmap',

@@ -13,6 +13,9 @@ Ext.define('DMPlanner.model.Section', {
         name: 'groupId',
         type: 'auto'
     }, {
+        name: 'sectionId',
+        type: 'auto'
+    }, {
         name: 'name',
         type: 'auto'
     }, {

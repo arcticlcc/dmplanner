@@ -29,7 +29,7 @@ Ext.define('DMPlanner.controller.Questions', {
             '#sectionPrev' : {
                 click : this.showPrevSection
             },
-            'sectionpanel>component': {
+            'sectionpanel component[dmpPlugin]': {
                 plugindatachanged: this.onPluginDataChanged
             },
              /*'#planFinish' : {
@@ -53,13 +53,25 @@ Ext.define('DMPlanner.controller.Questions', {
     /**
      * Fired when any updates are made to a Section's data.
      * @param {String} sectionId
-     * @param {String} planId
      * @param {Array} Array of all data records for this section.
      */
-    onPluginDataChanged: function(plugin, planId, data) {
-        var section = this.getPlansStore().getById(planId).sections().getById(plugin.itemId);
+    onPluginDataChanged: function(plugin, data) {
+        var planId = plugin.planId,
+            store = this.getPlansStore().getById(planId).sections(),
+            gsections,
+            section;
 
-        section.set('data', data);
+        if(plugin.groupId) {
+            gsections = store.getById(plugin.sectionId).groups().getById(plugin.groupId).sections();
+            section = gsections.getById(plugin.itemId);
+            section.set('data', data);
+            //the controller only listens to the primary Section store update event
+            store.fireEvent('update', store, section);
+        } else {
+           section = store.getById(plugin.itemId);
+           section.set('data', data);
+        }
+    },
 
     },
 

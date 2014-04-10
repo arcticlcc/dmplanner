@@ -151,7 +151,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                             recs = store.getRange(),
                             data = me.dmpSerialize(recs);
 
-                        me.fireEvent('plugindatachanged', me, me.planId, data);
+                        me.fireEvent('plugindatachanged', me, data);
                     },
                     scope: me
                 }
@@ -236,6 +236,7 @@ Ext.define('DMPlanner.ux.Keywords', {
         };
 
         Ext.applyIf(me, {
+            dmpPlugin: true,
             items: [{
                 xtype: 'gridpanel',
                 itemId: 'planKeywords',
@@ -292,6 +293,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                 }]
             }, {
                 xtype: 'tabpanel',
+                //plain: true,
                 flex: 1,
                 title: 'Keywords',
                 header: false,

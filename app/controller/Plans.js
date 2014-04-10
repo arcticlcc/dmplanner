@@ -199,6 +199,14 @@ Ext.define('DMPlanner.controller.Plans', {
                     question.sectionId = section.id;
                     question.groupId = group.id;
                 });
+
+                Ext.each(group.sections, function(gsection, index) {
+                    gsection.id = uuid();
+                    gsection.index = index;
+                    gsection.planId = plan.id;
+                    gsection.sectionId = section.id;
+                    gsection.groupId = group.id;
+                });
             });
 
         });
