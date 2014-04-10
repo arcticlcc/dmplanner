@@ -10,7 +10,7 @@
         "groups": [
           {
             "name": "Your information",
-            "repeatable": true,
+            "repeatable": false,
             "questions": [
               {
                 "question": "First name",
@@ -55,6 +55,12 @@
                 "name": "Map",
                 "config": {
                   "xtype": "dmpmappanel"
+                }
+              },
+              {
+                "name": "Keywords",
+                "config": {
+                  "xtype": "dmpkeywords"
                 }
               }
             ]

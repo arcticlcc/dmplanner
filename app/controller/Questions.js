@@ -73,6 +73,18 @@ Ext.define('DMPlanner.controller.Questions', {
         }
     },
 
+    createSection: function(record, config) {
+        var config = config || record.get('config'),
+            clone = Ext.clone(config);
+
+        //do config stuff, add sectionId(itemId), planId
+        Ext.applyIf(clone, {
+            itemId: record.getId(),
+            planId: record.get('planId'),
+            data: record.get('data')
+        });
+
+        return clone;
     },
 
     showSection: function(grid, record, index) {
@@ -97,20 +109,14 @@ Ext.define('DMPlanner.controller.Questions', {
         //check for config
         if (Ext.isObject(config)) {
             //do config stuff, add sectionId(itemId), planId
-            clone = Ext.clone(config);
-            Ext.applyIf(clone, {
-                itemId: record.getId(),
-                planId: record.get('planId'),
-                data: record.get('data')//,
-                //header: record.get('title') ? undefined : false
-            });
+            clone = this.createSection(record, config);
             questions = clone;
 
         } else if (groups.max('index') > 0) {
             //create questions form
             questions = {
                 xtype: 'questions',
-                bodyPadding: 20,
+                bodyPadding: 15,
                 flex: 1,
                 width: '100%',
                 title: record.get('name'),
@@ -119,6 +125,11 @@ Ext.define('DMPlanner.controller.Questions', {
 
         } else {
             questions = this.getGroupQuestions(groups, true); //add directly to section
+
+            //fix padding
+            if(questions.length === 1 && questions[0].xtype === 'tabpanel' && !groups.first().sections().count()) {
+                questions[0].bodyPadding = questions[0].bodyPadding || 15;
+            }
 
             if(!groups.first().get('repeatable')) {
                 cont.setTitle(groups.first().get('name') || record.get('name'));
@@ -163,21 +174,23 @@ Ext.define('DMPlanner.controller.Questions', {
             grouped, createTab, createFields;
 
         createTab = function(fields, title, width, sections) {
-            var cfg = {
-                xtype: sections ? 'panel' : 'fieldcontainer',
-                bodyPadding: sections ? 15 : undefined,
-                padding: sections ? undefined : 15,
-                title: sections ? 'Questions' : title,
-                width: width || 600,
-                defaults: {
-                    anchor: '100%'
+            var num =  sections ? sections.count() : 0,
+                cfg = {
+                    xtype: num ? 'panel' : 'fieldcontainer',
+                    bodyPadding: num ? 15 : undefined,
+                    padding: num ? undefined : 15,
+                    title: num ? 'Questions' : title,
+                    width: width || 600,
+                    defaults: {
+                        anchor: '100%'
+                    },
+                    layout: 'anchor',
+                    items: fields
                 },
-                layout: 'anchor',
-                items: fields
-            };
+                acc;
 
-            if (sections) {
-                return {
+            if (num) {
+                acc = {
                     xtype: 'panel',
                     title: title,
                     layout: {
@@ -186,8 +199,23 @@ Ext.define('DMPlanner.controller.Questions', {
                         //animate: true,
                         //activeOnTop: true
                     },
-                    items: [cfg,{xtype:'dmpkeywords'},{xtype:'dmpmappanel', title:'Embedded Map'}]
+                    items: [cfg]
                 };
+
+                sections.each(function(sec) {
+                    var config = cntrl.createSection(sec, sec.get('config'));
+
+                    //do config stuff, need to set groupId, sectionId
+                    Ext.applyIf(config, {
+                        title: sec.get('name'),
+                        groupId: sec.get('groupId'),
+                        sectionId: sec.get('sectionId')
+                    });
+
+                    acc.items.push(config);
+                });
+
+                return acc;
             }
 
             return cfg;
@@ -272,7 +300,7 @@ Ext.define('DMPlanner.controller.Questions', {
                                 createFields(store.getById(groupId)),
                                 Ext.String.format('{0} {1}',template.name, tabs.items.length + 1),
                                 template.width,false
-                            ); testy=insTab;
+                            );
                             tabs.setActiveTab(tabs.add(insTab));
                         }
                     }, {
@@ -298,7 +326,7 @@ Ext.define('DMPlanner.controller.Questions', {
             Ext.each(children, function(group, idx) {
                 var fields = createFields(group),
                     single = grouped.length === 1,
-                    sections = group.sections,
+                    sections = group.sections(),
                     fieldCont, tab;
 
                 if(repeat) {
@@ -341,7 +369,7 @@ Ext.define('DMPlanner.controller.Questions', {
                 }
             });
 
-            fieldsets.push(tabs);
+            if(tabs) {fieldsets.push(tabs);}
         });
 
         return fieldsets;
