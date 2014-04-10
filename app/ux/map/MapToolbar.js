@@ -53,7 +53,9 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
      * @param {String} message The messsage to display.
      */
     showMask: function(message) {
-        var me = this, cmp = me.maskCmp === true ? me.ownerCt : me.maskCmp, m = message ? message : 'Loading Plan Features...';
+        var me = this,
+            cmp = me.maskCmp === true ? me.ownerCt : me.maskCmp,
+            m = message || 'Loading Plan Features...';
 
         if (cmp) {
             cmp.getEl().mask(m);
@@ -64,7 +66,8 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
      * Unmask the component specified by the {@link #maskCmp} config.
      */
     unmask: function() {
-        var me = this, cmp = me.maskCmp === true ? me.ownerCt : me.maskCmp;
+        var me = this,
+            cmp = me.maskCmp === true ? me.ownerCt : me.maskCmp;
 
         if (cmp) {
             cmp.getEl().unmask();
@@ -290,29 +293,28 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
 
                 if (dirty) {
                     Ext.each(vector.features, function(feature) {
-                        if (!!feature.state) {
+                        //if (!!feature.state) {
                             //destroy "deleted" features that have not been
                             // persisted
                             if (feature.fid == undefined && feature.state === OpenLayers.State.DELETE) {
                                 remove.push(feature);
-                            } else {
+                            } /*else {
                                 persisted = true;
                             }
-                        }/*else {
+                        }else {
                          persisted = true;
                          }*/
                     });
                     vector.destroyFeatures(remove);
-                    if (persisted) {
+                    //if (persisted) {
                         //me.saveStrategy.save();
                         //console.info(format.write(vector.features));
-                        mapPanel.fireEvent('plugindatachanged', mapPanel, mapPanel.planId,
-                            format.write(vector.features));
-                            DMPlanner.app.showInfo('Features Saved.');
-                            mapPanel.down('dmpfeaturegrid').getStore().sync();
-                    } else {
+                        mapPanel.down('dmpfeaturegrid').getStore().sync();
+                        mapPanel.fireEvent('plugindatachanged', mapPanel, format.write(vector.features));
+                        DMPlanner.app.showInfo('Features Saved.');
+                    /*} else {
                         this.unmask();
-                    }
+                    }*/
                 }
             },
             scope: this,
@@ -429,7 +431,11 @@ Ext.define('DMPlanner.ux.map.MapToolbar', {
 
         // Help action
         items.push(Ext.create('Ext.button.Button', {
-            text: 'Help'
+            text: 'Help',
+            handler: function(btn) {
+                var err = 'I wish I could help, but the help section hasn\'t been implemented. :-(';
+                DMPlanner.app.showError(err);
+            }
         }));
 
         Ext.apply(me, {

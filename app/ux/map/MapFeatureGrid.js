@@ -50,7 +50,7 @@ Ext.define('DMPlanner.ux.map.MapFeatureGrid', {
                     'name'
                 ]
             }),
-            height: 225,
+            height: 175,
             //split: true,
             autoScroll: true,
             title: 'Feature List',
@@ -96,7 +96,7 @@ Ext.define('DMPlanner.ux.map.MapFeatureGrid', {
             var ctl,
                 addId,
                 sel  = view.getSelectionModel().selectControl,
-                hover = this.up('dmpmappanel').down('dmpmap').map.getControlsBy('id','dmp-select-hover')[0],
+                //hover = this.up('dmpmappanel').down('dmpmap').map.getControlsBy('id','dmp-select-hover')[0],
                 store = view.getStore(),
                 edit = view.getPlugin('cellEdit');
 

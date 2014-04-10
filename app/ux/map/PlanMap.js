@@ -64,7 +64,7 @@ Ext.define('DMPlanner.ux.map.Map', {
      * @cfg {number} maxZoomOnLoad
      * The maximum zoom level for {@link #property-zoomOnLoad}
      */
-     maxZoomOnLoad: 6,
+     maxZoomOnLoad: 8,
 
     /**
      * @cfg {Ext.toolbar.Toolbar} mapToolbar
@@ -626,7 +626,28 @@ Ext.define('DMPlanner.ux.map.Map', {
             }
             vectors.addFeatures(features);
             mapPanel.down('dmpfeaturegrid').getStore().sync();
-            me.map.zoomToExtent(bounds);
+
+            if(me.zoomOnLoad && features.length) {
+                var map = me.map,
+                setZoom = function() {
+                    var zoom = map.getZoomForExtent(bounds);
+
+                    if (zoom <= me.maxZoomOnLoad) {
+                        map.zoomToExtent(bounds);
+                        //map.setCenter(bounds.getCenterLonLat(), zoom, false, false);
+                    } else {
+                        map.setCenter(bounds.getCenterLonLat(), me.maxZoomOnLoad, false, false);
+                    }
+                };
+
+                if (mapPanel.collapsed) {
+                    me.on('expand', setZoom, this, {single: true});
+                } else {
+                    //setZoom();
+                    mapPanel.on('boxready', setZoom, this, {single: true});
+                }
+            }
+            //map.zoomToExtent(bounds);
         }
     }
 });
