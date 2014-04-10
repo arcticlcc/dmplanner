@@ -43,7 +43,7 @@ Ext.define('DMPlanner.ux.Keywords', {
     },
 
     initComponent: function() {
-        var me = this, keywordtree, keywords,
+        var me = this, keywordtree, keywords, keywordStore,
             addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>',
             removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>',
             helpCol = {
@@ -130,10 +130,10 @@ Ext.define('DMPlanner.ux.Keywords', {
             });
         }
 
-        if (!Ext.getStore('PlanKeywords')) {
-            Ext.create('Ext.data.Store', {
+        //if (!Ext.getStore('PlanKeywords')) {
+            keywordStore = Ext.create('Ext.data.Store', {
                 model: 'KeywordNode',
-                storeId: 'PlanKeywords',
+                //storeId: 'PlanKeywords',
                 //autoLoad: false,
                 autoDestroy: true,
                 data: me.data,
@@ -156,7 +156,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                     scope: me
                 }
             });
-        }
+        //}
 
         if (!Ext.getStore('KeywordNodes')) {
             Ext.create('Ext.data.TreeStore', {
@@ -258,7 +258,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                         }
                     }
                 },
-                store: 'PlanKeywords',
+                store: keywordStore,
                 columns: [{
                         xtype: 'templatecolumn',
                         width: 28,
