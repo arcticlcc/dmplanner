@@ -49,6 +49,53 @@
                   ]
                 }
               }
+            ]
+          }
+        ]
+      }, {
+        "name": "Single Group with Sections",
+        "groups": [
+          {
+            "name": "Your information",
+            "repeatable": false,
+            "questions": [
+              {
+                "question": "First name",
+                "guidance": "Enter your first name.",
+                "defAnswer": "Joe"
+              }, {
+                "question": "Last name"
+              }, {
+
+                "question": "Occupation"
+              }, {
+                "question": "Age",
+                "config": {
+                  "xtype": "numberfield",
+                  "maxWidth": 250
+                }
+              }, {
+                "question": "Gender",
+                "defAnswer": {
+                  "gender": "f"
+                },
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Male",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f"
+                    }
+                  ]
+                }
+              }
             ],
             "sections": [
               {
@@ -56,8 +103,7 @@
                 "config": {
                   "xtype": "dmpmappanel"
                 }
-              },
-              {
+              }, {
                 "name": "Keywords",
                 "config": {
                   "xtype": "dmpkeywords"
@@ -67,7 +113,114 @@
           }
         ]
       }, {
-        "name": "Contact Info",
+        "name": "Repeating Group",
+        "groups": [
+          {
+            "name": "Your information",
+            "repeatable": true,
+            "questions": [
+              {
+                "question": "First name",
+                "guidance": "Enter your first name.",
+                "defAnswer": "Joe"
+              }, {
+                "question": "Last name"
+              }, {
+
+                "question": "Occupation"
+              }, {
+                "question": "Age",
+                "config": {
+                  "xtype": "numberfield",
+                  "maxWidth": 250
+                }
+              }, {
+                "question": "Gender",
+                "defAnswer": {
+                  "gender": "f"
+                },
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Male",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }, {
+        "name": "Repeating Group with Sections",
+        "groups": [
+          {
+            "name": "Your information",
+            "repeatable": true,
+            "questions": [
+              {
+                "question": "First name",
+                "guidance": "Enter your first name.",
+                "defAnswer": "Joe"
+              }, {
+                "question": "Last name"
+              }, {
+
+                "question": "Occupation"
+              }, {
+                "question": "Age",
+                "config": {
+                  "xtype": "numberfield",
+                  "maxWidth": 250
+                }
+              }, {
+                "question": "Gender",
+                "defAnswer": {
+                  "gender": "f"
+                },
+                "config": {
+                  "xtype": "radiogroup",
+                  "columns": 2,
+                  "vertical": true,
+                  "items": [
+                    {
+                      "boxLabel": "Male",
+                      "name": "gender",
+                      "inputValue": "m"
+                    }, {
+                      "boxLabel": "Female",
+                      "name": "gender",
+                      "inputValue": "f"
+                    }
+                  ]
+                }
+              }
+            ],
+            "sections": [
+              {
+                "name": "Map",
+                "config": {
+                  "xtype": "dmpmappanel"
+                }
+              }, {
+                "name": "Keywords",
+                "config": {
+                  "xtype": "dmpkeywords"
+                }
+              }
+            ]
+          }
+        ]
+      }, {
+        "name": "Multiple Groups",
         "groups": [
           {
             "name": "Your information",

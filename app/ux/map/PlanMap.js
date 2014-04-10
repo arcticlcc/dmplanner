@@ -641,7 +641,7 @@ Ext.define('DMPlanner.ux.map.Map', {
                 };
 
                 if (mapPanel.collapsed) {
-                    me.on('expand', setZoom, this, {single: true});
+                    mapPanel.on('expand', setZoom, this, {single: true});
                 } else {
                     //setZoom();
                     mapPanel.on('boxready', setZoom, this, {single: true});

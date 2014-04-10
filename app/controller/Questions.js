@@ -282,6 +282,7 @@ Ext.define('DMPlanner.controller.Questions', {
                                 groupId = uuid(),
                                 template= tabs.groupTemplate,
                                 store = Ext.getStore('Plans').getById(template.planId).sections().getById(template.sectionId).groups(),
+                                newGroup,
                                 insTab;
 
                             template.id = groupId;
@@ -293,13 +294,20 @@ Ext.define('DMPlanner.controller.Questions', {
                                 q.answer = q.defAnswer;
                             });
 
+                            Ext.each(template.sections, function(q){
+                                q.id = uuid();
+                                q.groupId = groupId;
+                            });
+
                             store.loadRawData(template, true);
                             cntrl.fireEvent('planupdate', template.planId);
+                            newGroup = store.getById(groupId);
 
                             insTab = createTab(
-                                createFields(store.getById(groupId)),
+                                createFields(newGroup),
                                 Ext.String.format('{0} {1}',template.name, tabs.items.length + 1),
-                                template.width,false
+                                template.width,
+                                newGroup.sections()
                             );
                             tabs.setActiveTab(tabs.add(insTab));
                         }
