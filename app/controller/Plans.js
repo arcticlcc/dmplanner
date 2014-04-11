@@ -100,10 +100,20 @@ Ext.define('DMPlanner.controller.Plans', {
         //var lev = level !== undefined ? level : DMPlanner.util.LevelFilter.value;
         var store = this.getPlansStore(),
             sm = this.getPlanList().getSelectionModel(),
-            sel = sm.getSelection();
+            secSm = this.getSectionList().getSelectionModel();
+            plan = sm.getSelection(),
+            sec = secSm.getSelection();
 
+        secSm.deselectAll();
+        sm.deselectAll();
         if(store.count()) {
-            sm.select(sel[0]);
+            sm.select(plan[0]);
+            if(secSm.getStore().indexOf(sec[0]) > -1) {
+                secSm.select(sec[0]);
+            } else {
+                secSm.select(0);
+            }
+
         }
 
     },
