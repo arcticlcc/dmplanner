@@ -16,6 +16,10 @@ Ext.define('DMPlanner.model.Section', {
         name: 'sectionId',
         type: 'auto'
     }, {
+        name: 'level',
+        type: 'int',
+        defaultValue: 0
+    }, {
         name: 'name',
         type: 'auto'
     }, {

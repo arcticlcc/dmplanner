@@ -6,8 +6,8 @@
  */
 Ext.Loader.addClassPathMappings({
   "DMPlanner": "app",
+  "DMPlanner.app.Settings": "app/Application.js",
   "DMPlanner.data.PlanTemplate": "app/Application.js",
-  "DMPlanner.ux.map.Map": "app/ux/map/PlanMap.js",
   "Ext": "ext/src",
   "Ext.Msg": "ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "ext/src/rtl/EventObject.js",
@@ -50,8 +50,10 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
+  "DMPlanner.app.Settings": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
+  "DMPlanner.controller.Settings": [],
   "DMPlanner.controller.Start": [],
   "DMPlanner.data.PlanTemplate": [],
   "DMPlanner.model.Group": [],
@@ -61,16 +63,18 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.model.Section": [],
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
+  "DMPlanner.util.LevelFilter": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
-  "DMPlanner.ux.map.Map": [],
   "DMPlanner.ux.map.MapFeatureGrid": [],
   "DMPlanner.ux.map.MapPanel": [],
   "DMPlanner.ux.map.MapToolbar": [],
+  "DMPlanner.ux.map.PlanMap": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
   "DMPlanner.view.Section": [],
   "DMPlanner.view.SectionList": [],
+  "DMPlanner.view.Settings": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
   "Ext.AbstractComponent": [],
@@ -1050,8 +1054,10 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
+  "DMPlanner.app.Settings": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
+  "DMPlanner.controller.Settings": [],
   "DMPlanner.controller.Start": [],
   "DMPlanner.data.PlanTemplate": [],
   "DMPlanner.model.Group": [],
@@ -1061,12 +1067,10 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.model.Section": [],
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
+  "DMPlanner.util.LevelFilter": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"
-  ],
-  "DMPlanner.ux.map.Map": [
-    "widget.dmpmap"
   ],
   "DMPlanner.ux.map.MapFeatureGrid": [
     "widget.dmpfeaturegrid"
@@ -1076,6 +1080,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "DMPlanner.ux.map.MapToolbar": [
     "widget.maptoolbar"
+  ],
+  "DMPlanner.ux.map.PlanMap": [
+    "widget.dmpmap"
   ],
   "DMPlanner.view.PlanList": [
     "widget.planlist"
@@ -1088,6 +1095,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "DMPlanner.view.SectionList": [
     "widget.sectionlist"
+  ],
+  "DMPlanner.view.Settings": [
+    "widget.dmpsettings"
   ],
   "DMPlanner.view.Start": [
     "widget.start"

@@ -1,6 +1,6 @@
 Ext.define('DMPlanner.controller.Plans', {
     extend : 'Ext.app.Controller',
-    requires: ['DMPlanner.util.UUID'],
+    requires: ['DMPlanner.util.UUID', 'DMPlanner.util.LevelFilter'],
 
     models : [//
     'Plan', //
@@ -47,6 +47,9 @@ Ext.define('DMPlanner.controller.Plans', {
                 '*': {
                     clickaddplanbtn: this.onAddNewPlan,
                     planupdate: this.onPlanUpdate
+                },
+                '#Settings': {
+                    changelevel: this.onChangeLevel
                 }
             },
 
@@ -73,16 +76,36 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     loadSections : function(grid, record) {
-        var sections = this.getSectionList(), sectionRec, questions;
+        var sections = this.getSectionList(),
+            store = record.sections(),
+            sectionRec,
+            questions;
 
         sections.show();
 
-        sections.reconfigure(record.sections());
+        store.filter(DMPlanner.util.LevelFilter);
+        sections.reconfigure(store);
 
         sectionRec = sections.getStore().getAt(0);
         if (sectionRec) {
             sections.getSelectionModel().select([sectionRec]);
         }
+    },
+
+    /**
+     * Handle change to DMP level, reselect current plan
+     * @param {Integer} level  Defaults to DMPlanner.util.LevelFilter.value.
+     */
+    onChangeLevel: function(level) {
+        //var lev = level !== undefined ? level : DMPlanner.util.LevelFilter.value;
+        var store = this.getPlansStore(),
+            sm = this.getPlanList().getSelectionModel(),
+            sel = sm.getSelection();
+
+        if(store.count()) {
+            sm.select(sel[0]);
+        }
+
     },
 
     /**
@@ -218,14 +241,15 @@ Ext.define('DMPlanner.controller.Plans', {
      * Adds a new plan.
      * @param {String} [planName] The plan name
      * @param {String} [planCode] The plan code
-     * @param {String} [templateId='default'] The id of the template to use for new Plan
+     * @param {String} [templateIdx=0] The index of the template to use for new Plan
      */
-    addPlan: function(planName, planCode, templateId) {
+    addPlan: function(planName, planCode, templateIdx) {
         var ctr = this, newRec,
             plans = DMPlanner.data.PlanTemplate.plans,
             store = ctr.getPlansStore(),
             count = store.count() + 1,
-            template = Ext.clone(templateId ? plans[templateId] : plans['default']);
+            templateIdx = templateIdx || 0,
+            template = Ext.clone(plans[templateIdx]);
 
         //set name and code
         template.name = planName || template.name || 'My Plan ' + count;

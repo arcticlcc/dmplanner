@@ -55,6 +55,12 @@ Ext.define("DMPlanner.view.PlanList", {
     }, {
         type : 'help',
         tooltip : 'Get Help'
+    }, {
+        type : 'gear',
+        tooltip : 'Settings',
+        handler: function() {
+            DMPlanner.app.Settings.show();
+        }
     },{
         type: 'mytool',
         tooltip: 'GitHub',
@@ -63,7 +69,7 @@ Ext.define("DMPlanner.view.PlanList", {
             '<img id="{id}-toolEl" src="{blank}" class="{baseCls}-{type}" role="presentation"/>',
             '<span class="fa">&#xf09b;</span>'
         ],
-        handler: function () {
+        handler: function() {
             var ico = '<span class="fa" style="font-size:30px;margin-right:5px;">&#xf09b;</span>';
             Ext.Msg.show({
                  title:'Fork Me!',

@@ -12,7 +12,7 @@ Ext.define('DMPlanner.Application', {
 
     extend: 'Ext.app.Application',
 
-    requires:['Ext.ux.window.Notification'],
+    requires:['Ext.ux.window.Notification','DMPlanner.util.LevelFilter'],
 
     views: [
     // TODO: add views here
@@ -22,7 +22,8 @@ Ext.define('DMPlanner.Application', {
     // TODO: add controllers here
         'Start',//
         'Plans',//
-        'Questions'
+        'Questions',//
+        'Settings'
     ],
 
     stores: [
@@ -31,7 +32,17 @@ Ext.define('DMPlanner.Application', {
         'LocalPlans'
     ],
 
+    /**
+     * @cfg {Integer} dmpLevel (required)
+     * The default level at which to filter plan elements.
+     * The value is used to filter plan store, see {@link DMPlanner.util.LevelFilter LevelFilter}
+     */
+    dmpLevel: 0,
+
     launch: function() {
+        //set default level
+        DMPlanner.util.LevelFilter.value = this.dmpLevel;
+
         //Use Notifications for Ext errors
         Ext.Error.handle = function(err) {
             DMPlanner.app.showError(err.msg);
@@ -46,7 +57,14 @@ Ext.define('DMPlanner.Application', {
                 Ext.define('DMPlanner.data.PlanTemplate', {
                     singleton: true,
 
-                    plans: obj
+                    plans: obj.templates,
+                    levels: obj.levels
+                });
+
+                //instantiate the settings window
+                Ext.define('DMPlanner.app.Settings', {
+                    extend: 'DMPlanner.view.Settings',
+                    singleton: true
                 });
 
                 this.getLocalPlansStore().load({

@@ -12,7 +12,7 @@ Ext.define('DMPlanner.ux.map.MapPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.dmpmappanel',
     requires: [//
-        'DMPlanner.ux.map.Map', //
+        'DMPlanner.ux.map.PlanMap', //
         'DMPlanner.ux.map.MapFeatureGrid'//
     ],
 

@@ -2,7 +2,7 @@
  * Plan map with optional toolbar.
  */
 
-Ext.define('DMPlanner.ux.map.Map', {
+Ext.define('DMPlanner.ux.map.PlanMap', {
     extend: 'GeoExt.panel.Map',
     alias: 'widget.dmpmap',
     requires: [

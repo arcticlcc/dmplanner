@@ -460,6 +460,17 @@
         "name": "Section",
         "viewFileName": "Section"
       }
+    },
+    "app/controller/Settings.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "DMPlanner",
+        "controllerName": "Settings",
+        "controllerFileName": "Settings",
+        "name": "Settings",
+        "controllerNamespace": "DMPlanner.controller"
+      }
     }
   }
 }

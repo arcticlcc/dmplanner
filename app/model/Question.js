@@ -14,6 +14,10 @@ Ext.define('DMPlanner.model.Question', {
     }, {
         name : 'index'
     }, {
+        name: 'level',
+        type: 'int',
+        defaultValue: 0
+    }, {
         name : 'question'
     }, {
         name : 'guidance'

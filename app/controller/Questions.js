@@ -101,6 +101,9 @@ Ext.define('DMPlanner.controller.Questions', {
             questions;
         //@format:on
 
+        //filter on level
+        groups.filter(DMPlanner.util.LevelFilter);
+
         cont.removeAll();
         bbar.removeAll();
 
@@ -222,9 +225,13 @@ Ext.define('DMPlanner.controller.Questions', {
         };
 
         createFields = function(group) {
-            var fields = [];
+            var fields = [],
+                questions = group.questions();
 
-            group.questions().each(function(question) {
+            //filter on level
+            questions.filter(DMPlanner.util.LevelFilter);
+
+            questions.each(function(question) {
                 var info = question.get('guidance'),
                     field = Ext.apply({
                         fieldLabel : question.get('question'),
@@ -336,6 +343,9 @@ Ext.define('DMPlanner.controller.Questions', {
                     single = grouped.length === 1,
                     sections = group.sections(),
                     fieldCont, tab;
+
+                //filter on level
+                sections.filter(DMPlanner.util.LevelFilter);
 
                 if(repeat) {
                     //set the index based on order of appearance
