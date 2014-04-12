@@ -48,11 +48,17 @@
                 minify
                 --from=${basedir}/lib/openlayers/OpenLayers.debug.js
                 --to=${build.compile.temp.dir}/out.js
-                --compressor=closurecompiler
+                --closure
+                and
+                minify
+                --from=${basedir}/lib/filesaver/FileSaver.js
+                --to=${build.compile.temp.dir}/fsout.js
+                --closure
                 and
                 concatenate
-                --from=${build.compile.temp.dir}/out.js,${build.classes.file}.tmp
+                --from=${build.compile.temp.dir}/out.js,${basedir}/lib/jspdf/dist/jspdf.min.js,${build.compile.temp.dir}/fsout.js,${build.classes.file}.tmp
                 --to=${build.classes.file}</x-sencha-command>
+            <delete file="${build.compile.temp.dir}/fsout.js" />
             <delete file="${build.compile.temp.dir}/out.js" />
             <delete file="${build.classes.file}.tmp" />
         </x-run-if-true>

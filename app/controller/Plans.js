@@ -1,3 +1,6 @@
+/*
+ * @requires jsPDF
+ */
 Ext.define('DMPlanner.controller.Plans', {
     extend : 'Ext.app.Controller',
     requires: ['DMPlanner.util.UUID', 'DMPlanner.util.LevelFilter'],
@@ -35,6 +38,9 @@ Ext.define('DMPlanner.controller.Plans', {
             },
             'planlist tool[type=help]':{
                 click: this.onHelpClick
+            },
+            'planlist tool[type=save]':{
+                click: this.onSaveClick
             },
             'planlist templatecolumn[action=deleteplan]':{
                 click: this.onDeleteClick
@@ -100,7 +106,7 @@ Ext.define('DMPlanner.controller.Plans', {
         //var lev = level !== undefined ? level : DMPlanner.util.LevelFilter.value;
         var store = this.getPlansStore(),
             sm = this.getPlanList().getSelectionModel(),
-            secSm = this.getSectionList().getSelectionModel();
+            secSm = this.getSectionList().getSelectionModel(),
             plan = sm.getSelection(),
             sec = secSm.getSelection();
 
@@ -158,6 +164,24 @@ Ext.define('DMPlanner.controller.Plans', {
     onHelpClick: function(btn) {
         var err = 'I wish I could help, but the help section hasn\'t been implemented. :-(';
         DMPlanner.app.showError(err);
+    },
+
+    /**
+     * Click event handler for save button.
+     */
+    onSaveClick: function(btn) {
+        var store = this.getPlansStore(),
+            plans = [],
+            blob;
+
+        store.each(function(plan){
+            plans.push(store.getProxy().getWriter().getRecordData(plan));
+
+        });
+
+        blob = new Blob([JSON.stringify(plans, undefined, 2)], {type: "text/plain;charset=utf-8"});
+
+        saveAs(blob, "MyDMPlans_" + Ext.Date.format(new Date(), 'Ymd') + ".json");
     },
 
     /**
