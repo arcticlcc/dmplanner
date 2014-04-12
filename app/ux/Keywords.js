@@ -57,7 +57,8 @@ Ext.define('DMPlanner.ux.Keywords', {
             testDuplicate = function(node, data, overModel, dropPosition, dropHandlers) {
                 var store = this.down('#planKeywords').getStore(),
                     draggedRecords = data.records,
-                    ln = draggedRecords.length;
+                    ln = draggedRecords.length,
+                    i, record;
 
                 for (i = 0; i < ln; i++) {
                     record = draggedRecords[i];

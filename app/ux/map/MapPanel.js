@@ -25,11 +25,10 @@ Ext.define('DMPlanner.ux.map.MapPanel', {
      */
 
     initComponent: function() {
-        var me = this;
-
-        vec = new OpenLayers.Layer.Vector("Plan Features", {
-            visibility: true
-        });
+        var me = this,
+            vec = new OpenLayers.Layer.Vector("Plan Features", {
+                visibility: true
+            });
 
         Ext.applyIf(me, {
             dmpPlugin: true,

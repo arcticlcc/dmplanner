@@ -98,7 +98,7 @@ Ext.define('DMPlanner.controller.Questions', {
             isLastSection = (count - index) === 1,
             isFirstSection = (count - index) === count,
             buttons = [],
-            questions;
+            questions, clone;
         //@format:on
 
         //filter on level
