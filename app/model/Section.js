@@ -54,6 +54,7 @@ Ext.define('DMPlanner.model.Section', {
             storeId: 'Groups'
         }
     }],
+    clearFilters: true,
 
     proxy: {
         type: 'memory'

@@ -37,6 +37,7 @@ Ext.define('DMPlanner.model.Question', {
         foreignKey : 'groupId',
         getterName: 'getDMPGroup'
     }],
+    clearFilters: true,
 
     proxy : {
         type : 'memory'

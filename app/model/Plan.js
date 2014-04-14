@@ -28,7 +28,7 @@ Ext.define('DMPlanner.model.Plan', {
             type: 'json'
         }
     },
-
+    clearFilters: true,
     fields: [{
         name: 'id'
     }, {

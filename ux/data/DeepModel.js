@@ -11,10 +11,17 @@ Ext.define('Ext.ux.data.DeepModel', {
 
     writeStructuredData: true,
 
+    /**
+     * @cfg {Boolean} [clearFilters=false]
+     * `true` if any filters on associated stores should be cleared before writing data.
+     * If set to `false`, only filtered data will be written.
+     */
+    clearFilters: false,
+
     getWriteData: function() {
         var data = this.getRecordWriteData(this),
             associations = this.associations.items,
-            association, type, name, associatedStore,
+            association, type, name, associatedStore, filters,
             associatedRecords, associatedRecord,
             a, aLen, r, rLen;
 
@@ -24,7 +31,7 @@ Ext.define('Ext.ux.data.DeepModel', {
             type = association.type;
             name = association.name;
 
-            if (type == 'hasMany') {
+            if (type === 'hasMany') {
 
                 associatedStore = this[association.storeName];
                 // Initialize the array for this association
@@ -32,6 +39,14 @@ Ext.define('Ext.ux.data.DeepModel', {
 
                 // If the association's loaded, process its records
                 if (associatedStore && associatedStore.getCount() > 0) {
+                    //clear the filters
+                    if(this.clearFilters) {
+                        //copy for later
+                        filters = associatedStore.filters.clone();
+
+                        associatedStore.clearFilter(true);
+                    }
+
                     associatedRecords = associatedStore.data.items;
 
                     // Append data for each record
@@ -39,9 +54,16 @@ Ext.define('Ext.ux.data.DeepModel', {
                         //recursively call for models with getWriteData method
                         data[name][r] = associatedRecords[r] instanceof Ext.ux.data.DeepModel ? this.getWriteData.call(associatedRecords[r]) : this.getRecordWriteData(associatedRecords[r]);
                     }
+
+                    //re-apply the filters
+                    if(this.clearFilters) {
+                        associatedStore.filters = filters;
+                        associatedStore.filter();
+                    }
                 }
 
-            } else if (type == 'hasOne') {
+
+            } else if (type === 'hasOne') {
                 associatedRecord = this[association.instanceName];
                 // If the record exists, append its data
                 if (associatedRecord !== undefined) {
