@@ -36,7 +36,7 @@ Ext.define('DMPlanner.controller.Questions', {
              click : this.finishPlsn
              },*/
 
-             'questions field, questions htmleditor, #sectionContainer>#questionTabs field, #sectionContainer>#questionTabs htmleditor' : {
+             '#questionCont field, #questionCont htmleditor, #sectionContainer>#questionTabs field, #sectionContainer>#questionTabs htmleditor' : {
                 change : this.saveItem
              }
         });
@@ -119,6 +119,7 @@ Ext.define('DMPlanner.controller.Questions', {
             //create questions form
             questions = {
                 xtype: 'questions',
+                itemId: 'questionCont',
                 bodyPadding: 15,
                 flex: 1,
                 width: '100%',
@@ -180,6 +181,7 @@ Ext.define('DMPlanner.controller.Questions', {
             var num =  sections ? sections.count() : 0,
                 cfg = {
                     xtype: num ? 'panel' : 'fieldcontainer',
+                    itemId: 'questionCont',
                     bodyPadding: num ? 15 : undefined,
                     padding: num ? undefined : 15,
                     title: num ? 'Questions' : title,
