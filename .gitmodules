@@ -7,3 +7,6 @@
 [submodule "lib/filesaver"]
 	path = lib/filesaver
 	url = git@github.com:eligrey/FileSaver.js.git
+[submodule "lib/filereader"]
+	path = lib/filereader
+	url = git@github.com:jlblcc/filereader.js.git
