@@ -78,7 +78,20 @@ Ext.define('DMPlanner.Application', {
                                 Ext.get('loading-mask').fadeOut({
                                     remove: true
                                 });
+
+                                if(Ext.isIE9p) {
+                                    Ext.Msg.show({
+                                        title: 'Old browser!',
+                                        msg: 'You\'re using an older version of Internet Explorer(' + Ext.ieVersion + '). ' +
+                                            'Saving to local files and printing is <b>not</b> supported. ' +
+                                            'Please upgrade to IE10+(or another modern browser) for full support.',
+                                        width: 350,
+                                        buttons: Ext.Msg.OK,
+                                        icon: Ext.window.MessageBox.WARNING
+                                    });
+                                }
                             }, 250);
+
                         }
                     }
                 });
