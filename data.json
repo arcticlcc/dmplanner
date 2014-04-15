@@ -1,355 +1,364 @@
 {
-  "default": {
-    "templateTitle": "",
-    "version": '0.0.0',
-    "name": null,
-    "code": null,
-    "sections": [
-      {
-        "name": "Single Group",
-        "groups": [
-          {
-            "name": "Your information",
-            "repeatable": false,
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "defAnswer": "Joe"
-              }, {
-                "question": "Last name"
-              }, {
+  "levels": ['Base', 'Steward'],
+  "templates": [
+    {
+      "templateTitle": "",
+      "version": '0.0.0',
+      "name": null,
+      "code": null,
+      "sections": [
+        {
+          "name": "Single Group",
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": false,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "Joe"
+                }, {
+                  "question": "Last name",
+                  "level": 1
+                }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield",
-                  "maxWidth": 250
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "Gender",
+                  "defAnswer": {
+                    "gender": "f"
+                  },
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Male",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "Female",
+                        "name": "gender",
+                        "inputValue": "f"
+                      }
+                    ]
+                  }
                 }
-              }, {
-                "question": "Gender",
-                "defAnswer": {
-                  "gender": "f"
-                },
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f"
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      }, {
-        "name": "Single Group with Sections",
-        "groups": [
-          {
-            "name": "Your information",
-            "repeatable": false,
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "defAnswer": "Joe"
-              }, {
-                "question": "Last name"
-              }, {
+              ]
+            }
+          ]
+        }, {
+          "name": "Single Group with Sections",
+          "level": 1,
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": false,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "Joe"
+                }, {
+                  "question": "Last name"
+                }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield",
-                  "maxWidth": 250
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "Gender",
+                  "defAnswer": {
+                    "gender": "f"
+                  },
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Male",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "Female",
+                        "name": "gender",
+                        "inputValue": "f"
+                      }
+                    ]
+                  }
                 }
-              }, {
-                "question": "Gender",
-                "defAnswer": {
-                  "gender": "f"
-                },
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f"
-                    }
-                  ]
+              ],
+              "sections": [
+                {
+                  "name": "Map",
+                  "level": 1,
+                  "config": {
+                    "xtype": "dmpmappanel"
+                  }
+                }, {
+                  "name": "Keywords",
+                  "config": {
+                    "xtype": "dmpkeywords"
+                  }
                 }
-              }
-            ],
-            "sections": [
-              {
-                "name": "Map",
-                "config": {
-                  "xtype": "dmpmappanel"
-                }
-              }, {
-                "name": "Keywords",
-                "config": {
-                  "xtype": "dmpkeywords"
-                }
-              }
-            ]
-          }
-        ]
-      }, {
-        "name": "Repeating Group",
-        "groups": [
-          {
-            "name": "Your information",
-            "repeatable": true,
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "defAnswer": "Joe"
-              }, {
-                "question": "Last name"
-              }, {
+              ]
+            }
+          ]
+        }, {
+          "name": "Repeating Group",
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "Joe"
+                }, {
+                  "question": "Last name"
+                }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield",
-                  "maxWidth": 250
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "Gender",
+                  "defAnswer": {
+                    "gender": "f"
+                  },
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Male",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "Female",
+                        "name": "gender",
+                        "inputValue": "f"
+                      }
+                    ]
+                  }
                 }
-              }, {
-                "question": "Gender",
-                "defAnswer": {
-                  "gender": "f"
-                },
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f"
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        ]
-      }, {
-        "name": "Repeating Group with Sections",
-        "groups": [
-          {
-            "name": "Your information",
-            "repeatable": true,
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "defAnswer": "Joe"
-              }, {
-                "question": "Last name"
-              }, {
+              ]
+            }
+          ]
+        }, {
+          "name": "Repeating Group with Sections",
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "Joe"
+                }, {
+                  "question": "Last name"
+                }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield",
-                  "maxWidth": 250
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "Gender",
+                  "defAnswer": {
+                    "gender": "f"
+                  },
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Male",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "Female",
+                        "name": "gender",
+                        "inputValue": "f"
+                      }
+                    ]
+                  }
                 }
-              }, {
-                "question": "Gender",
-                "defAnswer": {
-                  "gender": "f"
-                },
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f"
-                    }
-                  ]
+              ],
+              "sections": [
+                {
+                  "name": "Map",
+                  "level": 1,
+                  "config": {
+                    "xtype": "dmpmappanel"
+                  }
+                }, {
+                  "name": "Keywords",
+                  "config": {
+                    "xtype": "dmpkeywords"
+                  }
                 }
-              }
-            ],
-            "sections": [
-              {
-                "name": "Map",
-                "config": {
-                  "xtype": "dmpmappanel"
-                }
-              }, {
-                "name": "Keywords",
-                "config": {
-                  "xtype": "dmpkeywords"
-                }
-              }
-            ]
-          }
-        ]
-      }, {
-        "name": "Multiple Groups",
-        "groups": [
-          {
-            "name": "Your information",
-            "repeatable": true,
-            "questions": [
-              {
-                "question": "First name",
-                "guidance": "Enter your first name.",
-                "defAnswer": "First"
-              }, {
-                "question": "Last name"
-              }, {
+              ]
+            }
+          ]
+        }, {
+          "name": "Multiple Groups",
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "First"
+                }, {
+                  "question": "Last name"
+                }, {
 
-                "question": "Occupation"
-              }, {
-                "question": "Age",
-                "config": {
-                  "xtype": "numberfield",
-                  "maxWidth": 250
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "Gender",
+                  "config": {
+                    "xtype": "radiogroup",
+                    "maxWidth": 300,
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Male",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "Female",
+                        "name": "gender",
+                        "inputValue": "f",
+                        "checked": true
+                      }
+                    ]
+                  }
                 }
-              }, {
-                "question": "Gender",
-                "config": {
-                  "xtype": "radiogroup",
-                  "maxWidth": 300,
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Male",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "Female",
-                      "name": "gender",
-                      "inputValue": "f",
-                      "checked": true
-                    }
-                  ]
+              ]
+            }, {
+              "name": "Other information",
+              "level": 1,
+              "width": 800,
+              "questions": [
+                {
+                  "question": "Position",
+                  "config": {
+                    "xtype": "htmleditor"
+                  }
+                }, {
+                  "question": "Metric"
+                }, {
+                  "question": "Total # Files",
+                  "config": {
+                    "xtype": "numberfield"
+                  }
+                }, {
+                  "question": "Archived",
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Yes",
+                        "name": "gender",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "No",
+                        "name": "gender",
+                        "inputValue": "f",
+                        "checked": true
+                      }
+                    ]
+                  }
+                }, {
+                  "question": "Rate Me",
+                  "guidance": "Use the slider to enter a rating",
+                  "defAnswer": 5,
+                  "config": {
+                    "xtype": "slider",
+                    'width': 200,
+                    'increment': 1,
+                    'minValue': 0,
+                    'maxValue': 10
+                  }
                 }
-              }
-            ]
-          }, {
-            "name": "Other information",
-            "width": 800,
-            "questions": [
-              {
-                "question": "Position",
-                "config": {
-                  "xtype": "htmleditor"
-                }
-              }, {
-                "question": "Metric"
-              }, {
-                "question": "Total # Files",
-                "config": {
-                  "xtype": "numberfield"
-                }
-              }, {
-                "question": "Archived",
-                "config": {
-                  "xtype": "radiogroup",
-                  "columns": 2,
-                  "vertical": true,
-                  "items": [
-                    {
-                      "boxLabel": "Yes",
-                      "name": "gender",
-                      "inputValue": "m"
-                    }, {
-                      "boxLabel": "No",
-                      "name": "gender",
-                      "inputValue": "f",
-                      "checked": true
-                    }
-                  ]
-                }
-              }, {
-                "question": "Rate Me",
-                "guidance": "Use the slider to enter a rating",
-                "defAnswer": 5,
-                "config": {
-                  "xtype": "slider",
-                  'width': 200,
-                  'increment': 1,
-                  'minValue': 0,
-                  'maxValue': 10
-                }
-              }
-            ]
-          }
-        ]
-      }, {
-        "name": "Keywords",
+              ]
+            }
+          ]
+        }, {
+          "name": "Keywords",
 
-        "config": {
-          "xtype": "dmpkeywords",
-          "header": false
-        },
-        "data": [
-          {
-            "keywordid": "690be4e9-c48c-4442-8b86-3d0a51abb0c1",
-            "text": "AAO",
-            "definition": null,
-            "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS -> ATMOSPHERIC/OCEAN INDICATORS -> TELECONNECTIONS -> ANTARCTIC OSCILLATION -> AAO"
-          }, {
-            "keywordid": "99db4dca-4d07-48fd-8ba3-393532d04aa6",
-            "text": "ABLATION",
-            "definition": "The process of removal of material from the surface of an object by vaporization, chipping, or other erosive processes. The term occurs in spaceflight associated with atmospheric reentry, in glaciology, medicine, and passive fire protection.",
-            "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH -> GEOMORPHIC LANDFORMS/PROCESSES -> GLACIAL PROCESSES -> ABLATION"
-          }, {
-            "keywordid": "95fbaefd-1afe-4887-a1ba-fc338a8109bb",
-            "text": "ABLATION ZONES/ACCUMULATION ZONES",
-            "definition": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation. \r\n",
-            "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
+          "config": {
+            "xtype": "dmpkeywords",
+            "header": false
+          },
+          "data": [
+            {
+              "keywordid": "690be4e9-c48c-4442-8b86-3d0a51abb0c1",
+              "text": "AAO",
+              "definition": null,
+              "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS -> ATMOSPHERIC/OCEAN INDICATORS -> TELECONNECTIONS -> ANTARCTIC OSCILLATION -> AAO"
+            }, {
+              "keywordid": "99db4dca-4d07-48fd-8ba3-393532d04aa6",
+              "text": "ABLATION",
+              "definition": "The process of removal of material from the surface of an object by vaporization, chipping, or other erosive processes. The term occurs in spaceflight associated with atmospheric reentry, in glaciology, medicine, and passive fire protection.",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH -> GEOMORPHIC LANDFORMS/PROCESSES -> GLACIAL PROCESSES -> ABLATION"
+            }, {
+              "keywordid": "95fbaefd-1afe-4887-a1ba-fc338a8109bb",
+              "text": "ABLATION ZONES/ACCUMULATION ZONES",
+              "definition": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation. \r\n",
+              "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
+            }
+          ]
+        }, {
+          "name": "Map",
+          "config": {
+            "xtype": "dmpmappanel"
           }
-        ]
-      }, {
-        "name": "Map",
-        "config": {
-          "xtype": "dmpmappanel"
+        }, {
+          "name": "Map with title",
+          "level": 1,
+          "config": {
+            "xtype": "dmpmappanel",
+            "title": "Plan Features"
+          }
         }
-      }, {
-        "name": "Map with title",
-        "config": {
-          "xtype": "dmpmappanel",
-          "title": "Plan Features"
-        }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }
