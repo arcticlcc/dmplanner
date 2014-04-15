@@ -1,9 +1,9 @@
 {
-  "levels": ['Base', 'Steward'],
+  "levels": ["Base", "Steward"],
   "templates": [
     {
       "templateTitle": "",
-      "version": '0.0.0',
+      "version": "0.0.0",
       "name": null,
       "code": null,
       "sections": [
@@ -311,10 +311,10 @@
                   "defAnswer": 5,
                   "config": {
                     "xtype": "slider",
-                    'width': 200,
-                    'increment': 1,
-                    'minValue': 0,
-                    'maxValue': 10
+                    "width": 200,
+                    "increment": 1,
+                    "minValue": 0,
+                    "maxValue": 10
                   }
                 }
               ]
