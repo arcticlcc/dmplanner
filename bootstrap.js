@@ -64,6 +64,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.LevelFilter": [],
+  "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.ux.map.MapFeatureGrid": [],
@@ -1068,6 +1069,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.LevelFilter": [],
+  "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"

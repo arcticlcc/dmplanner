@@ -12,7 +12,7 @@ Ext.define('DMPlanner.Application', {
 
     extend: 'Ext.app.Application',
 
-    requires:['Ext.ux.window.Notification','DMPlanner.util.LevelFilter'],
+    requires:['Ext.ux.window.Notification','DMPlanner.util.LevelFilter','DMPlanner.util.Printer'],
 
     views: [
     // TODO: add views here
