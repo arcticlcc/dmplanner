@@ -48,7 +48,7 @@ Ext.define("DMPlanner.view.PlanList", {
         itemId : 'addPlan'
     }, {
         type : 'print',
-        tooltip : 'Print to PDF'
+        tooltip : 'Print Plan'
     }, {
         type : 'save',
         tooltip : 'Save to local file'

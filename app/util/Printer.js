@@ -3,7 +3,13 @@
  */
 Ext.define('DMPlanner.util.Printer', {
     singleton: true,
-    requires: ['Ext.XTemplate'],
+    requires: ['Ext.XTemplate', 'Ext.window.Window'],
+
+    /**
+     * @property {Ext.window.Window} previewWindow
+     * The window that displays the print preview HTML.
+     * @readonly
+     */
 
     template: Ext.create('Ext.XTemplate',
         '<tpl for=".">',
@@ -29,7 +35,7 @@ Ext.define('DMPlanner.util.Printer', {
                                     '<h5>Sections</h5>',
                                     '<tpl for="sections">',
                                         '<p>{name}: ',
-                                            '<pre>{[this.printObject(values.data)]}</pre>',
+                                            '<span style="white-space:pre">{[this.printObject(values.data)]}</span>',
                                         '</p>',
                                     '</tpl>',
                             '</tpl>',
@@ -78,21 +84,33 @@ Ext.define('DMPlanner.util.Printer', {
         }
     ),
     getHtml: function(plan) {
-        return this.template.apply(plan);
+        var cloned = Ext.clone(plan); //so we don't corrupt the data
+
+        return this.template.apply(cloned);
     },
     previewHtml: function(plan) {
-        //var html = this.getHtml(plan);
+        var me = this,
+            pw = me.previewWindow,
+            dim = Ext.getBody().getHeight() * 0.75,
+            cloned = Ext.clone(plan); //so we don't corrupt the data
 
-        Ext.create('Ext.window.Window', {
-            title: 'Print Preview',
-            autoScroll: true,
-            bodyPadding: 15,
-            data: plan,
-            tpl: this.template,
-            height: 600,
-            width: 600,
-            layout: 'fit'
-        }).show();
+        if(pw) {
+            pw.update(cloned);
+            pw.show();
+        }else {
+            pw = Ext.create('Ext.window.Window', {
+                title: 'Print Preview',
+                autoScroll: true,
+                bodyPadding: 15,
+                data: cloned,
+                tpl: this.template,
+                height: dim,
+                width: dim,
+                layout: 'fit',
+                closeAction: 'hide'
+            }).show();
 
+            me.previewWindow = pw;
+        }
     }
 });

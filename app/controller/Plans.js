@@ -3,7 +3,7 @@
  */
 Ext.define('DMPlanner.controller.Plans', {
     extend : 'Ext.app.Controller',
-    requires: ['DMPlanner.util.UUID', 'DMPlanner.util.LevelFilter'],
+    requires: ['DMPlanner.util.UUID', 'DMPlanner.util.LevelFilter','DMPlanner.util.Printer'],
 
     models : [//
     'Plan', //
@@ -41,6 +41,9 @@ Ext.define('DMPlanner.controller.Plans', {
             },
             'planlist tool[type=save]':{
                 click: this.onSaveClick
+            },
+            'planlist tool[type=print]':{
+                click: this.onPrintClick
             },
             'planlist templatecolumn[action=deleteplan]':{
                 click: this.onDeleteClick
@@ -164,6 +167,18 @@ Ext.define('DMPlanner.controller.Plans', {
     onHelpClick: function(btn) {
         var err = 'I wish I could help, but the help section hasn\'t been implemented. :-(';
         DMPlanner.app.showError(err);
+    },
+
+    /**
+     * Click event handler for help button.
+     */
+    onPrintClick: function(btn) {
+        var sm = btn.up('gridpanel').getSelectionModel(),
+            plan = sm.selected.first() || sm.getStore().first(),
+            planId = plan.get('id'),
+            data = Ext.getStore('LocalPlans').findRecord('planid', planId).get('plan');
+
+        DMPlanner.util.Printer.previewHtml(data);
     },
 
     /**
