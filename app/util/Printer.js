@@ -13,7 +13,7 @@ Ext.define('DMPlanner.util.Printer', {
 
     template: Ext.create('Ext.XTemplate',
         '<tpl for=".">',
-            '<div class="dmp-print-container" id="{id}">',
+            '<div id="DMP-print-wrapper" id="{id}">',
                 '<h1>{name}</h1>',
                 '<p><span class="label">Code: </span>{code}</p>',
                 '<section>',
@@ -21,7 +21,7 @@ Ext.define('DMPlanner.util.Printer', {
                 '<tpl for="sections">',
                     '<h3 id="{id}">{name}</h3>',
                     '<tpl if="data">',
-                        '<pre>{[this.printObject(values.data)]}</pre>',
+                        '<p style="white-space:pre">{[this.printObject(values.data)]}</p>',
                     '<tpl elseif="groups.length &gt; 0">',
                         '<tpl for="this.formatGroups(groups)">',
                             '<h4>{name}</h4>',
@@ -107,7 +107,28 @@ Ext.define('DMPlanner.util.Printer', {
                 height: dim,
                 width: dim,
                 layout: 'fit',
-                closeAction: 'hide'
+                closeAction: 'hide',
+                tbar:[{
+                    xtype: 'button',
+                    text: 'Save as PDF',
+                    handler: function(btn){
+                        var pdf = new jsPDF('p','mm','letter'),
+                            margin = 12.7, // inches on a 8.5 x 11 inch sheet.
+                            el = btn.up('window').getEl().getById('DMP-print-wrapper');
+
+                        pdf.fromHTML(el.dom, margin, margin, {
+                            'width': 190.5
+                        }, null, {
+                            top: margin,
+                            bottom: margin
+                        });
+
+                        pdf.save(cloned.name.replace(/\s+/g, '-') + '.pdf');
+                        //pdf.output('dataurlnewwindow');
+                    },
+                    scope: me
+                }]
+
             }).show();
 
             me.previewWindow = pw;
