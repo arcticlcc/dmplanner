@@ -1,9 +1,9 @@
 {
-  "levels": ['Base', 'Steward'],
+  "levels": ["Base", "Steward"],
   "templates": [
     {
       "templateTitle": "",
-      "version": '0.0.0',
+      "version": "0.0.0",
       "name": null,
       "code": null,
       "sections": [
@@ -31,9 +31,9 @@
                     "maxWidth": 250
                   }
                 }, {
-                  "question": "Gender",
+                  "question": "True or False",
                   "defAnswer": {
-                    "gender": "f"
+                    "trueorfalse": "f"
                   },
                   "config": {
                     "xtype": "radiogroup",
@@ -41,13 +41,49 @@
                     "vertical": true,
                     "items": [
                       {
-                        "boxLabel": "Male",
-                        "name": "gender",
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
-                        "boxLabel": "Female",
-                        "name": "gender",
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
                         "inputValue": "f"
+                      }
+                    ]
+                  }
+                }, {
+                  "question": "Check It Out",
+                  "config": {
+                    "xtype": "checkboxgroup",
+                    "maxWidth": 400,
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Item 1",
+                        "name": "cb",
+                        "inputValue": "1"
+                      }, {
+                        "boxLabel": "Item 2",
+                        "name": "cb",
+                        "inputValue": "2",
+                        "checked": true
+                      }, {
+                        "boxLabel": "Item 3",
+                        "name": "cb",
+                        "inputValue": "3"
+                      }, {
+                        "boxLabel": "Item 4",
+                        "name": "cb",
+                        "inputValue": "4"
+                      }, {
+                        "boxLabel": "Item 5",
+                        "name": "cb",
+                        "inputValue": "5"
+                      }, {
+                        "boxLabel": "Item 6",
+                        "name": "cb",
+                        "inputValue": "6"
                       }
                     ]
                   }
@@ -79,9 +115,9 @@
                     "maxWidth": 250
                   }
                 }, {
-                  "question": "Gender",
+                  "question": "True or False",
                   "defAnswer": {
-                    "gender": "f"
+                    "trueorfalse": "f"
                   },
                   "config": {
                     "xtype": "radiogroup",
@@ -89,12 +125,12 @@
                     "vertical": true,
                     "items": [
                       {
-                        "boxLabel": "Male",
-                        "name": "gender",
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
-                        "boxLabel": "Female",
-                        "name": "gender",
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
                         "inputValue": "f"
                       }
                     ]
@@ -140,9 +176,9 @@
                     "maxWidth": 250
                   }
                 }, {
-                  "question": "Gender",
+                  "question": "True or False",
                   "defAnswer": {
-                    "gender": "f"
+                    "trueorfalse": "f"
                   },
                   "config": {
                     "xtype": "radiogroup",
@@ -150,12 +186,12 @@
                     "vertical": true,
                     "items": [
                       {
-                        "boxLabel": "Male",
-                        "name": "gender",
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
-                        "boxLabel": "Female",
-                        "name": "gender",
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
                         "inputValue": "f"
                       }
                     ]
@@ -187,9 +223,9 @@
                     "maxWidth": 250
                   }
                 }, {
-                  "question": "Gender",
+                  "question": "True or False",
                   "defAnswer": {
-                    "gender": "f"
+                    "trueorfalse": "f"
                   },
                   "config": {
                     "xtype": "radiogroup",
@@ -197,12 +233,12 @@
                     "vertical": true,
                     "items": [
                       {
-                        "boxLabel": "Male",
-                        "name": "gender",
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
-                        "boxLabel": "Female",
-                        "name": "gender",
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
                         "inputValue": "f"
                       }
                     ]
@@ -248,7 +284,7 @@
                     "maxWidth": 250
                   }
                 }, {
-                  "question": "Gender",
+                  "question": "True or False",
                   "config": {
                     "xtype": "radiogroup",
                     "maxWidth": 300,
@@ -256,14 +292,49 @@
                     "vertical": true,
                     "items": [
                       {
-                        "boxLabel": "Male",
-                        "name": "gender",
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
-                        "boxLabel": "Female",
-                        "name": "gender",
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
                         "inputValue": "f",
                         "checked": true
+                      }
+                    ]
+                  }
+                }, {
+                  "question": "Check It Out",
+                  "config": {
+                    "xtype": "checkboxgroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Item 1",
+                        "name": "cb",
+                        "inputValue": "1"
+                      }, {
+                        "boxLabel": "Item 2",
+                        "name": "cb",
+                        "inputValue": "2",
+                        "checked": true
+                      }, {
+                        "boxLabel": "Item 3",
+                        "name": "cb",
+                        "inputValue": "3"
+                      }, {
+                        "boxLabel": "Item 4",
+                        "name": "cb",
+                        "inputValue": "4"
+                      }, {
+                        "boxLabel": "Item 5",
+                        "name": "cb",
+                        "inputValue": "5"
+                      }, {
+                        "boxLabel": "Item 6",
+                        "name": "cb",
+                        "inputValue": "6"
                       }
                     ]
                   }
@@ -295,11 +366,11 @@
                     "items": [
                       {
                         "boxLabel": "Yes",
-                        "name": "gender",
+                        "name": "trueorfalse",
                         "inputValue": "m"
                       }, {
                         "boxLabel": "No",
-                        "name": "gender",
+                        "name": "trueorfalse",
                         "inputValue": "f",
                         "checked": true
                       }
@@ -311,10 +382,10 @@
                   "defAnswer": 5,
                   "config": {
                     "xtype": "slider",
-                    'width': 200,
-                    'increment': 1,
-                    'minValue': 0,
-                    'maxValue': 10
+                    "width": 200,
+                    "increment": 1,
+                    "minValue": 0,
+                    "maxValue": 10
                   }
                 }
               ]
