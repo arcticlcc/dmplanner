@@ -304,7 +304,7 @@ Ext.define('DMPlanner.controller.Questions', {
 
                                 //fix name for radio and checkbox groups
                                 //TODO: need a better solution to pick sub-classes, probably an override
-                                if(q.config.xtype === 'radiogroup' || q.config.xtype === 'checkboxgroup') {
+                                if(q.config && (q.config.xtype === 'radiogroup' || q.config.xtype === 'checkboxgroup')) {
                                     if (Ext.isObject(q.defAnswer)) {
                                         Ext.Object.each(q.defAnswer, function(key, val, obj) {
                                             var newKey = key + pos;
