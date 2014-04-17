@@ -250,6 +250,15 @@ Ext.define('DMPlanner.controller.Questions', {
                         labelAttrTpl : 'data-qtip="' + info + '"'
                     }, question.get('config'));
 
+                    //set formId for radio and checkbox groups
+                    //TODO: need a better solution to pickup sub-classes, probably an override
+                    if(field.xtype === 'radiogroup' || field.xtype === 'checkboxgroup') {
+
+                        Ext.each(field.items, function(item){
+                           item.getFormId = function(){return field.question.get('groupId');};
+                        });
+                    }
+
                 fields.push(field);
             });
 
@@ -304,7 +313,7 @@ Ext.define('DMPlanner.controller.Questions', {
 
                                 //fix name for radio and checkbox groups
                                 //TODO: need a better solution to pick sub-classes, probably an override
-                                if(q.config && (q.config.xtype === 'radiogroup' || q.config.xtype === 'checkboxgroup')) {
+                                /*if(q.config && (q.config.xtype === 'radiogroup' || q.config.xtype === 'checkboxgroup')) {
                                     if (Ext.isObject(q.defAnswer)) {
                                         Ext.Object.each(q.defAnswer, function(key, val, obj) {
                                             var newKey = key + pos;
@@ -317,7 +326,7 @@ Ext.define('DMPlanner.controller.Questions', {
                                     Ext.each(q.config.items, function(item){
                                        item.name += pos;
                                     });
-                                }
+                                }*/
                             });
 
                             Ext.each(template.sections, function(q){
