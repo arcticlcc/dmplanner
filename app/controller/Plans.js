@@ -59,6 +59,9 @@ Ext.define('DMPlanner.controller.Plans', {
                 },
                 '#Settings': {
                     changelevel: this.onChangeLevel
+                },
+                '#Start': {
+                    loadfile: this.onLoadFile
                 }
             },
 
@@ -142,6 +145,13 @@ Ext.define('DMPlanner.controller.Plans', {
             var raw = record.get('plan');
             plans.loadRawData(raw, true);
         });
+    },
+
+    /**
+     * Fires when plans are loaded from a file.
+     */
+    onLoadFile: function(records) {
+        this.addLocalPlan(records);
     },
 
     /**

@@ -57,13 +57,19 @@
                 --to=${build.compile.temp.dir}/fsout.js
                 --closure
                 and
+                minify
+                --from=${basedir}/lib/filereader/filereader.js
+                --to=${build.compile.temp.dir}/frout.js
+                --closure
+                and
                 concatenate
-                --from=${build.compile.temp.dir}/out.js,${basedir}/lib/jspdf/dist/jspdf.min.js,${build.compile.temp.dir}/fsout.js,${build.classes.file}.tmp
+                --from=${build.compile.temp.dir}/out.js,${basedir}/lib/jspdf/dist/jspdf.min.js,${build.compile.temp.dir}/fsout.js,${build.compile.temp.dir}/frout.js,${build.classes.file}.tmp
                 --to=${build.classes.file}
                 and
                 concatenate
                 --from=${build.compile.temp.dir}/out.js,${build.classes.file}.tmp
                 --to=${build.dir}/IE9_${build.classes.name}</x-sencha-command>
+            <delete file="${build.compile.temp.dir}/frout.js" />
             <delete file="${build.compile.temp.dir}/fsout.js" />
             <delete file="${build.compile.temp.dir}/out.js" />
             <delete file="${build.classes.file}.tmp" />

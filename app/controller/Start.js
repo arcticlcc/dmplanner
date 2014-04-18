@@ -2,7 +2,8 @@ Ext.define('DMPlanner.controller.Start', {
     extend: 'Ext.app.Controller',
 
     stores: [//
-    'LocalPlans'//
+    'LocalPlans',//
+    'Plans'
     ],
     views: ['Start'],
 
@@ -18,6 +19,9 @@ Ext.define('DMPlanner.controller.Start', {
             },
             "button#startEditBtn": {
                 click: this.onStartEditClick
+            },
+            "filefield#startLoadBtn": {
+                render: this.onRenderLoadBtn
             }
         });
 
@@ -47,5 +51,33 @@ Ext.define('DMPlanner.controller.Start', {
             button.setText(button.getText() + ' (' + records.length + ')');
             button.enable();
         }
+    },
+
+    onRenderLoadBtn: function(btn) {
+        var cntl = this,
+            opts = {
+                dragClass: "dmp-file-drag",
+                readAsDefault: 'Text',
+                on: {
+                    load: function(e, file) {
+                        var data = Ext.decode(e.currentTarget.result),
+                            store = cntl.getPlansStore();
+
+                        store.loadRawData(data);
+                        cntl.getLocalPlansStore().removeAll();
+                        cntl.fireEvent('loadfile', store.data.items);
+                        btn.up('vp').getLayout().setActiveItem(1);
+                    },
+                    error: function(e, file) {
+                        var msg = 'Failed to load ' + file.name + '. ' + e.currentTarget.error.message;
+
+                        DMPlanner.app.showError(msg);
+                    }
+                }
+            };
+
+        FileReaderJS.setupDrop(Ext.getBody().dom, opts);
+        FileReaderJS.setupInput(btn.fileInputEl.dom, opts);
     }
+
 });

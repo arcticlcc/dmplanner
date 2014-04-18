@@ -2,7 +2,7 @@ Ext.define("DMPlanner.view.Start", {
     extend : 'Ext.container.Container',
     alias : 'widget.start',
 
-    requires : ['Ext.Button'],
+    requires : ['Ext.Button','Ext.form.field.File'],
 
     layout : {
         align : 'center',
@@ -29,12 +29,15 @@ Ext.define("DMPlanner.view.Start", {
         scale   : 'large',
         disabled: true
     }, {
-        xtype : 'button',
+        xtype : 'filefield',
         anchor : '100%',
         itemId : 'startLoadBtn',
-        text : 'Load Plan from File',
-        glyph: 'xf093@FontAwesome',
-        scale   : 'large',
-        disabled: true
+        buttonOnly: true,
+        buttonConfig: {
+            text : 'Load Plan from File',
+            glyph: 'xf093@FontAwesome',
+            scale   : 'large'
+        },
+        disabled: false
     }]
 });

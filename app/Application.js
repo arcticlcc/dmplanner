@@ -129,7 +129,8 @@ Ext.define('DMPlanner.Application', {
         Ext.create('widget.uxNotification', {
             title: 'Error',
             glyph: 'xf12a@FontAwesome',
-            html: txt
+            html: txt,
+            maxWidth: 400
         }).show();
     },
 
@@ -141,7 +142,8 @@ Ext.define('DMPlanner.Application', {
         Ext.create('widget.uxNotification', {
             title: title || 'Info',
             glyph: 'xf129@FontAwesome',
-            html: txt
+            html: txt,
+            maxWidth: 400
         }).show();
     }
 });
