@@ -12,10 +12,10 @@
 .x-tool .fa {
   color: $panel-header-glyph-color;
   opacity: $panel-header-glyph-opacity;
-  font-size: 15px;
+  font-size: 16px;
 
   &:hover {
-      opacity: $tool-opacity-over;
+    opacity: $tool-opacity-over;
   }
 }
 

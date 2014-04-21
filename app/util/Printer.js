@@ -102,6 +102,7 @@ Ext.define('DMPlanner.util.Printer', {
                 title: 'Print Preview',
                 autoScroll: true,
                 bodyPadding: 15,
+                iconCls: 'x-tool-img dmp-tool-print',
                 data: cloned,
                 tpl: this.template,
                 height: dim,
@@ -123,10 +124,10 @@ Ext.define('DMPlanner.util.Printer', {
                             bottom: margin
                         });
 
-                        pdf.save(cloned.name.replace(/\s+/g, '-') + '.pdf');
+                        pdf.save(this.name.replace(/\s+/g, '-') + '.pdf');
                         //pdf.output('dataurlnewwindow');
                     },
-                    scope: me
+                    scope: cloned
                 }]
 
             }).show();

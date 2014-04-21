@@ -51,7 +51,12 @@ Ext.define("DMPlanner.view.PlanList", {
         tooltip : 'Print Plan'
     }, {
         type : 'save',
-        tooltip : 'Save to local file'
+        tooltip : 'Save to local file',
+        width: 'auto',
+        renderTpl: [
+            //'<img id="{id}-toolEl" src="{blank}" class="{baseCls}-{type}" role="presentation"/>',
+            '<span class="fa">&#xf0c7;</span>'
+        ]
     }, {
         type : 'help',
         tooltip : 'Get Help'
@@ -66,7 +71,7 @@ Ext.define("DMPlanner.view.PlanList", {
         tooltip: 'GitHub',
         width: 'auto',
         renderTpl: [
-            '<img id="{id}-toolEl" src="{blank}" class="{baseCls}-{type}" role="presentation"/>',
+            //'<img id="{id}-toolEl" src="{blank}" class="{baseCls}-{type}" role="presentation"/>',
             '<span class="fa">&#xf09b;</span>'
         ],
         handler: function() {
