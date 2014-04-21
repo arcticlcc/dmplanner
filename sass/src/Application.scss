@@ -1,6 +1,6 @@
 @import "../fonts/font-awesome-4.0.3/scss/font-awesome.scss";
 
-.fa {
+.fa, .dmp-drop-message {
   color: #999;
 
   &:hover {
@@ -22,4 +22,53 @@
 .ux-notification-window .x-window-body {
   text-align: center;
   padding: 15px 5px 15px 5px;
+}
+
+#Dmp-drop-mask {
+  display: none;
+  z-index: 100001;
+}
+
+.dmp-drop-target {
+  display: none;
+  z-index: 100000;
+  background-color: #eee;
+  opacity: 0.9;
+  font-size: 5em;
+  text-align: center;
+}
+
+/*
+ * Placeholder not supported by this sencha cmd
+ %drop-mask {
+  display: table;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}*/
+
+.dmp-drag-file {
+  .dmp-drop-target, #Dmp-drop-mask {
+    //@extend %drop-mask
+    display: table;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+#Dmp-drop-mask.dmp-drag-file, #Dmp-drop-mask.dmp-drag-file + div.dmp-drop-target {
+  //@extend %drop-mask
+  display: table;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.dmp-drop-message {
+  vertical-align: middle;
+  display: table-cell;
 }

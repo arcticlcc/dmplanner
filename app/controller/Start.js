@@ -55,8 +55,9 @@ Ext.define('DMPlanner.controller.Start', {
 
     onRenderLoadBtn: function(btn) {
         var cntl = this,
+            dc = 'dmp-drag-file',
             opts = {
-                dragClass: "dmp-file-drag",
+                dragClass: dc,
                 readAsDefault: 'Text',
                 on: {
                     load: function(e, file) {
@@ -76,7 +77,8 @@ Ext.define('DMPlanner.controller.Start', {
                 }
             };
 
-        FileReaderJS.setupDrop(Ext.getBody().dom, opts);
+        FileReaderJS.setupDrop(Ext.getBody().dom, {dragClass: dc});
+        FileReaderJS.setupDrop(Ext.get('Dmp-drop-mask').dom, opts);
         FileReaderJS.setupInput(btn.fileInputEl.dom, opts);
     }
 
