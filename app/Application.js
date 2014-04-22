@@ -107,8 +107,7 @@ Ext.define('DMPlanner.Application', {
                 });
 
                 //instantiate the settings window
-                Ext.define('DMPlanner.app.Settings', {
-                    extend: 'DMPlanner.view.Settings',
+                this.Settings = Ext.create('DMPlanner.view.Settings', {
                     singleton: true
                 });
 

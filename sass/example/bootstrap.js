@@ -6,7 +6,6 @@
  */
 Ext.Loader.addClassPathMappings({
   "DMPlanner": "../../app",
-  "DMPlanner.app.Settings": "../../app/Application.js",
   "DMPlanner.data.PlanTemplate": "../../app/Application.js",
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
@@ -50,7 +49,6 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
-  "DMPlanner.app.Settings": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Settings": [],
@@ -1055,7 +1053,6 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
-  "DMPlanner.app.Settings": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Settings": [],
