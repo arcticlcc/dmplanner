@@ -58,6 +58,34 @@ Ext.define("DMPlanner.view.PlanList", {
             '<span class="fa">&#xf0c7;</span>'
         ]
     }, {
+        type : 'loadfile',
+        xtype: 'filebutton',
+        glyph: 'xf093@FontAwesome',
+        margin: '0 0 0 6',
+        cls: 'x-tool',
+        ui: 'plain',
+        renderTpl: [
+            '<span id="{id}-btnWrap" class="{baseCls}-wrap',
+                '<tpl if="splitCls"> {splitCls}</tpl>',
+                '{childElCls}" unselectable="on">',
+                '<span id="{id}-btnEl" class="{baseCls}-button">',
+                    '<span id="{id}-btnInnerEl" class="{baseCls}-inner {innerCls}',
+                        '{childElCls}" unselectable="on">',
+                        '{text}',
+                    '</span>',
+                    '<span role="img" id="{id}-btnIconEl" class="{baseCls}-icon-el {iconCls} fa',
+                        '{childElCls} {glyphCls}" unselectable="on" style="',
+                        '<tpl if="iconUrl">background-image:url({iconUrl});</tpl>',
+                        '<tpl if="glyph && glyphFontFamily">font-family:{glyphFontFamily};</tpl>">',
+                        '<tpl if="glyph">&#{glyph};</tpl><tpl if="iconCls || iconUrl">&#160;</tpl>',
+                    '</span>',
+                '</span>',
+            '</span>',
+            '<input id="{id}-fileInputEl" class="{childElCls} {inputCls} x-tool-filebutton" type="file" size="1" name="{inputName}">'
+        ],
+        tooltip : 'Load a local file',
+        width: 16
+    }, {
         type : 'help',
         tooltip : 'Get Help'
     }, {

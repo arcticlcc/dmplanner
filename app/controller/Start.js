@@ -54,32 +54,7 @@ Ext.define('DMPlanner.controller.Start', {
     },
 
     onRenderLoadBtn: function(btn) {
-        var cntl = this,
-            dc = 'dmp-drag-file',
-            opts = {
-                dragClass: dc,
-                readAsDefault: 'Text',
-                on: {
-                    load: function(e, file) {
-                        var data = Ext.decode(e.currentTarget.result),
-                            store = cntl.getPlansStore();
-
-                        store.loadRawData(data);
-                        cntl.getLocalPlansStore().removeAll();
-                        cntl.fireEvent('loadfile', store.data.items);
-                        btn.up('vp').getLayout().setActiveItem(1);
-                    },
-                    error: function(e, file) {
-                        var msg = 'Failed to load ' + file.name + '. ' + e.currentTarget.error.message;
-
-                        DMPlanner.app.showError(msg);
-                    }
-                }
-            };
-
-        FileReaderJS.setupDrop(Ext.getBody().dom, {dragClass: dc});
-        FileReaderJS.setupDrop(Ext.get('Dmp-drop-mask').dom, opts);
-        FileReaderJS.setupInput(btn.fileInputEl.dom, opts);
+        FileReaderJS.setupInput(btn.fileInputEl.dom, DMPlanner.app.fileReaderCfg);
     }
 
 });

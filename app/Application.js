@@ -12,6 +12,9 @@ Ext.define('DMPlanner.Application', {
 
     extend: 'Ext.app.Application',
 
+    /*
+     * @requires FileReader
+     */
     requires:['Ext.ux.window.Notification','DMPlanner.util.LevelFilter','DMPlanner.util.Printer'],
 
     views: [
@@ -32,6 +35,11 @@ Ext.define('DMPlanner.Application', {
         'LocalPlans'
     ],
 
+     refs: [{
+         ref: 'viewport',
+         selector: 'viewport'
+     }],
+
     /**
      * @cfg {Integer} dmpLevel (required)
      * The default level at which to filter plan elements.
@@ -39,14 +47,51 @@ Ext.define('DMPlanner.Application', {
      */
     dmpLevel: 0,
 
+    /**
+     * @cfg {Object} fileReaderCfg (required)
+     * The default config for FileReader instances.
+     */
+    fileReaderCfg: {
+        dragClass: 'dmp-drag-file',
+        readAsDefault: 'Text',
+        on: {
+            load: function(e, file) {
+                var data = Ext.decode(e.currentTarget.result, true),
+                    store = Ext.getStore('Plans');
+
+                if (data === null) {
+                    DMPlanner.app.showError('Failed to load ' + file.name + '. The file is not valid JSON.');
+                } else {
+                    store.loadRawData(data);
+                    Ext.getStore('LocalPlans').removeAll();
+                    DMPlanner.app.fireEvent('loadfile', store.data.items);
+                    DMPlanner.app.getViewport().getLayout().setActiveItem(1);
+                }
+            },
+            error: function(e, file) {
+                var msg = 'Failed to load ' + file.name + '. ' + e.currentTarget.error.message;
+
+                DMPlanner.app.showError(msg);
+            }
+        }
+    },
+
     launch: function() {
+        var me = this;
+
         //set default level
-        DMPlanner.util.LevelFilter.value = this.dmpLevel;
+        DMPlanner.util.LevelFilter.value = me.dmpLevel;
 
         //Use Notifications for Ext errors
         Ext.Error.handle = function(err) {
             DMPlanner.app.showError(err.msg);
         };
+
+        //setup dropzone
+        FileReaderJS.setupDrop(Ext.getBody().dom, {
+            dragClass: 'dmp-drag-file'
+        });
+        FileReaderJS.setupDrop(Ext.get('Dmp-drop-mask').dom, me.fileReaderCfg);
 
         //get plan template
         Ext.Ajax.request({
@@ -101,7 +146,7 @@ Ext.define('DMPlanner.Application', {
                 var err = 'Server-side failure with status code ' + response.status;
                 DMPlanner.app.showError(err);
             },
-            scope: this
+            scope: me
         });
     },
 

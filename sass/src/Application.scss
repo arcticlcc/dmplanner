@@ -9,7 +9,7 @@
   }
 }
 
-.x-tool .fa {
+.x-tool .fa, .x-btn.x-tool .fa {
   color: $panel-header-glyph-color;
   opacity: $panel-header-glyph-opacity;
   font-size: 16px;
@@ -17,6 +17,18 @@
   &:hover {
     opacity: $tool-opacity-over;
   }
+}
+
+.x-btn.x-tool:hover .fa {
+  opacity: $tool-opacity-over;
+}
+
+.x-btn.x-tool .x-tool-filebutton {
+  font-size: 0px;
+  width: 16px;
+  height: 16px;
+  top: 0px;
+  right: 0px;
 }
 
 .ux-notification-window .x-window-body {

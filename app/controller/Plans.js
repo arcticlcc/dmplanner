@@ -42,6 +42,9 @@ Ext.define('DMPlanner.controller.Plans', {
             'planlist tool[type=save]':{
                 click: this.onSaveClick
             },
+            'planlist filebutton[type=loadfile]':{
+                render: this.onRenderLoadBtn
+            },
             'planlist tool[type=print]':{
                 click: this.onPrintClick
             },
@@ -55,13 +58,11 @@ Ext.define('DMPlanner.controller.Plans', {
             controller: {
                 '*': {
                     clickaddplanbtn: this.onAddNewPlan,
-                    planupdate: this.onPlanUpdate
+                    planupdate: this.onPlanUpdate,
+                    loadfile: this.onLoadFile
                 },
                 '#Settings': {
                     changelevel: this.onChangeLevel
-                },
-                '#Start': {
-                    loadfile: this.onLoadFile
                 }
             },
 
@@ -152,6 +153,13 @@ Ext.define('DMPlanner.controller.Plans', {
      */
     onLoadFile: function(records) {
         this.addLocalPlan(records);
+    },
+
+    /**
+     * Set up the file load button.
+     */
+    onRenderLoadBtn: function(btn) {
+        FileReaderJS.setupInput(btn.fileInputEl.dom, DMPlanner.app.fileReaderCfg);
     },
 
     /**
