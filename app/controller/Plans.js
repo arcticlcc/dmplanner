@@ -315,8 +315,8 @@ Ext.define('DMPlanner.controller.Plans', {
             plans = DMPlanner.data.PlanTemplate.plans,
             store = ctr.getPlansStore(),
             count = store.count() + 1,
-            templateIdx = templateIdx || 0,
-            template = Ext.clone(plans[templateIdx]);
+            tidx = templateIdx || 0,
+            template = Ext.clone(plans[tidx]);
 
         //set name and code
         template.name = planName || template.name || 'My Plan ' + count;

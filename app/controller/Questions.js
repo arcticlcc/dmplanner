@@ -74,8 +74,8 @@ Ext.define('DMPlanner.controller.Questions', {
     },
 
     createSection: function(record, config) {
-        var config = config || record.get('config'),
-            clone = Ext.clone(config);
+        var cfg = config || record.get('config'),
+            clone = Ext.clone(cfg);
 
         //do config stuff, add sectionId(itemId), planId
         Ext.applyIf(clone, {
