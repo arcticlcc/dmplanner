@@ -43,36 +43,54 @@
     A separate IE<=9 build is also included.
     -->
     <target name="-after-page">
+        <move file="${build.classes.file}" tofile="${build.classes.file}.tmp"/>
+        <delete file="${build.dir}/IE9_${build.classes.name}" />
+        <x-sencha-command>fs
+            minify
+            --from=${basedir}/lib/marked/lib/marked.js
+            --to=${build.compile.temp.dir}/mk.js
+            --closure
+            and
+            minify
+            --from=${basedir}/lib/filesaver/FileSaver.js
+            --to=${build.compile.temp.dir}/fsout.js
+            --closure
+            and
+            minify
+            --from=${basedir}/lib/filereader/filereader.js
+            --to=${build.compile.temp.dir}/frout.js
+            --closure
+            and
+            concatenate
+            --from=${build.compile.temp.dir}/mk.js,${basedir}/lib/jspdf/dist/jspdf.min.js,${build.compile.temp.dir}/fsout.js,${build.compile.temp.dir}/frout.js,${build.classes.file}.tmp
+            --to=${build.classes.file}
+            and
+            concatenate
+            --from=${build.compile.temp.dir}/mk.js,${build.classes.file}.tmp
+            --to=${build.dir}/IE9_${build.classes.name}</x-sencha-command>
+        <delete file="${build.compile.temp.dir}/frout.js" />
+        <delete file="${build.compile.temp.dir}/fsout.js" />
+        <delete file="${build.compile.temp.dir}/mk.js" />
+        <delete file="${build.classes.file}.tmp" />
         <x-run-if-true value="${enable.openlayers.build}">
             <move file="${build.classes.file}" tofile="${build.classes.file}.tmp"/>
-            <delete file="${build.dir}/IE9_${build.classes.name}" />
+            <move file="${build.dir}/IE9_${build.classes.name}" tofile="${build.dir}/IE9_${build.classes.name}.tmp"/>
             <x-sencha-command>fs
                 minify
                 --from=${basedir}/lib/openlayers/OpenLayers.debug.js
-                --to=${build.compile.temp.dir}/out.js
-                --closure
-                and
-                minify
-                --from=${basedir}/lib/filesaver/FileSaver.js
-                --to=${build.compile.temp.dir}/fsout.js
-                --closure
-                and
-                minify
-                --from=${basedir}/lib/filereader/filereader.js
-                --to=${build.compile.temp.dir}/frout.js
+                --to=${build.compile.temp.dir}/ol.js
                 --closure
                 and
                 concatenate
-                --from=${build.compile.temp.dir}/out.js,${basedir}/lib/jspdf/dist/jspdf.min.js,${build.compile.temp.dir}/fsout.js,${build.compile.temp.dir}/frout.js,${build.classes.file}.tmp
+                --from=${build.compile.temp.dir}/ol.js,${build.classes.file}.tmp
                 --to=${build.classes.file}
                 and
                 concatenate
-                --from=${build.compile.temp.dir}/out.js,${build.classes.file}.tmp
+                --from=${build.compile.temp.dir}/ol.js,${build.dir}/IE9_${build.classes.name}.tmp
                 --to=${build.dir}/IE9_${build.classes.name}</x-sencha-command>
-            <delete file="${build.compile.temp.dir}/frout.js" />
-            <delete file="${build.compile.temp.dir}/fsout.js" />
-            <delete file="${build.compile.temp.dir}/out.js" />
+            <delete file="${build.compile.temp.dir}/ol.js" />
             <delete file="${build.classes.file}.tmp" />
+            <delete file="${build.dir}/IE9_${build.classes.name}.tmp" />
         </x-run-if-true>
     </target>
     <!--
