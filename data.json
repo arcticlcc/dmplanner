@@ -1,5 +1,6 @@
 {
   "levels": ["Base", "Steward"],
+  "startDoc": 'Start.md',
   "templates": [
     {
       "templateTitle": "",
