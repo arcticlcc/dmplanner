@@ -38,6 +38,9 @@ Ext.define('DMPlanner.Application', {
      refs: [{
          ref: 'viewport',
          selector: 'viewport'
+     }, {
+         ref: 'startDoc',
+         selector: 'start #startDoc'
      }],
 
     /**
@@ -97,13 +100,23 @@ Ext.define('DMPlanner.Application', {
         Ext.Ajax.request({
             url: 'data.json',
             success: function(response, opts) {
-                var obj = Ext.decode(response.responseText);
+                var obj = Ext.decode(response.responseText),
+                    loader =  this.getStartDoc().getLoader();
+
+                Ext.applyIf(obj, {
+                    docBase: 'resources/doc/',
+                    startDoc: 'Start.md'
+                });
 
                 Ext.define('DMPlanner.data.PlanTemplate', {
-                    singleton: true,
+                    singleton: true
+                }, function() {
+                    Ext.apply(DMPlanner.data.PlanTemplate, obj);
+                });
 
-                    plans: obj.templates,
-                    levels: obj.levels
+                //load the start docs
+                loader.load({
+                    url: obj.docBase + obj.startDoc
                 });
 
                 //instantiate the settings window

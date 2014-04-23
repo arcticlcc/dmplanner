@@ -312,7 +312,7 @@ Ext.define('DMPlanner.controller.Plans', {
      */
     addPlan: function(planName, planCode, templateIdx) {
         var ctr = this, newRec,
-            plans = DMPlanner.data.PlanTemplate.plans,
+            plans = DMPlanner.data.PlanTemplate.templates,
             store = ctr.getPlansStore(),
             count = store.count() + 1,
             tidx = templateIdx || 0,
