@@ -66,7 +66,7 @@
             --to=${build.classes.file}
             and
             concatenate
-            --from=${build.compile.temp.dir}/mk.js,${build.classes.file}.tmp
+            --from=${build.compile.temp.dir}/mk.js,${build.compile.temp.dir}/frout.js,${build.classes.file}.tmp
             --to=${build.dir}/IE9_${build.classes.name}</x-sencha-command>
         <delete file="${build.compile.temp.dir}/frout.js" />
         <delete file="${build.compile.temp.dir}/fsout.js" />
