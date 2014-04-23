@@ -1,4 +1,4 @@
-![Logo](/resources/dmp_logo.png)
+![Logo](resources/dmp_logo.png)
 
 An [open source](https://github.com/arcticlcc/dmplanner) tool for
 creating data management plans. This is the demo version.
