@@ -7,6 +7,7 @@
       "version": "0.0.0",
       "name": null,
       "code": null,
+      "homeDoc": 'Home.md',
       "sections": [
         {
           "name": "Single Group",
