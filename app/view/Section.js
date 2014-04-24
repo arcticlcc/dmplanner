@@ -5,6 +5,7 @@ Ext.define("DMPlanner.view.Section", {
     items: [{
         itemId: 'homeDoc',
         padding: 15,
+        bodyStyle: {overflowY: 'auto'},
         html: '<div style="text-align:center;margin-top:3em;"><b>Please select a section from the list on the left.</b></div>',
         loader: {
             autoLoad: false,
