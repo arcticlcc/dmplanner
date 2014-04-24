@@ -37,5 +37,8 @@ Ext.define('DMPlanner.model.Plan', {
         name: 'name'
     }, {
         name: 'code'
+    }, {
+        name: 'homeDoc',
+        defaultValue: 'Home.md'
     }]
 });

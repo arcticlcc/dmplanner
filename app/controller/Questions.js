@@ -16,6 +16,9 @@ Ext.define('DMPlanner.controller.Questions', {
     }, {
         ref: 'sections',
         selector: 'sectionlist'
+    }, {
+        ref: 'sectionPanel',
+        selector: 'sectionpanel'
     }],
 
     init: function(application) {
@@ -29,13 +32,13 @@ Ext.define('DMPlanner.controller.Questions', {
             '#sectionPrev' : {
                 click : this.showPrevSection
             },
-            'sectionpanel component[dmpPlugin]': {
+            '#sectionContainer component[dmpPlugin]': {
                 plugindatachanged: this.onPluginDataChanged
             },
-             /*'#planFinish' : {
-             click : this.finishPlsn
-             },*/
-
+            'sectionlist tool[type=home], #planFinish':{
+                click: this.onHomeClick
+                //beforerender:
+            },
              'questions field, questions htmleditor, #sectionContainer>#questionTabs field, #sectionContainer>#questionTabs htmleditor, #sectionContainer>fieldcontainer field, #sectionContainer>fieldcontainer htmleditor' : {
                 change : this.saveItem
              }
@@ -71,6 +74,11 @@ Ext.define('DMPlanner.controller.Questions', {
            section = store.getById(plugin.itemId);
            section.set('data', data);
         }
+    },
+
+    onHomeClick: function(btn) {
+        this.getSectionPanel().getLayout().setActiveItem('homeDoc');
+        this.getSections().getSelectionModel().deselectAll();
     },
 
     createSection: function(record, config) {
@@ -163,6 +171,8 @@ Ext.define('DMPlanner.controller.Questions', {
         });
 
         bbar.add(buttons);
+
+        cont.up('sectionpanel').getLayout().setActiveItem(cont);
 
     },
 

@@ -26,6 +26,12 @@ Ext.define('DMPlanner.controller.Plans', {
     }, {
         ref: 'sectionList',
         selector: 'sectionlist'
+    }, {
+        ref: 'sectionPanel',
+        selector: 'sectionpanel'
+    }, {
+        ref: 'homeDoc',
+        selector: 'sectionpanel #homeDoc'
     }],
 
     init : function() {
@@ -89,9 +95,22 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     loadSections : function(grid, record) {
-        var sections = this.getSectionList(),
+        var layout = this.getSectionPanel().getLayout(),
+            sections = this.getSectionList(),
             store = record.sections(),
-            sectionRec,
+            docBase = DMPlanner.data.PlanTemplate.docBase,
+            homeDoc = record.get('homeDoc'),
+            loader =  this.getHomeDoc().getLoader(),
+            loadSection = function() {
+                //no docs found or provided so we just load the first section
+                //TODO handle this with event listener on Questions controller
+                var sectionRec = sections.getStore().getAt(0);
+
+                if (sectionRec) {
+                    sections.getSelectionModel().select([sectionRec]);
+                    layout.setActiveItem('sectionContainer');
+                }
+            },
             questions;
 
         sections.show();
@@ -99,9 +118,20 @@ Ext.define('DMPlanner.controller.Plans', {
         store.filter(DMPlanner.util.LevelFilter);
         sections.reconfigure(store);
 
-        sectionRec = sections.getStore().getAt(0);
-        if (sectionRec) {
-            sections.getSelectionModel().select([sectionRec]);
+        if (homeDoc) {
+            //load the docs
+            loader.load({
+                url: docBase + homeDoc,
+                success: function() {
+                    //only go home if a section is not selected
+                    if(sections.getSelectionModel().selected.length === 0) {
+                        layout.setActiveItem('homeDoc');
+                    }
+                },
+                failure: loadSection
+            });
+        } else {
+            loadSection();
         }
     },
 
@@ -126,9 +156,7 @@ Ext.define('DMPlanner.controller.Plans', {
             } else {
                 secSm.select(0);
             }
-
         }
-
     },
 
     /**

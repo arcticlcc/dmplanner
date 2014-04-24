@@ -2,24 +2,42 @@ Ext.define("DMPlanner.view.Section", {
     extend: 'Ext.Panel',
     alias: 'widget.sectionpanel',
 
-    html: '<div style="text-align:center;margin-top:3em;"><b>Please select a plan from the ' +
-            'list on the left.</b><br/><br/>This is a demo.</div>',
-    dockedItems: [{
-        xtype: 'toolbar',
-        itemId: 'bottomNavBar',
-        height: 50,
-        padding: 10,
-        defaults: {
-            minWidth: 60
-        },
+    items: [{
+        itemId: 'homeDoc',
+        padding: 15,
+        html: '<div style="text-align:center;margin-top:3em;"><b>Please select a section from the list on the left.</b></div>',
+        loader: {
+            autoLoad: false,
+            loadMask: true,
+            renderer: function(loader, response, active) {
+                var markup = marked(response.responseText);
+                loader.getTarget().update(markup);
+                return true;
+            }
+        }
+    }, {
+        xtype: 'panel',
+        itemId: 'sectionContainer',
+        dockedItems: [{
+            xtype: 'toolbar',
+            itemId: 'bottomNavBar',
+            height: 50,
+            padding: 10,
+            defaults: {
+                minWidth: 60
+            },
+            layout: {
+                type: 'hbox',
+                align: 'stretch',
+                pack: 'left'
+            },
+            dock: 'bottom'
+        }],
         layout: {
-            type: 'hbox',
-            align: 'stretch',
-            pack: 'left'
-        },
-        dock: 'bottom'
+            type: 'fit'
+        }
     }],
     layout: {
-        type: 'fit'
+        type: 'card'
     }
 });

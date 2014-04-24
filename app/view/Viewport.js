@@ -47,7 +47,6 @@ Ext.define('DMPlanner.view.Viewport', {
             xtype: 'splitter'
         }, {
             xtype: 'sectionpanel',
-            itemId: 'sectionContainer',
             flex: 3
         }]
     }]

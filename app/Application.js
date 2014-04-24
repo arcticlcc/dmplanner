@@ -105,7 +105,8 @@ Ext.define('DMPlanner.Application', {
 
                 Ext.applyIf(obj, {
                     docBase: 'resources/doc/',
-                    startDoc: 'Start.md'
+                    startDoc: 'Start.md',
+                    homeDoc: 'Home.md'
                 });
 
                 Ext.define('DMPlanner.data.PlanTemplate', {
