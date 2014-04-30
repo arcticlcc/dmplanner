@@ -128,7 +128,12 @@ Ext.define('DMPlanner.controller.Plans', {
                         layout.setActiveItem('homeDoc');
                     }
                 },
-                failure: loadSection
+                failure: function() {
+                    //only go home if a section is not selected
+                    if(sections.getSelectionModel().selected.length === 0) {
+                        loadSection();
+                    }
+                }
             });
         } else {
             loadSection();
