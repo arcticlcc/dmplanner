@@ -5,21 +5,20 @@
 Ext.define('DMPlanner.ux.Keywords', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.dmpkeywords',
-    requires: [
-        'Ext.ux.grid.FilterBar', //
-        'Ext.grid.plugin.DragDrop', //
-        'Ext.grid.column.Template', //
-        'Ext.tree.plugin.TreeViewDragDrop', //
-        'Ext.data.Model', //
-        'Ext.data.Store', //
-        'Ext.data.TreeStore', //
-        'Ext.data.proxy.Rest', //
-        'Ext.data.proxy.JsonP', //
-        'Ext.layout.container.Border', //
-        'Ext.tab.Panel', //
-        'Ext.tree.Panel', //
-        'Ext.LoadMask',//
-        'Ext.data.writer.Json'//
+    requires: ['Ext.ux.grid.FilterBar', //
+    'Ext.grid.plugin.DragDrop', //
+    'Ext.grid.column.Template', //
+    'Ext.tree.plugin.TreeViewDragDrop', //
+    'Ext.data.Model', //
+    'Ext.data.Store', //
+    'Ext.data.TreeStore', //
+    'Ext.data.proxy.Rest', //
+    'Ext.data.proxy.JsonP', //
+    'Ext.layout.container.Border', //
+    'Ext.tab.Panel', //
+    'Ext.tree.Panel', //
+    'Ext.LoadMask', //
+    'Ext.data.writer.Json'//
     ],
 
     layout: {
@@ -43,61 +42,52 @@ Ext.define('DMPlanner.ux.Keywords', {
     },
 
     initComponent: function() {
-        var me = this, keywordtree, keywords, keywordStore,
-            addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>',
-            removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>',
-            helpCol = {
-                xtype: 'templatecolumn',
-                width: 28,
-                text: '',
-                hideable: false,
-                style: {cursor: 'help'},
-                tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="fa dmp-col-info">&#xf05a;</div></tpl>'
+        var me = this, keywordtree, keywords, keywordStore, addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>', removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>', helpCol = {
+            xtype: 'templatecolumn',
+            width: 28,
+            text: '',
+            hideable: false,
+            style: {
+                cursor: 'help'
             },
-            testDuplicate = function(node, data, overModel, dropPosition, dropHandlers) {
-                var store = this.down('#planKeywords').getStore(),
-                    draggedRecords = data.records,
-                    ln = draggedRecords.length,
-                    i, record;
+            tpl: '<tpl if="definition"><div data-qtip="{[Ext.htmlEncode(values.definition)]}" class="fa dmp-col-info">&#xf05a;</div></tpl>'
+        }, testDuplicate = function(node, data, overModel, dropPosition, dropHandlers) {
+            var store = this.down('#planKeywords').getStore(), draggedRecords = data.records, ln = draggedRecords.length, i, record;
 
-                for (i = 0; i < ln; i++) {
-                    record = draggedRecords[i];
-                    //reject duplicates
-                    if(store.findExact('keywordid',record.getId()) !== -1) {
-                        return false;
-                    }
+            for ( i = 0; i < ln; i++) {
+                record = draggedRecords[i];
+                //reject duplicates
+                if (store.findExact('keywordid', record.getId()) !== -1) {
+                    return false;
+                }
 
-                    return true;
-                }
-            },
-            addKeyword = function (view, el, idx, col){
-                var store = this.down('#planKeywords').getStore(),
-                    sel = view.getSelectionModel().getSelection(),
-                    data = {records: sel};
-
-                if(testDuplicate.call(this,null, data)){
-                    store.add(sel);
-                }
-            },
-            addCol = {
-                xtype: 'templatecolumn',
-                width: 28,
-                text: '',
-                hideable: false,
-                tpl: addTpl,
-                action: 'addkeyword',
-                listeners: {
-                    click: {
-                        fn: addKeyword,
-                        scope: this
-                    }
-                }
-            },
-            rmKeyword = function (view, el, idx, col){
-                var sel = view.getSelectionModel().getSelection();
-                view.getStore().remove(sel);
+                return true;
+            }
+        }, addKeyword = function(view, el, idx, col) {
+            var store = this.down('#planKeywords').getStore(), sel = view.getSelectionModel().getSelection(), data = {
+                records: sel
             };
 
+            if (testDuplicate.call(this, null, data)) {
+                store.add(sel);
+            }
+        }, addCol = {
+            xtype: 'templatecolumn',
+            width: 28,
+            text: '',
+            hideable: false,
+            tpl: addTpl,
+            action: 'addkeyword',
+            listeners: {
+                click: {
+                    fn: addKeyword,
+                    scope: this
+                }
+            }
+        }, rmKeyword = function(view, el, idx, col) {
+            var sel = view.getSelectionModel().getSelection();
+            view.getStore().remove(sel);
+        };
 
         if (!Ext.ModelManager.getModel('KeywordNode')) {
             Ext.define('KeywordNode', {
@@ -132,31 +122,29 @@ Ext.define('DMPlanner.ux.Keywords', {
         }
 
         //if (!Ext.getStore('PlanKeywords')) {
-            keywordStore = Ext.create('Ext.data.Store', {
-                model: 'KeywordNode',
-                //storeId: 'PlanKeywords',
-                //autoLoad: false,
-                autoDestroy: true,
-                data: me.data,
-                proxy: {
-                    type: 'memory',
-                    reader: {
-                        type: 'json',
-                        root: 'data'
-                    }
-                },
-
-                listeners: {
-                    datachanged: function(store) {
-                        var me = this,
-                            recs = store.getRange(),
-                            data = me.dmpSerialize(recs);
-
-                        me.fireEvent('plugindatachanged', me, data);
-                    },
-                    scope: me
+        keywordStore = Ext.create('Ext.data.Store', {
+            model: 'KeywordNode',
+            //storeId: 'PlanKeywords',
+            //autoLoad: false,
+            autoDestroy: true,
+            data: me.data,
+            proxy: {
+                type: 'memory',
+                reader: {
+                    type: 'json',
+                    root: 'data'
                 }
-            });
+            },
+
+            listeners: {
+                datachanged: function(store) {
+                    var me = this, recs = store.getRange(), data = me.dmpSerialize(recs);
+
+                    me.fireEvent('plugindatachanged', me, data);
+                },
+                scope: me
+            }
+        });
         //}
 
         if (!Ext.getStore('KeywordNodes')) {
@@ -164,9 +152,31 @@ Ext.define('DMPlanner.ux.Keywords', {
                 model: 'KeywordNode',
                 storeId: 'KeywordNodes',
                 clearOnLoad: true,
-                autoLoad: false,
+                root: {
+                    expanded: true,
+                    "children": [{
+                        "children": null,
+                        "text": "Science Keywords",
+                        "id": "",
+                        "iconCls": "",
+                        "leaf": false,
+                        "draggable": false,
+                        "keywordid": "1eb0ea0a-312c-4d74-8d42-6f1ad758f999",
+                        "definition": null,
+                        "parentkeywordid": null,
+                        "fullname": "Science Keywords",
+                        "parentname": null,
+                        "cls": "pts-tree-branch",
+                        "allowDrag": false
+                    }],
+                    "text": ".",
+                    "id": "root",
+                    "iconCls": "",
+                    "leaf": false,
+                    "draggable": false
+                },
                 defaultRootId: ''
-            }).load();
+            });
         }
         if (!Ext.getStore('Keywords')) {
             Ext.create('Ext.data.Store', {
@@ -215,25 +225,7 @@ Ext.define('DMPlanner.ux.Keywords', {
                 text: 'Keyword',
                 dataIndex: 'text',
                 flex: 1
-            }, helpCol, addCol],
-            listeners: {
-                afterLayout: function(tree) {
-                    var store = tree.getStore();
-                    //since root is invisible,mask on initial load
-                    if (store.isLoading() && !tree.getRootNode().hasChildNodes()) {
-                        store.myMask = new Ext.LoadMask({
-                            target: tree,
-                            msg: "Please wait..."
-                        });
-                        store.myMask.show();
-                        store.on('load', function() {
-                            store.myMask.destroy();
-                        }, this, {
-                            single: true
-                        });
-                    }
-                }
-            }
+            }, helpCol, addCol]
         };
 
         Ext.applyIf(me, {
@@ -261,18 +253,18 @@ Ext.define('DMPlanner.ux.Keywords', {
                 },
                 store: keywordStore,
                 columns: [{
-                        xtype: 'templatecolumn',
-                        width: 28,
-                        text: '',
-                        hideable: false,
-                        tpl: removeTpl,
-                        action: 'removekeyword',
-                        listeners: {
-                            click: {
-                                fn: rmKeyword
-                            }
+                    xtype: 'templatecolumn',
+                    width: 28,
+                    text: '',
+                    hideable: false,
+                    tpl: removeTpl,
+                    action: 'removekeyword',
+                    listeners: {
+                        click: {
+                            fn: rmKeyword
                         }
-                    },{
+                    }
+                }, {
                     text: "Keyword",
                     flex: 1,
                     sortable: true,
@@ -282,12 +274,12 @@ Ext.define('DMPlanner.ux.Keywords', {
                 dockedItems: [{
                     xtype: 'toolbar',
                     dock: 'top',
-                    items:[{
+                    items: [{
                         xtype: 'button',
-                        glyph:  'xf100@FontAwesome',
+                        glyph: 'xf100@FontAwesome',
                         text: 'Remove All',
                         action: 'removeallkeywords',
-                        handler: function(btn){
+                        handler: function(btn) {
                             btn.up('gridpanel').getStore().removeAll();
                         }
                     }]
@@ -328,9 +320,9 @@ Ext.define('DMPlanner.ux.Keywords', {
                         dataIndex: 'fullname',
                         flex: 2,
                         text: 'Full Path'
-                    },//
-                         helpCol,//
-                         addCol//
+                    }, //
+                    helpCol, //
+                    addCol//
                     ],
                     viewConfig: {
                         copy: true,
