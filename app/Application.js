@@ -137,7 +137,7 @@ Ext.define('DMPlanner.Application', {
                                     remove: true
                                 });
 
-                                if(Ext.isIE9p) {
+                                if(Ext.isIE9m) {
                                     Ext.Msg.show({
                                         title: 'Old browser!',
                                         msg: 'You\'re using an older version of Internet Explorer(' + Ext.ieVersion + '). ' +

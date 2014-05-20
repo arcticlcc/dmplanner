@@ -39,9 +39,9 @@ Ext.define('DMPlanner.controller.Questions', {
                 click: this.onHomeClick
                 //beforerender:
             },
-             'questions field, questions htmleditor, #sectionContainer>#questionTabs field, #sectionContainer>#questionTabs htmleditor, #sectionContainer>fieldcontainer field, #sectionContainer>fieldcontainer htmleditor' : {
-                change : this.saveItem
-             }
+            'questions field, questions htmleditor, #sectionContainer container[hasQuestions] field, #sectionContainer container[hasQuestions] htmleditor' : {
+                change :this.saveItem
+            }
         });
 
         /*this.listen({
@@ -191,7 +191,7 @@ Ext.define('DMPlanner.controller.Questions', {
             var num =  sections ? sections.count() : 0,
                 cfg = {
                     xtype: num ? 'panel' : 'fieldcontainer',
-                    //itemId: 'questionCont',
+                    hasQuestions: true,
                     bodyPadding: num ? 15 : undefined,
                     padding: num ? undefined : 15,
                     title: num ? 'Questions' : title,
