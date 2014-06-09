@@ -98,7 +98,7 @@ Ext.define('DMPlanner.Application', {
 
         //get plan template
         Ext.Ajax.request({
-            url: 'data.json',
+            url: me.getPlanUrl(),
             success: function(response, opts) {
                 var obj = Ext.decode(response.responseText),
                     loader =  this.getStartDoc().getLoader();
@@ -154,9 +154,17 @@ Ext.define('DMPlanner.Application', {
                     }
                 });
 
+                DMPlanner.app.fireEvent('loadtemplate');
+
             },
             failure: function(response, opts) {
-                var err = 'Server-side failure with status code ' + response.status;
+                var err = 'Could not load the plan template: ' + response.request.options.url + '<br />' +
+                        '. Code: ' + response.status + ' - ' + response.statusText;
+
+                Ext.get('loading').remove();
+                Ext.get('loading-mask').fadeOut({
+                    remove: true
+                });
                 DMPlanner.app.showError(err);
             },
             scope: me
@@ -203,5 +211,18 @@ Ext.define('DMPlanner.Application', {
             html: txt,
             maxWidth: 400
         }).show();
+    },
+
+    /**
+     * Returns the plan URL. Check the window location.
+     * Defaults to data.json
+     * @return {String} The plan URL.
+     */
+    getPlanUrl: function(txt) {
+        var href = window.location.href,
+            i = href.indexOf("#"),
+            hash = i >= 0 ? href.substr(i + 1) : false;
+
+            return hash || 'data.json';
     }
 });

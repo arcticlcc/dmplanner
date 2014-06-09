@@ -10,6 +10,9 @@ Ext.define('DMPlanner.controller.Start', {
     refs : [{
         ref: 'editBtn',
         selector: 'button#startEditBtn'
+    }, {
+        ref: 'newBtn',
+        selector: 'button#startNewBtn'
     }],
 
     init: function(application) {
@@ -30,6 +33,11 @@ Ext.define('DMPlanner.controller.Start', {
             store: {
                 '#LocalPlans': {
                     load: this.onLoadLocalPlans
+                }
+            },
+            controller: {
+                '*': {
+                    loadtemplate: this.onLoadTemplate
                 }
             }
         });
@@ -55,6 +63,10 @@ Ext.define('DMPlanner.controller.Start', {
 
     onRenderLoadBtn: function(btn) {
         FileReaderJS.setupInput(btn.fileInputEl.dom, DMPlanner.app.fileReaderCfg);
+    },
+
+    onLoadTemplate: function() {
+        this.getNewBtn().enable();
     }
 
 });

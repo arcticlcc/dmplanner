@@ -38,7 +38,8 @@ Ext.define("DMPlanner.view.Start", {
                 itemId : 'startNewBtn',
                 text : 'Start a New Plan',
                 glyph: 'xf067@FontAwesome',
-                scale   : 'large'
+                scale   : 'large',
+                disabled: true
             }, {
                 xtype : 'button',
                 anchor : '100%',
