@@ -1,0 +1,101 @@
+{
+  "startDoc": "Start.md",
+  "templates": [
+    {
+      "templateTitle": "",
+      "version": "0.0.0",
+      "levels": ["Basic", "Advanced"],
+      "name": null,
+      "code": null,
+      "docBase": "resources/doc/test/",
+      "homeDoc": "Home.md",
+      "sections": [
+        {
+          "name": "JustATest",
+          "groups": [
+            {
+              "name": "Your information",
+              "repeatable": false,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter your first name.",
+                  "defAnswer": "Joe"
+                }, {
+                  "question": "Last name",
+                  "level": 1
+                }, {
+
+                  "question": "Occupation"
+                }, {
+                  "question": "Age",
+                  "config": {
+                    "xtype": "numberfield",
+                    "maxWidth": 250
+                  }
+                }, {
+                  "question": "True or False",
+                  "defAnswer": {
+                    "trueorfalse": "f"
+                  },
+                  "config": {
+                    "xtype": "radiogroup",
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "True",
+                        "name": "trueorfalse",
+                        "inputValue": "m"
+                      }, {
+                        "boxLabel": "False",
+                        "name": "trueorfalse",
+                        "inputValue": "f"
+                      }
+                    ]
+                  }
+                }, {
+                  "question": "Check It Out",
+                  "config": {
+                    "xtype": "checkboxgroup",
+                    "maxWidth": 400,
+                    "columns": 2,
+                    "vertical": true,
+                    "items": [
+                      {
+                        "boxLabel": "Item 1",
+                        "name": "cb",
+                        "inputValue": "1"
+                      }, {
+                        "boxLabel": "Item 2",
+                        "name": "cb",
+                        "inputValue": "2",
+                        "checked": true
+                      }, {
+                        "boxLabel": "Item 3",
+                        "name": "cb",
+                        "inputValue": "3"
+                      }, {
+                        "boxLabel": "Item 4",
+                        "name": "cb",
+                        "inputValue": "4"
+                      }, {
+                        "boxLabel": "Item 5",
+                        "name": "cb",
+                        "inputValue": "5"
+                      }, {
+                        "boxLabel": "Item 6",
+                        "name": "cb",
+                        "inputValue": "6"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

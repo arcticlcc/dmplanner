@@ -1,13 +1,14 @@
 {
-  "levels": ["Base", "Steward"],
-  "startDoc": 'Start.md',
+  "levels": ["Default1", "Default2"],
+  "startDoc": "Start.md",
   "templates": [
     {
       "templateTitle": "",
+      "levels": ["Base", "Steward"],
       "version": "0.0.0",
       "name": null,
       "code": null,
-      "homeDoc": 'Home.md',
+      "homeDoc": "Home.md",
       "sections": [
         {
           "name": "Single Group",
