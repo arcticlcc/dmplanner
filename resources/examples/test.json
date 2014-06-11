@@ -1,5 +1,5 @@
 {
-  "startDoc": 'Start.md',
+  "startDoc": "Start.md",
   "templates": [
     {
       "templateTitle": "",
@@ -7,7 +7,8 @@
       "levels": ["Basic", "Advanced"],
       "name": null,
       "code": null,
-      "homeDoc": 'Home.md',
+      "docBase": "resources/doc/test/",
+      "homeDoc": "Home.md",
       "sections": [
         {
           "name": "JustATest",

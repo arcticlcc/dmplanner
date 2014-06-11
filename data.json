@@ -1,6 +1,6 @@
 {
   "levels": ["Default1", "Default2"],
-  "startDoc": 'Start.md',
+  "startDoc": "Start.md",
   "templates": [
     {
       "templateTitle": "",
@@ -8,7 +8,7 @@
       "version": "0.0.0",
       "name": null,
       "code": null,
-      "homeDoc": 'Home.md',
+      "homeDoc": "Home.md",
       "sections": [
         {
           "name": "Single Group",

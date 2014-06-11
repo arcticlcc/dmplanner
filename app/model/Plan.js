@@ -41,6 +41,9 @@ Ext.define('DMPlanner.model.Plan', {
         name: 'homeDoc',
         defaultValue: 'Home.md'
     }, {
+        name: 'docBase',
+        defaultValue: null
+    }, {
         name: 'levels',
         type: 'auto'
     }]

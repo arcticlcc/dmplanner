@@ -103,7 +103,7 @@ Ext.define('DMPlanner.controller.Plans', {
         var layout = this.getSectionPanel().getLayout(),
             sections = this.getSectionList(),
             store = record.sections(),
-            docBase = DMPlanner.data.PlanTemplate.docBase,
+            docBase = record.get('docBase') || DMPlanner.data.PlanTemplate.docBase,
             homeDoc = record.get('homeDoc'),
             loader =  this.getHomeDoc().getLoader(),
             loadSection = function() {
