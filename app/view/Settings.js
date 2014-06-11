@@ -11,9 +11,7 @@ Ext.define('DMPlanner.view.Settings', {
     closeAction: 'hide',
 
     initComponent: function() {
-        var me = this,
-            levels = [], levelCombo;
-
+        var me = this, levels = [], levelCombo;
 
         Ext.each(DMPlanner.data.PlanTemplate.levels, function(l, i) {
             levels.push([i, l]);
@@ -22,12 +20,17 @@ Ext.define('DMPlanner.view.Settings', {
         levelCombo = Ext.create('Ext.form.ComboBox', {
             itemId: 'levelCombo',
             fieldLabel: 'Choose Level',
-            store: levels,
+            store: {
+                fields: ['field1', 'field2'],
+                data: levels
+            },
+            displayField: 'field2',
+            valueField: 'field1',
+            disabled: !levels.length,
             queryMode: 'local',
             forceSelection: true,
             value: DMPlanner.util.LevelFilter.value
         });
-
 
         Ext.applyIf(me, {
             items: [levelCombo]

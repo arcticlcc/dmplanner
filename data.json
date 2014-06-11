@@ -1,9 +1,10 @@
 {
-  "levels": ["Base", "Steward"],
+  "levels": ["Default1", "Default2"],
   "startDoc": 'Start.md',
   "templates": [
     {
       "templateTitle": "",
+      "levels": ["Base", "Steward"],
       "version": "0.0.0",
       "name": null,
       "code": null,

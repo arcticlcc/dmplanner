@@ -37,7 +37,7 @@ Ext.define('DMPlanner.controller.Plans', {
     init : function() {
         this.control({
             planlist : {
-                select: this.loadSections
+                select: this.onSelectPlan
             },
             'planlist tool#addPlan':{
                 click: this.onAddNewPlan
@@ -94,7 +94,12 @@ Ext.define('DMPlanner.controller.Plans', {
         });
     },
 
-    loadSections : function(grid, record) {
+    onSelectPlan: function(grid, record) {
+        this.fireEvent('selectplan', record);
+        this.loadSections(record);
+    },
+
+    loadSections: function(record) {
         var layout = this.getSectionPanel().getLayout(),
             sections = this.getSectionList(),
             store = record.sections(),

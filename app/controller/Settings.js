@@ -3,7 +3,10 @@ Ext.define('DMPlanner.controller.Settings', {
 
     views: ['Settings'],
 
-    refs: [],
+    refs: [{
+        ref: 'combo',
+        selector: 'dmpsettings #levelCombo'
+    }],
 
     init: function(application) {
         this.control({
@@ -11,6 +14,33 @@ Ext.define('DMPlanner.controller.Settings', {
                 select: this.updateLevel
             }
         });
+
+        //event domains
+        this.listen({
+            controller: {
+                '#Plans': {
+                    selectplan: this.onSelectPlan
+                }
+            }
+        });
+    },
+
+    /**
+     * Fired when a plan is selected. Updates level combo.
+     * @param {DMPlanner.model.Plan} record The plan record
+     */
+    onSelectPlan: function(record) {
+        var levels = [], //
+            combo = this.getCombo(),//
+            data = record.data.levels || DMPlanner.data.PlanTemplate.levels;
+
+        Ext.each(data, function(l, i) {
+            levels.push([i, l]);
+        });
+
+        combo.getStore().loadData(levels);
+        combo.setDisabled(!levels.length);
+        combo.setValue(combo.getValue() || DMPlanner.util.LevelFilter.value);
     },
 
     /**
