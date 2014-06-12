@@ -22,6 +22,10 @@ Ext.define('DMPlanner.model.Question', {
     }, {
         name : 'guidance'
     }, {
+        name : 'emptyText',
+        type: 'bool',
+        defaultValue: true
+    }, {
         name : 'defAnswer'
     }, {
         name : 'answer',

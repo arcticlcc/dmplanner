@@ -251,6 +251,9 @@ Ext.define('DMPlanner.controller.Questions', {
                         question : question,
                         anchor : '100%',
                         xtype : 'textfield',
+                        emptyText: question.get('emptyText') ? info : undefined,
+                        //overCls: 'dmp-question-over',
+                        //padding: "5px 0px",
                         afterLabelTextTpl : !!info ? '<span class="fa dmp-icon-guidance sup" data-qtip="' + info + '">&#xf059;</span>' : undefined,
                         //afterSubTpl: !!info ? '<span class="dmp-icon-guidance"
                         // data-qtip="' + info + '">?</span>' : undefined,
@@ -278,17 +281,18 @@ Ext.define('DMPlanner.controller.Questions', {
         groups.group('index', 'ASC');
         grouped = groups.getGroups();
 
-        Ext.each(grouped, function(g){
+        Ext.each(grouped, function(g, idx){
             var children = g.children,
                 repeat = !!children[0].get('repeatable'),
                 tabs;
 
             tabs = !repeat ? undefined : {
                 xtype: 'tabpanel',
-                itemId: 'questionTabs',
+                itemId: 'questionTabs-' + idx,
                 //width: 500,
                 //height: 400,
                 plain: !plain,
+                autoScroll: true,
                 //bodyPadding: 15,
                 bodyCls: plain ? '' : 'dmp-group-tab',
                 defaults: {
