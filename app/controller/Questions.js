@@ -105,6 +105,9 @@ Ext.define('DMPlanner.controller.Questions', {
             count = grid.getStore().getCount(),
             isLastSection = (count - index) === 1,
             isFirstSection = (count - index) === count,
+            help = record.get('helpDoc'),
+            docBase = record.getDMPPlan().get('docBase') || DMPlanner.data.PlanTemplate.docBase,
+            url = help ? docBase + help : false,
             buttons = [],
             questions, clone;
         //@format:on
@@ -173,6 +176,8 @@ Ext.define('DMPlanner.controller.Questions', {
         bbar.add(buttons);
 
         cont.up('sectionpanel').getLayout().setActiveItem(cont);
+
+        this.fireEvent('showhelp', url, record.get('name'));
 
     },
 

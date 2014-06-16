@@ -471,6 +471,17 @@
         "name": "Settings",
         "controllerNamespace": "DMPlanner.controller"
       }
+    },
+    "app/controller/Help.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "b092f4aad11d2f7eaab5ce3e2dcc2fc3134f3188",
+      "parameters": {
+        "appName": "DMPlanner",
+        "controllerName": "Help",
+        "controllerFileName": "Help",
+        "name": "Help",
+        "controllerNamespace": "DMPlanner.controller"
+      }
     }
   }
 }

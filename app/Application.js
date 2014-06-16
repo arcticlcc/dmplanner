@@ -24,6 +24,7 @@ Ext.define('DMPlanner.Application', {
     controllers: [
     // TODO: add controllers here
         'Start',//
+        'Help',//
         'Plans',//
         'Questions',//
         'Settings'
