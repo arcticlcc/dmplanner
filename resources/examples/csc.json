@@ -1,6 +1,6 @@
 {
   "levels": ["Proposal", "Funded"],
-  "startDoc": "Start.md",
+  "startDoc": "csc/Start.md",
   "templates": [
     {
       "templateTitle": "CSC DMP",
