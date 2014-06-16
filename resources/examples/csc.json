@@ -38,7 +38,7 @@
                 }
               ]
             }, {
-              "name": "Other Contact",
+              "name": "Additional Contact",
               "repeatable": true,
               "questions": [
                 {
@@ -71,6 +71,7 @@
           ]
         }, {
           "name": "Data Inputs – Existing Collections",
+          "helpDoc": "ExistingCollections.md",
           "groups": [
             {
               "name": "Existing Collections",
@@ -166,6 +167,7 @@
           ]
         }, {
           "name": "Data Inputs – New Collections",
+          "helpDoc": "NewCollections.md",
           "groups": [
             {
               "name": "New Collections",
@@ -314,6 +316,7 @@
           ]
         }, {
           "name": "Models",
+          "helpDoc": "Models.md",
           "groups": [
             {
               "name": "Model",
@@ -382,6 +385,7 @@
           ]
         }, {
           "name": "Software/Code and Web Tools",
+          "helpDoc": "Tools.md",
           "groups": [
             {
               "name": "Custom Tool",
@@ -451,6 +455,7 @@
           ]
         }, {
           "name": "Data Products (Deliverables)",
+          "helpDoc": "Products.md",
           "groups": [
             {
               "name": "Product",
@@ -594,12 +599,14 @@
           ]
         }, {
           "name": "Keywords",
+          "helpDoc": "Keywords.md",
           "config": {
             "xtype": "dmpkeywords",
             "header": false
           }
         }, {
           "name": "Project Location(s)",
+          "helpDoc": "Map.md",
           "level": 0,
           "config": {
             "xtype": "dmpmappanel",

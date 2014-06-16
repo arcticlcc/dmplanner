@@ -49,6 +49,7 @@ Ext.Loader.addClassPathMappings({
 });
 Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.Application": [],
+  "DMPlanner.controller.Help": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Settings": [],
@@ -1053,6 +1054,7 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.Application": [],
+  "DMPlanner.controller.Help": [],
   "DMPlanner.controller.Plans": [],
   "DMPlanner.controller.Questions": [],
   "DMPlanner.controller.Settings": [],
