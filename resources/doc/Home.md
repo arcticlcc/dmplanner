@@ -4,7 +4,7 @@ This doc was rendered from a [markdown file](resources/doc/Home.md).
 
 This is intended as a quick reference and showcase. For more complete info, see [John Gruber's original spec](http://daringfireball.net/projects/markdown/) and the [Github-flavored Markdown info page](http://github.github.com/github-flavored-markdown/).
 
-This content was *borrowed* from [Cheatsheet specific to Markdown Here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+This content was *borrowed* from [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 ##### Table of Contents
 [Headers](#headers)

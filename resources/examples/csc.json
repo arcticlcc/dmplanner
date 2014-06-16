@@ -1,0 +1,619 @@
+{
+  "levels": ["Proposal", "Funded"],
+  "startDoc": "csc/Start.md",
+  "templates": [
+    {
+      "templateTitle": "CSC DMP",
+      "levels": ["Proposal", "Funded"],
+      "version": "1.0.0",
+      "name": null,
+      "code": null,
+      "homeDoc": "Home.md",
+      "docBase": "resources/doc/csc/",
+      "sections": [
+        {
+          "name": "Contact Information",
+          "helpDoc": "Contact.md",
+          "groups": [
+            {
+              "name": "Project Lead/Principal Investigator",
+              "repeatable": false,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter a first name."
+                }, {
+                  "question": "Last name",
+                  "guidance": "Enter a last name."
+                }, {
+                  "question": "Organization",
+                  "guidance": "Enter the organization name."
+                }, {
+                  "question": "Job title"
+                }, {
+                  "question": "E-mail",
+                  "config": {
+                    "vtype": "email"
+                  }
+                }
+              ]
+            }, {
+              "name": "Additional Contact",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "First name",
+                  "guidance": "Enter a first name."
+                }, {
+                  "question": "Last name",
+                  "guidance": "Enter a last name."
+                }, {
+                  "question": "Organization",
+                  "guidance": "Enter the organization name."
+                }, {
+                  "question": "Project Role",
+                  "guidance": "Select or type a short description of the contact's relationship to the project.",
+                  "config": {
+                    "xtype": "combo",
+                    "store": ["Administrative Contact", "Co-Principal Investigator", "Collaborator", "Data Distributor", "Data Steward", "Funding", "Funding Recipient", "Grants Administrator", "Metadata Host", "Metadata Steward", "Primary Contact", "Project Officer"],
+                    "maxWidth": 450
+                  }
+                }, {
+                  "question": "Job title"
+                }, {
+                  "question": "E-mail",
+                  "config": {
+                    "vtype": "email"
+                  }
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Data Inputs – Existing Collections",
+          "helpDoc": "ExistingCollections.md",
+          "groups": [
+            {
+              "name": "Existing Collections",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "Name",
+                  "guidance": "Enter Name of Existing Collection.",
+                  "emptyText": true
+                }, {
+                  "question": "Description",
+                  "guidance": "Describe the information that will be used, including its characteristics, temporal scope and scale, and geographic scope and scale, when available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Source",
+                  "guidance": "Identify the source for the data; include a link and digital object identifier (DOI) if available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Restrictions",
+                  "guidance": "Identify any limitations on access or reuse (e.g., sensitive data, restricted data, software with license restrictions, etc.) and provide justification for restriction. Provide citation or documentation describing limitations if due to policies or legal reasons.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Format",
+                  "guidance": "Identify the formats in which the data are maintained and made available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Fees",
+                  "guidance": "Identify any fees associated with acquiring the data.",
+                  "emptyText": true
+                }, {
+                  "question": "Quality Checks",
+                  "level": 1,
+                  "guidance": "Identify the procedural steps used to evaluate the existing data, including verification, validation, and an assessment of usability.",
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Data Processing & Scientific Workflows",
+                  "level": 1,
+                  "guidance": "Describe any data processing steps or provide a scientific workflow you plan to use to manipulate the data, as appropriate.",
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Backup & Storage",
+                  "level": 1,
+                  "guidance": "Describe the approach for backup and storage of the information associated with the research project during the project.",
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Volume Estimate",
+                  "level": 1,
+                  "guidance": "Estimate the volume of information that will be generated megabyte (MB), GB, TB, or PB."
+                }, {
+                  "question": "Citation",
+                  "level": 1,
+                  "guidance": "Provide citation for data product. If the data product can be found online, provide a URL.",
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Data Inputs – New Collections",
+          "helpDoc": "NewCollections.md",
+          "groups": [
+            {
+              "name": "New Collections",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "Name",
+                  "guidance": "Provide a brief name to describe new data collection.",
+                  "emptyText": true
+                }, {
+                  "question": "Description",
+                  "guidance": "Describe the information that will be collected, including its characteristics, temporal scope and scale, and geographic scope and scale, when available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Data Management Resources",
+                  "guidance": "Describe the proposal resources allocated for data management activities for the new data collected as a level of effort, total dollars allocated, or as a percentage of the total project’s cost. Resources could include people’s time or proposal funding.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Exclusive Use",
+                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension. (Request cannot be more than one year.)",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Restrictions",
+                  "guidance": "Identify any limitations on access or reuse (e.g., sensitive data, restricted data, software with license restrictions, etc.) and provide justification for restriction. Provide citation or documentation describing limitations if due to policies or legal reasons.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Format",
+                  "guidance": "Identify the formats in which the data will be generated, maintained, and made available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Protocols",
+                  "level": 1,
+                  "guidance": "Identify any standard protocols or methodologies that will be used to collect the data, if available.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Quality Checks",
+                  "level": 1,
+                  "guidance": "Identify the procedural steps for ensuring data quality.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Data Processing & Scientific Workflows",
+                  "level": 1,
+                  "guidance": "Describe data processing steps or provide a scientific workflow you plan to use to manipulate the data, as appropriate.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Metadata",
+                  "level": 1,
+                  "guidance": "Identify the metadata standard that will be used to describe the document (FGDC, ISO, EML, etc.)",
+                  "emptyText": true
+                }, {
+                  "question": "Volume Estimate",
+                  "level": 1,
+                  "guidance": "Estimate the volume of information generated: megabyte (MB), GB, TB, or PB.",
+                  "emptyText": true
+                }, {
+                  "question": "Backup & Storage",
+                  "level": 1,
+                  "guidance": "Describe the approach for backup and storage of the information associated with the research project during the project.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Repository for Data",
+                  "level": 1,
+                  "guidance": "Identify any repositories where you plan to share your data. Indicate if data will be integrated into an existing collection or offered as a new collection.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Citation",
+                  "level": 1,
+                  "guidance": "Specify how the project’s data should be cited.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Digital Object Identifier (DOI)/Link",
+                  "level": 1,
+                  "guidance": "Provide a digital object identifier (DOI)/link to the data when available publicly. The DOI should be in the form of a URL, e.g. http://dx.doi.org/10.1000/182",
+                  "emptyText": true,
+                  "config": {
+                    "vtype": "url"
+                  }
+                }, {
+                  "question": "Lifespan of Data",
+                  "level": 1,
+                  "guidance": "At some point, datasets may be archived. Choose one of the following options to indicate how long you anticipate this data will be of value to other researchers. Less than 5 years, 5-10 years, 10-20 years, 20-50 years, 50+ years.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Models",
+          "helpDoc": "Models.md",
+          "groups": [
+            {
+              "name": "Model",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "Name",
+                  "guidance": "Name of Model",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Description",
+                  "guidance": "Provide a brief description of the model and its purpose",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Model Version",
+                  "guidance": "Identify the version of model used",
+                  "emptyText": true
+                }, {
+                  "question": "Link",
+                  "guidance": "Provide a link or a source for the model",
+                  "emptyText": true,
+                  "config": {
+                    "vtype": "url"
+                  }
+                }, {
+                  "question": "Model Input(s)",
+                  "guidance": "Enter the types of input data required for driving, calibrating, or validating the model. For proposals, summary information is all that is needed. For funded projects, these should be described in detail in the existing or new collection, data inputs section",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Model Output(s)",
+                  "guidance": "Enter the types of output data the model will produce. For proposals, summary information is all that is needed. For funded projects, provide more details as known. If the model output is a generated dataset that is a project deliverable, describe it in detail in the data product section",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Calibration Details",
+                  "guidance": "Briefly describe the calibration/validation approach being taken",
+                  "level": 1,
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Software/Code and Web Tools",
+          "helpDoc": "Tools.md",
+          "groups": [
+            {
+              "name": "Custom Tool",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "Name",
+                  "guidance": "Name of Software or Other Tool",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Description",
+                  "guidance": "Describe the custom software. code, or web tool developed or used as part of the project",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Software/Tool Version",
+                  "guidance": "Identify the version of used",
+                  "emptyText": true
+                }, {
+                  "question": "Link",
+                  "guidance": "If the custom software or code can be accessed via an online repository, provide a link",
+                  "emptyText": true,
+                  "config": {
+                    "vtype": "url"
+                  }
+                }, {
+                  "question": "Restrictions",
+                  "guidance": "Identify any limitations on access or reuse",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Maintenance and Support",
+                  "level": 1,
+                  "guidance": "If a tool is developed as part of the project, is there a strategy for the ongoing support and maintenance of the tool after the project is complete? If so, briefly describe it",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Languages",
+                  "level": 1,
+                  "guidance": "Identify the computing language/framework that was used (e.g., Java, .Net, Ruby, Rails, SQL, etc.",
+                  "emptyText": true
+                }, {
+                  "question": "Environment",
+                  "level": 1,
+                  "guidance": "Identify the operating system environment (e.g., Windows, Linux, MacOS X, etc.",
+                  "emptyText": true
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Data Products (Deliverables)",
+          "helpDoc": "Products.md",
+          "groups": [
+            {
+              "name": "Product",
+              "repeatable": true,
+              "questions": [
+                {
+                  "question": "Name",
+                  "guidance": "Name of Data Product",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Description",
+                  "guidance": "Describe the information that will be produced, including its characteristics, temporal scope and scale, and geographic scope and scale, when available",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Data Management Resources",
+                  "guidance": "Describe the proposal resources allocated for data management activities for the data products as a level of effort, total dollars allocated, or as a percentage of the total project’s cost. Resources could include people’s time or proposal funding",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Format",
+                  "guidance": "Identify the formats in which the data will be generated, maintained, and made available",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Exclusive Use",
+                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension. (Request cannot be more than one year.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Restrictions",
+                  "guidance": "Identify any limitations on access or reuse (e.g., sensitive data, restricted data, software with license restrictions, etc.) and provide justification for restriction. Provide citation or documentation describing limitations if due to policies or legal reasons",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Quality Checks",
+                  "level": 1,
+                  "guidance": "Identify the procedural steps for ensuring data quality during the project",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Processing & Workflow",
+                  "level": 1,
+                  "guidance": "Describe data processing steps or provide a scientific workflow you plan to use to manipulate the data, as appropriate",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Metadata",
+                  "level": 1,
+                  "guidance": "Identify the metadata standard that will be used to describe the data and products (FGDC, ISO, EML, etc.",
+                  "emptyText": true
+                }, {
+                  "question": "Volume Estimate",
+                  "level": 1,
+                  "guidance": "Estimate the volume of information generated: megabyte (MB), GB, TB, or PB",
+                  "emptyText": true
+                }, {
+                  "question": "Backup & Storage",
+                  "level": 1,
+                  "guidance": "Describe the approach for backup and storage of the information associated with the research project during the project",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Repository for Data",
+                  "level": 1,
+                  "guidance": "Identify other repositories where you plan to share your data",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Citation",
+                  "level": 1,
+                  "guidance": "Specify how the project’s data should be cited",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "textarea",
+                    "grow": true,
+                    "growMin": 20
+                  }
+                }, {
+                  "question": "Digital Object Identifier (DOI)/Link",
+                  "level": 1,
+                  "guidance": "Provide a digital object identifier (DOI)/link to the project when available publicly",
+                  "emptyText": true,
+                  "config": {
+                    "vtype": "url"
+                  }
+                }, {
+                  "question": "Lifespan of Data",
+                  "level": 1,
+                  "guidance": "At some point, datasets may be archived. Choose one of the following options to indicate how long you anticipate this data will be of value to other researchers.",
+                  "emptyText": true,
+                  "config": {
+                    "xtype": "combo",
+                    "store": ["Less than 5 years", "5-10 years", "10-20 years", "20-50 years", "50+ years"],
+                    "maxWidth": 400
+                  }
+                }
+              ]
+            }
+          ]
+        }, {
+          "name": "Keywords",
+          "helpDoc": "Keywords.md",
+          "config": {
+            "xtype": "dmpkeywords",
+            "header": false
+          }
+        }, {
+          "name": "Project Location(s)",
+          "helpDoc": "Map.md",
+          "level": 0,
+          "config": {
+            "xtype": "dmpmappanel",
+            "title": "Project Spatial Features"
+          }
+        }
+      ]
+    }
+  ]
+}
