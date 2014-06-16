@@ -70,7 +70,7 @@
             }
           ]
         }, {
-          "name": "Data Inputs – Existing Collections",
+          "name": "Data Inputs - Existing Collections",
           "helpDoc": "ExistingCollections.md",
           "groups": [
             {
@@ -166,7 +166,7 @@
             }
           ]
         }, {
-          "name": "Data Inputs – New Collections",
+          "name": "Data Inputs - New Collections",
           "helpDoc": "NewCollections.md",
           "groups": [
             {
