@@ -107,7 +107,8 @@ Ext.define('DMPlanner.Application', {
                 Ext.applyIf(obj, {
                     docBase: 'resources/doc/',
                     startDoc: 'Start.md',
-                    homeDoc: 'Home.md'
+                    homeDoc: 'Home.md',
+                    helpDoc: 'Help.md'
                 });
 
                 Ext.define('DMPlanner.data.PlanTemplate', {
@@ -120,6 +121,9 @@ Ext.define('DMPlanner.Application', {
                 loader.load({
                     url: obj.docBase + obj.startDoc
                 });
+
+                //load the default help docs
+                this.fireEvent('showhelp', obj.docBase + obj.helpDoc ,'Main Help', true);
 
                 //instantiate the settings window
                 this.Settings = Ext.create('DMPlanner.view.Settings', {

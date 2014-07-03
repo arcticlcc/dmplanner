@@ -23,8 +23,9 @@ Ext.define('DMPlanner.controller.Help', {
      * Updates help section content and visibility.
      * @param {string} url The url of the markdown file.
      * @param {string} title The title to display in the help header
+     * @param {boolean} expand If true, expand the help panel
      */
-    onShowHelp: function(url, title) {
+    onShowHelp: function(url, title, expand) {
         var help = this.getHelp(),
             loader =  help.getLoader(),
             fTitle = title ? 'Help: ' + title : 'Help',
@@ -45,6 +46,10 @@ Ext.define('DMPlanner.controller.Help', {
             });
         } else{
             help.update(noHelp);
+        }
+
+        if (expand) {
+            help.expand();
         }
     }
 });

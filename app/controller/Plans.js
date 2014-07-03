@@ -222,8 +222,12 @@ Ext.define('DMPlanner.controller.Plans', {
      * Click event handler for help button.
      */
     onHelpClick: function(btn) {
-        var err = 'I wish I could help, but the help section hasn\'t been implemented. :-(';
-        DMPlanner.app.showError(err);
+        var sm = btn.up('gridpanel').getSelectionModel(),
+            plan = sm.selected.first() || sm.getStore().first(),
+            docBase = plan.get('docBase') || DMPlanner.data.PlanTemplate.docBase,
+            helpDoc = plan.get('helpDoc')  || DMPlanner.data.PlanTemplate.helpDoc;
+
+        this.fireEvent('showhelp', docBase + helpDoc ,'Overview', true);
     },
 
     /**
