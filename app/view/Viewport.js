@@ -27,7 +27,7 @@ Ext.define('DMPlanner.view.Viewport', {
             xtype: 'container',
             region: 'west',
             minWidth: 200,
-            flex: 1,
+            width: '20%',
             layout: {
                 align: 'stretch',
                 type: 'vbox'
@@ -48,18 +48,18 @@ Ext.define('DMPlanner.view.Viewport', {
             }]
         }, {
             xtype: 'sectionpanel',
-            region: 'center',
-            flex: 3
+            region: 'center'
         }, {
             xtype: 'panel',
             itemId: 'helpSection',
             region: 'east',
+            autoScroll: true,
             title: 'Help',
             bodyPadding: 15,
             html: '<div style="text-align:center;"><b>No help is available for this section.</b></div>',
             collapsible: true,
             collapsed: true,
-            flex: 1,
+            width: '20%',
             bodyStyle: {
                 background: '#fefefe' //TODO: SASS this
             },
