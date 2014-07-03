@@ -40,7 +40,9 @@ Ext.define('DMPlanner.controller.Settings', {
 
         combo.getStore().loadData(levels);
         combo.setDisabled(!levels.length);
-        combo.setValue(combo.getValue() || DMPlanner.util.LevelFilter.value);
+        combo.setValue(record.get('defaultLevel') || 0);
+
+        this.updateLevel(combo, [combo.findRecordByValue(combo.getValue())]);
     },
 
     /**
@@ -49,7 +51,7 @@ Ext.define('DMPlanner.controller.Settings', {
      * @param {Array} records The selected records
      */
     updateLevel: function(combo, records) {
-        var val = records[0].get('field1');
+        var val = records ? records[0].get('field1') : 0;
 
         DMPlanner.util.LevelFilter.value = val;
         this.fireEvent('changelevel', val);

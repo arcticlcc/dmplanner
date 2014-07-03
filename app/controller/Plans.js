@@ -96,10 +96,10 @@ Ext.define('DMPlanner.controller.Plans', {
 
     onSelectPlan: function(grid, record) {
         this.fireEvent('selectplan', record);
-        this.loadSections(record);
+        //this.loadSections(record);
     },
 
-    loadSections: function(record) {
+    loadSections: function(record, section) {
         var layout = this.getSectionPanel().getLayout(),
             sections = this.getSectionList(),
             store = record.sections(),
@@ -122,6 +122,12 @@ Ext.define('DMPlanner.controller.Plans', {
 
         store.filter(DMPlanner.util.LevelFilter);
         sections.reconfigure(store);
+
+        //select the passed section
+        if (sections.getStore().indexOf(section) > -1) {
+            sections.getSelectionModel().select(section);
+        }
+
 
         if (homeDoc) {
             //load the docs
@@ -146,27 +152,22 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     /**
-     * Handle change to DMP level, reselect current plan
-     * @param {Integer} level  Defaults to DMPlanner.util.LevelFilter.value.
+     * Handle change to DMP level, re-select current section, if applicable.
+     * Set the plan defaultLevel value(Defaults 0).
+     * @param {Integer} level
      */
     onChangeLevel: function(level) {
-        //var lev = level !== undefined ? level : DMPlanner.util.LevelFilter.value;
         var store = this.getPlansStore(),
-            sm = this.getPlanList().getSelectionModel(),
             secSm = this.getSectionList().getSelectionModel(),
-            plan = sm.getSelection(),
+            plan = this.getPlanList().getSelectionModel().getSelection(),
             sec = secSm.getSelection();
 
         secSm.deselectAll();
-        sm.deselectAll();
         if(store.count()) {
-            sm.select(plan[0]);
-            if(secSm.getStore().indexOf(sec[0]) > -1) {
-                secSm.select(sec[0]);
-            } else {
-                secSm.select(0);
-            }
+            this.loadSections(plan[0], sec[0]);
         }
+
+        plan[0].set('defaultLevel',level);
     },
 
     /**

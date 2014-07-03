@@ -46,5 +46,8 @@ Ext.define('DMPlanner.model.Plan', {
     }, {
         name: 'levels',
         type: 'auto'
+    }, {
+        name: 'defaultLevel',
+        defaultValue: 0
     }]
 });
