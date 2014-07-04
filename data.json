@@ -1,7 +1,7 @@
 {
   "levels": ["Default1", "Default2"],
   "startDoc": "Start.md",
-  "helpdoc": "Help.md",
+  "helpDoc": "Help.md",
   "templates": [
     {
       "templateTitle": "",
@@ -10,7 +10,7 @@
       "name": null,
       "code": null,
       "homeDoc": "Home.md",
-      "helpdoc": null,
+      "helpDoc": null,
       "docBase": null,
       "sections": [
         {

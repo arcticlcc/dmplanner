@@ -1,6 +1,7 @@
 {
   "levels": ["Proposal", "Funded"],
-  "startDoc": "csc/Start.md",
+  "docBase": "resources/doc/csc/",
+  "startDoc": "Start.md",
   "templates": [
     {
       "templateTitle": "CSC DMP",
@@ -9,7 +10,6 @@
       "name": "My CSC Plan",
       "code": null,
       "homeDoc": "Home.md",
-      "docBase": "resources/doc/csc/",
       "sections": [
         {
           "name": "Contact Information",
