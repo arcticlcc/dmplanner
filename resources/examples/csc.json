@@ -1,15 +1,15 @@
 {
   "levels": ["Proposal", "Funded"],
-  "startDoc": "csc/Start.md",
+  "docBase": "resources/doc/csc/",
+  "startDoc": "Start.md",
   "templates": [
     {
       "templateTitle": "CSC DMP",
       "levels": ["Proposal", "Funded"],
       "version": "1.0.0",
-      "name": null,
+      "name": "My CSC Plan",
       "code": null,
       "homeDoc": "Home.md",
-      "docBase": "resources/doc/csc/",
       "sections": [
         {
           "name": "Contact Information",
@@ -70,7 +70,7 @@
             }
           ]
         }, {
-          "name": "Data Inputs – Existing Collections",
+          "name": "Data Inputs - Existing Collections",
           "helpDoc": "ExistingCollections.md",
           "groups": [
             {
@@ -166,7 +166,7 @@
             }
           ]
         }, {
-          "name": "Data Inputs – New Collections",
+          "name": "Data Inputs - New Collections",
           "helpDoc": "NewCollections.md",
           "groups": [
             {
