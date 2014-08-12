@@ -3,7 +3,13 @@
 ---
 
 ###About
-This is the main help section for the DMPlanner application.
+
+The DMPlanner is a *client-side* application. By default, no data is sent to a remote server, but is
+stored in the browser cache (local storage). Data will persist until the browser cache is cleared.
+When the DMPlanner loads, it checks local storage for data.
+
+Data may also be saved to or loaded from a file. This allows data to be stored indefinitely or transferred
+between systems. Load a file using the toolbar (see below), or by dragging and dropping onto the DMPlanner window.
 
 ###Application layout
 
@@ -33,7 +39,27 @@ This is the main help section for the DMPlanner application.
   ---
 
 2. ###Plan List
+
+  Click a row in the *Plan List* to select and load a plan. *Double-click* a field (e.g. plan name or code) to edit the contents.
+  Click the <span class="fa">&#xf00d;</span> to delete the corresponding plan.
+
+  When a plan is selected, the section titles for the plan will display in the *Section List*. The *Main Panel* will display
+  the instructions for the plan, or the first section if no instructions are available.
+
 3. ###Section List
+
+  The *Section List* is the primary means of navigating a plan. Select a section title to display the section in the *Main Panel*.
+  Click the "home" button <span  style="font-family:FontAwesome;">&#xf015;</span> to display the plan instructions, if available.
+
 4. ###Main Panel
 5. ###Navigation Bar
+
+  Use the *Navigation Bar* to progress through plan sections sequentially, in either direction.
+
 6. ###Help
+
+  The *Help* section displays on-line help: either the main application overview or help for the currently selected section.
+  Click the help button <span  style="font-family:FontAwesome;">&#xf059;</span> in the *Main Toolbar* to display the application overview.
+
+  The *Help* "panel" is collapsible. use the collaspe <span  style="font-family:FontAwesome;">&#xf138;</span> and expand <span  style="font-family:FontAwesome;">&#xf137;</span> tool
+  in the *Help* title bar to hide/show the panel. Clicking the title bar when collapsed will cause the panel to temporarily slide out.
