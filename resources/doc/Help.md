@@ -46,15 +46,32 @@ between systems. Load a file using the toolbar (see below), or by dragging and d
   When a plan is selected, the section titles for the plan will display in the *Section List*. The *Main Panel* will display
   the instructions for the plan, or the first section if no instructions are available.
 
+  ---
+
 3. ###Section List
 
   The *Section List* is the primary means of navigating a plan. Select a section title to display the section in the *Main Panel*.
   Click the "home" button <span  style="font-family:FontAwesome;">&#xf015;</span> to display the plan instructions, if available.
 
+  ---
+
 4. ###Main Panel
+
+  The *Main Panel* displays content for the currently selected section as well as any instructions for the current plan. Click the
+  "home" button <span  style="font-family:FontAwesome;">&#xf015;</span> in the *Section List* title bar to display the plan instructions.
+
+  Each section contains one or more questions. Questions are usually displayed as fields in a typical form layout. However, the question
+  may be represented by a customized "widget", such as a interactive map or drag-n-drop list. Help for each section is displayed in the *Help*
+  panel. Form fields may have associated "tips" - hover over the <span class="fa dmp-icon-guidance sup" data-qtip="This is an example">&#xf059;</span>
+  to show the tip.
+
+  ---
+
 5. ###Navigation Bar
 
   Use the *Navigation Bar* to progress through plan sections sequentially, in either direction.
+
+  ---
 
 6. ###Help
 

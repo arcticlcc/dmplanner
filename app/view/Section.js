@@ -11,7 +11,7 @@ Ext.define("DMPlanner.view.Section", {
             autoLoad: false,
             loadMask: true,
             renderer: function(loader, response, active) {
-                var markup = marked(response.responseText);
+                var markup = '<div class="dmp-marked">' + marked(response.responseText) + '</div>';
                 loader.getTarget().update(markup);
                 return true;
             }
