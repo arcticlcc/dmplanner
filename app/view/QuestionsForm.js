@@ -8,7 +8,8 @@ Ext.define("DMPlanner.view.QuestionsForm", {
     'Ext.form.RadioGroup', //
     'Ext.form.FieldContainer', //
     'Ext.form.FieldSet', //
-    'Ext.form.CheckboxGroup'//
+    'Ext.form.CheckboxGroup', //
+    'DMPlanner.util.MyCombo'
     ],
 
     layout : {

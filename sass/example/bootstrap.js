@@ -63,6 +63,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.LevelFilter": [],
+  "DMPlanner.util.MyCombo": [],
   "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [],
@@ -1068,6 +1069,9 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.store.LocalPlans": [],
   "DMPlanner.store.Plans": [],
   "DMPlanner.util.LevelFilter": [],
+  "DMPlanner.util.MyCombo": [
+    "widget.mycombo"
+  ],
   "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Keywords": [
