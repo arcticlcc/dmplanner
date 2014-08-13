@@ -114,9 +114,27 @@ Ext.define("DMPlanner.view.PlanList", {
                  glyph: 'xf09b@FontAwesome'
             });
         }
-    }]/*,
+    }],
 
-     tbar : [{
-     text : 'Add Plan'
-     }]*/
+    initComponent: function() {
+        var me = this;
+
+        Ext.applyIf(me, {
+
+            selModel: {
+                listeners : {
+                    select : function(cellModel, record, rowIndex) {
+                        this.getView().addRowCls(rowIndex, 'dmp-row-hilite');
+                    },
+                    deselect : function(cellModel, record, rowIndex) {
+                        this.getView().removeRowCls(rowIndex, 'dmp-row-hilite');
+                    },
+                    scope :me
+                }
+            }
+
+        });
+
+        me.callParent(arguments);
+    }
 });
