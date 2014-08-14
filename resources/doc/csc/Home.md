@@ -54,4 +54,4 @@ Here's the [CSC DMP JSON template](resources/examples/csc.json) that's used to r
 
 This documentation was rendered from [this markdown file](resources/doc/csc/Home.md).
 
-For more info on Markdown, see [John Gruber's original spec](http://daringfireball.net/projects/markdown/) and the [Github-flavored Markdown info page](http://github.github.com/github-flavored-markdown/). Also, the [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+For more info on Markdown, see [John Gruber's original spec](http://daringfireball.net/projects/markdown/) and the [Github Markdown info page](https://guides.github.com/features/mastering-markdown/). Also, the [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
