@@ -2,16 +2,17 @@ Ext.define("DMPlanner.view.PlanList", {
     extend : 'Ext.grid.Panel',
     alias : 'widget.planlist',
 
-    requires : ['Ext.Button', 'Ext.util.*', 'Ext.selection.CellModel', 'Ext.grid.plugin.CellEditing'],
+    requires : ['Ext.Button', 'Ext.util.*', 'Ext.selection.RowModel', 'Ext.grid.plugin.RowEditing'],
 
     title : 'Plans',
     columnLines : true,
     store : 'Plans',
     cls : 'planlist',
-    selType : 'cellmodel',
+    selType : 'rowmodel',
     plugins : [{
-        ptype : 'cellediting',
-        clicksToEdit : 2
+        ptype : 'rowediting',
+        clicksToEdit : 2,
+        clicksToMoveEditor: 1
     }],
 
     columns : [{
@@ -123,10 +124,10 @@ Ext.define("DMPlanner.view.PlanList", {
 
             selModel: {
                 listeners : {
-                    select : function(cellModel, record, rowIndex) {
+                    select : function(sm, record, rowIndex) {
                         this.getView().addRowCls(rowIndex, 'dmp-row-hilite');
                     },
-                    deselect : function(cellModel, record, rowIndex) {
+                    deselect : function(sm, record, rowIndex) {
                         this.getView().removeRowCls(rowIndex, 'dmp-row-hilite');
                     },
                     scope :me

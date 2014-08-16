@@ -8,7 +8,7 @@
       "templateTitle": "CSC DMP",
       "levels": ["Proposal", "Funded"],
       "version": "1.0.0",
-      "name": "My CSC Plan",
+      "name": "My Plan",
       "code": null,
       "homeDoc": "Home.md",
       "helpDoc": "../Help.md",

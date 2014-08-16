@@ -227,6 +227,7 @@ Ext.define('DMPlanner.Application', {
             title: 'Error',
             glyph: 'xf12a@FontAwesome',
             html: txt,
+            position: 'tr',
             maxWidth: 400
         }).show();
     },
@@ -240,6 +241,7 @@ Ext.define('DMPlanner.Application', {
             title: title || 'Info',
             glyph: 'xf129@FontAwesome',
             html: txt,
+            position: 'tr',
             maxWidth: 400
         }).show();
     },

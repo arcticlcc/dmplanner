@@ -29,6 +29,7 @@ Ext.define('DMPlanner.view.Settings', {
             disabled: !levels.length,
             queryMode: 'local',
             forceSelection: true,
+            editable: false,
             value: DMPlanner.util.LevelFilter.value
         });
 
