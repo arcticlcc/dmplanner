@@ -2,14 +2,16 @@
   "levels": ["Proposal", "Funded"],
   "docBase": "resources/doc/csc/",
   "startDoc": "Start.md",
+  "helpDoc": "../Help.md",
   "templates": [
     {
       "templateTitle": "CSC DMP",
       "levels": ["Proposal", "Funded"],
       "version": "1.0.0",
-      "name": "My CSC Plan",
+      "name": "My Plan",
       "code": null,
       "homeDoc": "Home.md",
+      "helpDoc": "../Help.md",
       "sections": [
         {
           "name": "Contact Information",
@@ -54,8 +56,22 @@
                   "question": "Project Role",
                   "guidance": "Select or type a short description of the contact's relationship to the project.",
                   "config": {
-                    "xtype": "combo",
-                    "store": ["Administrative Contact", "Co-Principal Investigator", "Collaborator", "Data Distributor", "Data Steward", "Funding", "Funding Recipient", "Grants Administrator", "Metadata Host", "Metadata Steward", "Primary Contact", "Project Officer"],
+                    "xtype": "mycombo",
+                    "store": [
+                      ["Data Steward", "Person or agency that accepts accountability and responsibility for the data and ensures appropriate care and maintenance of the resource."],
+                      ["Funding", "Agency providing all or some of the funding for this project."],
+                      ["Metadata Steward", "Person or agency that prepares and maintains the metadata record for this project."],
+                      ["Collaborator", "Person or agency other than the Principle Investigator or Funding Recipient that makes significant intellectual contribution to the project."],
+                      ["Metadata Host", "Person or Agency serving as a metadata clearinghouse for this project record."],
+                      ["Administrative Contact", "Person or agency that is responsible for the project finances."],
+                      ["Primary Contact", "Person or agency to contact for acquiring knowledge about this project."],
+                      ["Co-Principal Investigator", "Key person or agency responsible for gathering information and conducting research."],
+                      ["Data Distributor", "Person or agency that provides access to project data resources."],
+                      ["Contributor", "Person or agency that is a collaborator and funder(makes both financial and intellectual contributions)."],
+                      ["Funding Recipient", "Entity receiving funding for a project, responsible for satisfying agreement terms and conditions. Automatically assumes the role of Collaborator."],
+                      ["Project Officer", "Primary staff member overseeing the project, usually identified in contracting documents."],
+                      ["Grants Administrator", "Point of contact for grant administration at recipient institution."]
+                    ],
                     "maxWidth": 450
                   }
                 }, {
@@ -402,7 +418,7 @@
                   }
                 }, {
                   "question": "Description",
-                  "guidance": "Describe the custom software. code, or web tool developed or used as part of the project",
+                  "guidance": "Describe the custom software, code, or web tool developed or used as part of the project",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -610,7 +626,7 @@
           "level": 0,
           "config": {
             "xtype": "dmpmappanel",
-            "title": "Project Spatial Features"
+            "title": "Project Location(s)"
           }
         }
       ]

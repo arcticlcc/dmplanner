@@ -12,3 +12,9 @@ Enter the information for the persons/organizations related to the project. A ro
 the role is not listed, it may be typed in to the field. Organizations may be listed by leaving the First/Last name fields empty.
 
 Multiple contacts may be entered by clicking the (+) button. Click the (x) button to remove the current contact.
+
+###Organizations
+
+---
+
+Organizations may be added as an additional contact.  When adding an Organization,the first name and last name fields should be left empty.
