@@ -364,12 +364,16 @@ Ext.define('DMPlanner.controller.Questions', {
                                 newGroup.sections()
                             );
                             tabs.setActiveTab(tabs.add(insTab));
+
+                            b.nextSibling('#removeTab').enable();
                         }
                     }, {
                         xtype: 'button',
+                        itemId: 'removeTab',
                         text: plain ? 'Remove' : '',
                         glyph: 'xf00d@FontAwesome',
                         tooltip: 'Remove',
+                        disabled: children.length > 1 ? false : true,
                         handler: function(b) {
                             var tabs = b.up('tabpanel'),
                                 remTab = tabs.getActiveTab(),
@@ -379,6 +383,10 @@ Ext.define('DMPlanner.controller.Questions', {
 
                             store.remove(store.getById(groupId));
                             tabs.remove(remTab);
+
+                            if(tabs.query('tab').length < 2) {
+                                b.disable();
+                            }
                         }
                     }]
                 }],

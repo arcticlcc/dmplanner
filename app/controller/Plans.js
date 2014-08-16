@@ -39,6 +39,9 @@ Ext.define('DMPlanner.controller.Plans', {
             planlist : {
                 select: this.onSelectPlan
             },
+            /*'planlist gridview': {
+                beforeitemmousedown: this.onBeforeCellMousedown
+            },*/
             'planlist tool#addPlan':{
                 click: this.onAddNewPlan
             },
@@ -202,20 +205,30 @@ Ext.define('DMPlanner.controller.Plans', {
     },
 
     /**
+     * Prevent grid selection on templatecolumn mousedown.
+     */
+    /*onBeforeCellMousedown: function(view, td, cellIdx) {
+        return false;
+    },*/
+    /**
      * Click event handler for delete button.
      */
     onDeleteClick: function(view, td, rowIdx, cellIdx, e, rec) {
-        Ext.Msg.show({
-             title:'Delete Plan?',
-             msg: 'Are you sure you want to delete plan: ' + rec.get('name'),
-             buttons: Ext.Msg.YESNO,
-             icon: Ext.Msg.QUESTION,
-             fn: function(btn) {
-                 if(btn === 'yes') {
-                     view.getStore().remove(rec);
-                 }
-             }
-        });
+        if (view.getStore().count() < 2) {
+            DMPlanner.app.showInfo('Cannot delete, there must be at least one plan.');
+        } else {
+            Ext.Msg.show({
+                title: 'Delete Plan?',
+                msg: 'Are you sure you want to delete plan: ' + rec.get('name'),
+                buttons: Ext.Msg.YESNO,
+                icon: Ext.Msg.QUESTION,
+                fn: function(btn) {
+                    if (btn === 'yes') {
+                        view.getStore().remove(rec);
+                    }
+                }
+            });
+        }
     },
 
     /**
