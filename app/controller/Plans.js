@@ -375,7 +375,7 @@ Ext.define('DMPlanner.controller.Plans', {
             template = Ext.clone(plans[tidx]);
 
         //set name and code
-        template.name = planName || template.name || 'My Plan ' + count;
+        template.name = planName || template.name + ' ' + count || 'My Plan ' + count;
         template.code = planCode || template.code || 'Id for Plan #' + count;
         //add plan using the template
         store.loadRawData(ctr.getPlanTemplate(template), true);
