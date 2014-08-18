@@ -53,6 +53,11 @@ between systems. Load a file using the toolbar (see below), or by dragging and d
   The *Section List* is the primary means of navigating a plan. Select a section title to display the section in the *Main Panel*.
   Click the "home" button <span  style="font-family:FontAwesome;">&#xf015;</span> to display the plan instructions, if available.
 
+  *Levels*  are a way to selectively display questions and sections based on the plan's status, e.g. "proposed" or "funded". This
+  For plans that support levels, the *Plan Level* button in the *Section List* title bar allows switching between levels. The button
+  will not be displayed for plans that do not support this feature (Plan level selection is also accessible using the *Settings* button
+  <span  style="font-family:FontAwesome;">&#xf013;</span> in the main toolbar.).
+
   ---
 
 4. ###Main Panel

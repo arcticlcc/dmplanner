@@ -27,8 +27,8 @@ The DMP includes information about data used in projects including:
 | Receipt of Award    | If the proposal is selected for funding, all of the fields in the DMP must be completed within one month of the lead researcher receiving funding, including both shaded and non-shaded fields. Fields requiring information that is not known early in the project should be marked “TBD” (To Be Determined). The fully completed DMP includes details to ensure that data products are consistently formatted and documented during development, and that data deliverables are provided with maximum utility. The DMP will help the Data Stewards assist the researcher with data management activities and make the project’s data and derived products available after project completion. The DMP should be periodically reviewed and updated. |
 | Project Completion  | At project completion, the research team will work with their Data Steward to transition data (new data collections as well as final data products) and other products to the appropriate repository. All data and complete metadata descriptions must be provided to the Data Steward at project completion. For information previously agreed not be made publicly available for a period of time or that is undergoing review, data will be placed in a secure area until the period of exclusivity or review period has expired.                                                                                                                                                                                                                 |
 
-***Note**: To switch between *Proposal* and *Funded* views, click the *Settings* button <span  style="font-family:FontAwesome;">&#xf013;</span> in
-the toolbar.
+***Note**: To switch between *Proposal* and *Funded* views, click the *Plan Level* button in the *Section List* title bar or
+click the *Settings* button <span  style="font-family:FontAwesome;">&#xf013;</span> in the main toolbar.
 
 #WHY PREPARE A DATA MANAGEMENT PLAN?
 
