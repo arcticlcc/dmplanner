@@ -4,7 +4,6 @@
     {
       "templateTitle": "",
       "version": "0.0.0",
-      "levels": ["Basic", "Advanced"],
       "name": null,
       "code": null,
       "docBase": "resources/doc/test/",
