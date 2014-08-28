@@ -194,7 +194,15 @@ Ext.define('DMPlanner.controller.Plans', {
      * Fires when plans are loaded from a file.
      */
     onLoadFile: function(records) {
+        var pl = this.getPlanList(),
+            sm = pl.getSelectionModel();
+
         this.addLocalPlan(records);
+
+        if(pl.rendered && pl.getStore().count()) {
+            sm.deselectAll();
+            sm.select(0);
+        }
     },
 
     /**
@@ -375,7 +383,7 @@ Ext.define('DMPlanner.controller.Plans', {
             template = Ext.clone(plans[tidx]);
 
         //set name and code
-        template.name = planName || template.name + ' ' + count || 'My Plan ' + count;
+        template.name = planName || (template.name ? template.name + ' ' + count : false) || 'My Plan ' + count;
         template.code = planCode || template.code || 'Id for Plan #' + count;
         //add plan using the template
         store.loadRawData(ctr.getPlanTemplate(template), true);
