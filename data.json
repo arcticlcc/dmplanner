@@ -15,7 +15,7 @@
       "sections": [
         {
           "name": "Single Group",
-          "helpDoc": "Example.md",
+          "helpDoc": "SingleGroup.md",
           "groups": [
             {
               "name": "Your information",
@@ -100,7 +100,8 @@
           ]
         }, {
           "name": "Single Group with Sections",
-          "level": 1,
+          "helpDoc": "SingleGroupSections.md",
+          "level": 0,
           "groups": [
             {
               "name": "Your information",
@@ -162,6 +163,7 @@
           ]
         }, {
           "name": "Repeating Group",
+          "helpDoc": "RepeatingGroup.md",
           "groups": [
             {
               "name": "Your information",
@@ -209,6 +211,8 @@
           ]
         }, {
           "name": "Repeating Group with Sections",
+          "helpDoc": "RepeatingGroupSections.md",
+          "level": 1,
           "groups": [
             {
               "name": "Your information",
@@ -270,6 +274,7 @@
           ]
         }, {
           "name": "Multiple Groups",
+          "helpDoc": "MultipleGroups.md",
           "groups": [
             {
               "name": "Your information",
@@ -400,7 +405,7 @@
           ]
         }, {
           "name": "Keywords",
-
+          "helpDoc": "Plugin.md",
           "config": {
             "xtype": "dmpkeywords",
             "header": false
@@ -425,11 +430,13 @@
           ]
         }, {
           "name": "Map",
+          "helpDoc": "Plugin.md",
           "config": {
             "xtype": "dmpmappanel"
           }
         }, {
           "name": "Map with title",
+          "helpDoc": "Plugin.md",
           "level": 1,
           "config": {
             "xtype": "dmpmappanel",
