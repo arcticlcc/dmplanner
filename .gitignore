@@ -3,3 +3,4 @@
 /build/temp
 /ext/*
 !ext/cmd
+/ext5/*
