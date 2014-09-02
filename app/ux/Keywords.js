@@ -41,6 +41,23 @@ Ext.define('DMPlanner.ux.Keywords', {
         return obj;
     },
 
+    printTemplate: Ext.create('Ext.XTemplate',
+        '<ul>',
+        '<tpl for=".">',
+                '<li>{[this.format(values.fullname, values.text)]}</li>',
+        '</tpl>',
+        '</ul>',
+        {
+            format: function(full, text){
+                return full.replace(new RegExp(text + '$'), '<b>' + text + '</b>');
+            }
+        }
+    ),
+
+    dmpPrint: function(data) {
+        return this.printTemplate.apply(data);
+    },
+
     initComponent: function() {
         var me = this, keywordtree, keywords, keywordStore, addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>', removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>', helpCol = {
             xtype: 'templatecolumn',

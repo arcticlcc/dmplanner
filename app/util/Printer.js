@@ -21,7 +21,7 @@ Ext.define('DMPlanner.util.Printer', {
                 '<tpl for="sections">',
                     '<h3 id="{id}">{name}</h3>',
                     '<tpl if="data">',
-                        '<p style="white-space:pre">{[this.printObject(values.data)]}</p>',
+                        '<p style="white-space:pre">{[this.printObject(values.data, values.config)]}</p>',
                     '<tpl elseif="groups.length &gt; 0">',
                         '<tpl for="this.formatGroups(groups)">',
                             '<h4>{name}</h4>',
@@ -35,7 +35,7 @@ Ext.define('DMPlanner.util.Printer', {
                                     '<h5>Sections</h5>',
                                     '<tpl for="sections">',
                                         '<p>{name}: ',
-                                            '<span style="white-space:pre">{[this.printObject(values.data)]}</span>',
+                                            '<span style="white-space:pre">{[this.printObject(values.data, values.config)]}</span>',
                                         '</p>',
                                     '</tpl>',
                             '</tpl>',
@@ -63,14 +63,32 @@ Ext.define('DMPlanner.util.Printer', {
 
                 return Ext.htmlEncode(value);
             },
-            printObject: function(data){
-                if(Ext.isString(data) && data !=='') {
-                    return Ext.htmlEncode(JSON.stringify(JSON.parse(unescape(data)), undefined, 2));
-                } else if(Ext.isObject(data)||Ext.isArray(data)) {
-                    return Ext.htmlEncode(JSON.stringify(data, undefined, 2));
-                } else {
-                    return 'No Data Provided';
+            printObject: function(data, config){
+                var printer, out;
+
+                if(config && config.xtype) {
+                    printer = Ext.widget(config.xtype);
+
+                    if(printer && Ext.isFunction(printer.dmpPrint)) {
+                        out = printer.dmpPrint(data);
+                        printer.destroy();
+                    } else {
+                        out = false; //'Printing not supported.';
+                        printer.destroy();
+                    }
                 }
+
+                if(!out) {
+                    if(Ext.isString(data) && data !=='') {
+                        out = Ext.htmlEncode(JSON.stringify(JSON.parse(unescape(data)), undefined, 2));
+                    } else if(Ext.isObject(data)||Ext.isArray(data)) {
+                        out = Ext.htmlEncode(JSON.stringify(data, undefined, 2));
+                    } else {
+                        out = 'No Data Provided';
+                    }
+                }
+
+                return out;
             },
             formatGroups: function(groups) {
                 groups.sort(function(a,b){return (a.index + (a.repeatIdx * 0.1) - (b.index + (b.repeatIdx * 0.1)));});
