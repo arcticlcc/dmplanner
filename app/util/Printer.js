@@ -21,7 +21,7 @@ Ext.define('DMPlanner.util.Printer', {
                 '<tpl for="sections">',
                     '<h3 id="{id}">{name}</h3>',
                     '<tpl if="data">',
-                        '<p style="white-space:pre">{[this.printObject(values.data, values.config)]}</p>',
+                        '<div>{[this.printObject(values.data, values.config)]}</div>',
                     '<tpl elseif="groups.length &gt; 0">',
                         '<tpl for="this.formatGroups(groups)">',
                             '<h4>{name}</h4>',
@@ -34,9 +34,8 @@ Ext.define('DMPlanner.util.Printer', {
                             '<tpl if="sections.length &gt; 0">',
                                     '<h5>Sections</h5>',
                                     '<tpl for="sections">',
-                                        '<p>{name}: ',
-                                            '<span style="white-space:pre">{[this.printObject(values.data, values.config)]}</span>',
-                                        '</p>',
+                                        '<p>{name}:</p>',
+                                            '<div>{[this.printObject(values.data, values.config)]}</div>',
                                     '</tpl>',
                             '</tpl>',
                         '</tpl>',
@@ -80,9 +79,9 @@ Ext.define('DMPlanner.util.Printer', {
 
                 if(!out) {
                     if(Ext.isString(data) && data !=='') {
-                        out = Ext.htmlEncode(JSON.stringify(JSON.parse(unescape(data)), undefined, 2));
+                        out = '<span style="white-space:pre">' + Ext.htmlEncode(JSON.stringify(JSON.parse(unescape(data)), undefined, 2)) + '</span>';
                     } else if(Ext.isObject(data)||Ext.isArray(data)) {
-                        out = Ext.htmlEncode(JSON.stringify(data, undefined, 2));
+                        out = '<span style="white-space:pre">' + Ext.htmlEncode(JSON.stringify(data, undefined, 2)) + '</span>';
                     } else {
                         out = 'No Data Provided';
                     }
@@ -133,16 +132,34 @@ Ext.define('DMPlanner.util.Printer', {
                     handler: function(btn){
                         var pdf = new jsPDF('p','mm','letter'),
                             margin = 12.7, // inches on a 8.5 x 11 inch sheet.
-                            el = btn.up('window').getEl().getById('DMP-print-wrapper');
+                            el = btn.up('window').getEl().getById('DMP-print-wrapper'),
+                            name = this.name,
+                            cb = function(){
+                                pdf.save(name.replace(/\s+/g, '-') + '.pdf');
+                            },
+                            specialElementHandlers = {
+                                //TODO:this is a hack, jsPDF isn't rendering the images correctly
+                                '#dmp-print-img': function(element, renderer) {
+                                    var img = element.firstChild,
+                                    h =  img.height/ pdf.internal.scaleFactor,
+                                    w =  img.width / pdf.internal.scaleFactor;
+
+                                    pdf.addImage(img.src, 'PNG', renderer.x, renderer.y, w, h);
+                                    renderer.y += h;
+                                    return true;
+                                }
+                            };
+
 
                         pdf.fromHTML(el.dom, margin, margin, {
-                            'width': 190.5
-                        }, null, {
+                            'width': 190.5,
+                            'elementHandlers': specialElementHandlers
+                        }, cb, {
                             top: margin,
                             bottom: margin
                         });
 
-                        pdf.save(this.name.replace(/\s+/g, '-') + '.pdf');
+
                         //pdf.output('dataurlnewwindow');
                     },
                     scope: cloned

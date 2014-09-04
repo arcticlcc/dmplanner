@@ -39,6 +39,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.ux.map.MapPanel": [],
   "DMPlanner.ux.map.MapToolbar": [],
   "DMPlanner.ux.map.PlanMap": [],
+  "DMPlanner.ux.map.PrintBase": [],
   "DMPlanner.view.PlanList": [],
   "DMPlanner.view.QuestionsForm": [],
   "DMPlanner.view.Section": [],
@@ -996,6 +997,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.ux.map.PlanMap": [
     "widget.dmpmap"
   ],
+  "DMPlanner.ux.map.PrintBase": [],
   "DMPlanner.view.PlanList": [
     "widget.planlist"
   ],

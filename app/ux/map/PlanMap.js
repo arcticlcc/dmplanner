@@ -24,11 +24,6 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
      */
 
     /**
-     * @cfg {string} data
-     * Serialized vector features to load into the map.
-     */
-
-    /**
      * @cfg {boolean} showTools
      * True to show the map toolbar.
      */
