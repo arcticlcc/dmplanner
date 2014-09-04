@@ -69,11 +69,6 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
 
     initComponent: function() {
         var me = this,
-            wms = new OpenLayers.Layer.WMS(
-                "OpenLayers WMS",
-                "http://vmap0.tiles.osgeo.org/wms/vmap0?",
-                {layers: 'basic'}
-            ),
             bdl = new OpenLayers.Layer.TMS("SDMI BDL(Alaska Albers)", "http://swmha.gina.alaska.edu/tilesrv/bdl/tile/",{
                     type: 'jpeg',
                     wrapDateLine: true,
@@ -119,9 +114,9 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
         var layerInfo = {
           "currentVersion" : 10.01,
           "mapName" : "Layers",
-          "copyrightText" : "Sources: Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
+          //"copyrightText" : "Sources: Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
           "spatialReference" : {
-            "wkid" : 102100
+            "wkid" : 3857
           },
           "singleFusedMapCache" : true,
           "tileInfo" : {
@@ -133,9 +128,6 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
             "origin" : {
               "x" : -20037508.342787,
               "y" : 20037508.342787
-            },
-            "spatialReference" : {
-              "wkid" : 102100
             },
             "lods" : [
               {"level" : 0, "resolution" : 156543.033928, "scale" : 591657527.591555},
@@ -194,7 +186,7 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
         for (i=0; i<layerInfo.tileInfo.lods.length; i++) {
             resolutions.push(layerInfo.tileInfo.lods[i].resolution);
         }
-        var topo = new OpenLayers.Layer.ArcGISCache( "Topo",
+        /*var topo = new OpenLayers.Layer.ArcGISCache( "Topo",
             "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer", {
                 isBaseLayer: false,
                 wrapDateLine: false,
@@ -207,7 +199,26 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
                 tileOrigin: new OpenLayers.LonLat(layerInfo.tileInfo.origin.x , layerInfo.tileInfo.origin.y),
                 maxExtent: layerMaxExtent,
                 projection: 'EPSG:' + layerInfo.spatialReference.wkid
+            });*/
+
+        arrayOSM = ["http://otile1.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                    "http://otile2.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                    "http://otile3.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg",
+                    "http://otile4.mqcdn.com/tiles/1.0.0/map/${z}/${x}/${y}.jpg"];
+        arrayAerial = ["http://otile1.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                        "http://otile2.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                        "http://otile3.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg",
+                        "http://otile4.mqcdn.com/tiles/1.0.0/sat/${z}/${x}/${y}.jpg"];
+
+        baseOSM = new OpenLayers.Layer.OSM("MapQuest-OSM Tiles", arrayOSM, {
+                isBaseLayer: false,
+                wrapDateLine: false,
+                visibility: true,
+                displayInLayerSwitcher:false,
+                attribution: '<span>Tiles Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png"></span>'
             });
+        baseAerial = new OpenLayers.Layer.OSM("MapQuest Open Aerial Tiles", arrayAerial);
+
         var nmap = new OpenLayers.Layer.ArcGISCache( "National Map Vector",
             "http://basemap.nationalmap.gov/ArcGIS/rest/services/TNM_Vector_Small/MapServer", {
                 isBaseLayer: false,
@@ -226,13 +237,13 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
                     {sphericalMercator: true,isBaseLayer: false,wrapDateLine: true, displayInLayerSwitcher:false,
                         attribution: 'Best Data Layer provided by <a href="http://www.gina.alaska.edu">GINA</a>'});
 
-        var topoBdl = new OpenLayers.Layer( "Topo/Imagery",
+        var topoBdl = new OpenLayers.Layer( "OSM/Imagery",
                     {sphericalMercator: true,isBaseLayer: false,wrapDateLine: true, displayInLayerSwitcher:true});
 
         topoBdl.events.on({
             "visibilitychanged": function(evt) {
                 var vis = evt.object.visibility,
-                    slider = this.down('#topoSlider');
+                    slider = this.ownerCt.down('#topoSlider');
 
                 slider.setVisible(vis);
                 slider.complementaryLayer.setVisibility(vis);
@@ -254,7 +265,7 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
                 projection: 'EPSG:' + layerInfo.spatialReference.wkid
         });
 
-        myMap.addLayers([plain,topoBdl,bdlMerc,topo,nmap,vector]);
+        myMap.addLayers([plain,topoBdl,bdlMerc,baseOSM,nmap,vector]);
 
         Ext.apply(me, {
 //            center: '12.3046875,51.48193359375',
@@ -314,7 +325,7 @@ Ext.define('DMPlanner.ux.map.PlanMap', {
                 }, {
                     xtype: 'gx_opacityslider',
                     itemId: 'topoSlider',
-                    layer: topo,
+                    layer: baseOSM,
                     complementaryLayer: bdlMerc,
                     changeVisibility: true,
                     aggressive: true,
