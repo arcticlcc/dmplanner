@@ -2,7 +2,6 @@ DMPlanner
 ===
 
 ##About
----
 
 The DMPlanner is a JavaScript application for creating data management plans. The DMPlanner is primarily built using the [ExtJS framework](http://docs.sencha.com/extjs/4.2.1/#). See the [CREDITS](https://github.com/arcticlcc/dmplanner/blob/master/CREDIT.md) for a list of other open source libraries used.
 
@@ -16,19 +15,23 @@ The DMPlanner is configured using a [JSON file](https://github.com/arcticlcc/dmp
 
 By default, any of the native ExtJS form [field widgets](http://docs.sencha.com/extjs/4.2.1/extjs-build/examples/themes/index.html) (or sub-classes) may be used when defining a plan. To supplement the basic form widgets, custom plug-ins may also be created, such as maps or drag-n-drop lists.
 
-##Development/Installation
 ---
+
+##Development/Installation
 
 *TODO*
 
-##License
 ---
+
+##License
+
 Unless otherwise noted, the contents of this repository are released into the public domain, see the [LICENSE](https://github.com/arcticlcc/dmplanner/blob/master/LICENSE).
 
 *Note*: ExtJS is licensed under the terms of the Open Source GPL 3.0 license. See additional licensing info included with other [external libraries](https://github.com/arcticlcc/dmplanner/blob/master/CREDIT.md).
 
-##Directory Layout
 ---
+
+##Directory Layout
 
 ### dmplanner/.sencha
 
