@@ -1,6 +1,7 @@
 Credit
 ===
 Developed by [Josh Bradley](https://github.com/jlblcc)
+
 Based in part on ideas from [Ext JS in Action SE, Chapter 14](https://github.com/ModusCreateOrg/extjs-in-action-examples/tree/master/examples/ch14)
 
 Technology
