@@ -23,7 +23,7 @@ By default, any of the native ExtJS form [field widgets](http://docs.sencha.com/
 
 ##License
 ---
-Unless otherwise noted, the contents of this repository are released into the public domain, see the [LICENSE](https://github.com/arcticlcc/dmplanner/blob/master/LICENSE.md).
+Unless otherwise noted, the contents of this repository are released into the public domain, see the [LICENSE](https://github.com/arcticlcc/dmplanner/blob/master/LICENSE).
 
 *Note*: ExtJS is licensed under the terms of the Open Source GPL 3.0 license. See additional licensing info included with other [external libraries](https://github.com/arcticlcc/dmplanner/blob/master/CREDIT.md).
 
