@@ -44,8 +44,31 @@ Ext.define('DMPlanner.controller.Start', {
     },
 
     onStartNewClick: function(button) {
+
+        var west = button.up('vp').down('container[region=west]'),
+            win = Ext.create('Ext.window.Window', {
+                title: 'Hello',
+                html: 'Please take a moment to read the documentation before continuing.',
+                bodyPadding: 10,
+                bodyStyle: 'text-align:center;',
+                width: 200,
+                plain: true,
+                closable: false,
+                buttonAlign: 'center',
+                titleAlign: 'center',
+                modal: true,
+                buttons: [{
+                    text: 'OK',
+                    handler: function(b) {
+                        b.up('window').close();
+                    }
+                }]
+            });
+
+        west.add(win);
         button.up('vp').getLayout().setActiveItem(1);
         this.fireEvent("clickaddplanbtn");
+        win.show();
     },
 
     onStartEditClick: function(button) {
