@@ -219,7 +219,7 @@ Ext.define('DMPlanner.controller.Questions', {
                         //animate: true,
                         //activeOnTop: true
                     },
-                    items: [cfg]
+                    items: Ext.isEmpty(fields) ? [] : [cfg]
                 };
 
                 sections.each(function(sec) {
