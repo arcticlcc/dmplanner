@@ -10,6 +10,7 @@
       "version": "1.0.0",
       "name": "My Plan",
       "code": null,
+      "docBase": "resources/doc/csc/",
       "homeDoc": "Home.md",
       "helpDoc": "../Help.md",
       "sections": [
@@ -167,7 +168,7 @@
                 }, {
                   "question": "Volume Estimate",
                   "level": 1,
-                  "guidance": "Estimate the volume of information that will be generated megabyte (MB), GB, TB, or PB."
+                  "guidance": "Estimate the volume of information that will be generated megabyte (MB, GB, TB, or PB)."
                 }, {
                   "question": "Citation",
                   "level": 1,
@@ -213,7 +214,7 @@
                   }
                 }, {
                   "question": "Exclusive Use",
-                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension. (Request cannot be more than one year.)",
+                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -271,12 +272,12 @@
                 }, {
                   "question": "Metadata",
                   "level": 1,
-                  "guidance": "Identify the metadata standard that will be used to describe the document (FGDC, ISO, EML, etc.)",
+                  "guidance": "Identify the metadata standard that will be used to describe the document (FGDC, ISO, EML, etc.).",
                   "emptyText": true
                 }, {
                   "question": "Volume Estimate",
                   "level": 1,
-                  "guidance": "Estimate the volume of information generated: megabyte (MB), GB, TB, or PB.",
+                  "guidance": "Estimate the volume of information generated: megabyte (MB, GB, TB, or PB).",
                   "emptyText": true
                 }, {
                   "question": "Backup & Storage",
@@ -349,7 +350,7 @@
                   }
                 }, {
                   "question": "Description",
-                  "guidance": "Provide a brief description of the model and its purpose",
+                  "guidance": "Provide a brief description of the model and its purpose.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -358,18 +359,18 @@
                   }
                 }, {
                   "question": "Model Version",
-                  "guidance": "Identify the version of model used",
+                  "guidance": "Identify the version of model used.",
                   "emptyText": true
                 }, {
                   "question": "Link",
-                  "guidance": "Provide a link or a source for the model",
+                  "guidance": "Provide a link or a source for the model.",
                   "emptyText": true,
                   "config": {
                     "vtype": "url"
                   }
                 }, {
                   "question": "Model Input(s)",
-                  "guidance": "Enter the types of input data required for driving, calibrating, or validating the model. For proposals, summary information is all that is needed. For funded projects, these should be described in detail in the existing or new collection, data inputs section",
+                  "guidance": "Enter the types of input data required for driving, calibrating, or validating the model. For proposals, summary information is all that is needed. For funded projects, these should be described in detail in the existing or new collection, data inputs section.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -378,7 +379,7 @@
                   }
                 }, {
                   "question": "Model Output(s)",
-                  "guidance": "Enter the types of output data the model will produce. For proposals, summary information is all that is needed. For funded projects, provide more details as known. If the model output is a generated dataset that is a project deliverable, describe it in detail in the data product section",
+                  "guidance": "Enter the types of output data the model will produce. For proposals, summary information is all that is needed. For funded projects, provide more details as known. If the model output is a generated dataset that is a project deliverable, describe it in detail in the data product section.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -387,7 +388,7 @@
                   }
                 }, {
                   "question": "Calibration Details",
-                  "guidance": "Briefly describe the calibration/validation approach being taken",
+                  "guidance": "Briefly describe the calibration/validation approach being taken.",
                   "level": 1,
                   "emptyText": true,
                   "config": {
@@ -409,7 +410,7 @@
               "questions": [
                 {
                   "question": "Name",
-                  "guidance": "Name of Software or Other Tool",
+                  "guidance": "Name of software or other tool.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -418,7 +419,7 @@
                   }
                 }, {
                   "question": "Description",
-                  "guidance": "Describe the custom software, code, or web tool developed or used as part of the project",
+                  "guidance": "Describe the custom software, code, or web tool developed or used as part of the project.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -427,18 +428,18 @@
                   }
                 }, {
                   "question": "Software/Tool Version",
-                  "guidance": "Identify the version of used",
+                  "guidance": "Identify the version of used.",
                   "emptyText": true
                 }, {
                   "question": "Link",
-                  "guidance": "If the custom software or code can be accessed via an online repository, provide a link",
+                  "guidance": "If the custom software or code can be accessed via an online repository, provide a link.",
                   "emptyText": true,
                   "config": {
                     "vtype": "url"
                   }
                 }, {
                   "question": "Restrictions",
-                  "guidance": "Identify any limitations on access or reuse",
+                  "guidance": "Identify any limitations on access or reuse.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -448,7 +449,7 @@
                 }, {
                   "question": "Maintenance and Support",
                   "level": 1,
-                  "guidance": "If a tool is developed as part of the project, is there a strategy for the ongoing support and maintenance of the tool after the project is complete? If so, briefly describe it",
+                  "guidance": "If a tool is developed as part of the project, is there a strategy for the ongoing support and maintenance of the tool after the project is complete? If so, briefly describe it.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -458,12 +459,12 @@
                 }, {
                   "question": "Languages",
                   "level": 1,
-                  "guidance": "Identify the computing language/framework that was used (e.g., Java, .Net, Ruby, Rails, SQL, etc.",
+                  "guidance": "Identify the computing language/framework that was used (e.g., Java, .Net, Ruby, Rails, SQL, etc.).",
                   "emptyText": true
                 }, {
                   "question": "Environment",
                   "level": 1,
-                  "guidance": "Identify the operating system environment (e.g., Windows, Linux, MacOS X, etc.",
+                  "guidance": "Identify the operating system environment (e.g., Windows, Linux, MacOS X, etc.).",
                   "emptyText": true
                 }
               ]
@@ -488,7 +489,7 @@
                   }
                 }, {
                   "question": "Description",
-                  "guidance": "Describe the information that will be produced, including its characteristics, temporal scope and scale, and geographic scope and scale, when available",
+                  "guidance": "Describe the information that will be produced, including its characteristics, temporal scope and scale, and geographic scope and scale, when available.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -497,7 +498,7 @@
                   }
                 }, {
                   "question": "Data Management Resources",
-                  "guidance": "Describe the proposal resources allocated for data management activities for the data products as a level of effort, total dollars allocated, or as a percentage of the total project’s cost. Resources could include people’s time or proposal funding",
+                  "guidance": "Describe the proposal resources allocated for data management activities for the data products as a level of effort, total dollars allocated, or as a percentage of the total project’s cost. Resources could include people’s time or proposal funding.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -506,7 +507,7 @@
                   }
                 }, {
                   "question": "Format",
-                  "guidance": "Identify the formats in which the data will be generated, maintained, and made available",
+                  "guidance": "Identify the formats in which the data will be generated, maintained, and made available.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -515,7 +516,7 @@
                   }
                 }, {
                   "question": "Exclusive Use",
-                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension. (Request cannot be more than one year.",
+                  "guidance": "Project data and associated products should be available publicly at the end of the project. If a request to limit access for a period of time after project completion is needed, please identify the length of time and the reason for the extension.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -524,7 +525,7 @@
                   }
                 }, {
                   "question": "Restrictions",
-                  "guidance": "Identify any limitations on access or reuse (e.g., sensitive data, restricted data, software with license restrictions, etc.) and provide justification for restriction. Provide citation or documentation describing limitations if due to policies or legal reasons",
+                  "guidance": "Identify any limitations on access or reuse (e.g., sensitive data, restricted data, software with license restrictions, etc.) and provide justification for restriction. Provide citation or documentation describing limitations if due to policies or legal reasons.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -534,7 +535,7 @@
                 }, {
                   "question": "Quality Checks",
                   "level": 1,
-                  "guidance": "Identify the procedural steps for ensuring data quality during the project",
+                  "guidance": "Identify the procedural steps for ensuring data quality during the project.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -544,7 +545,7 @@
                 }, {
                   "question": "Processing & Workflow",
                   "level": 1,
-                  "guidance": "Describe data processing steps or provide a scientific workflow you plan to use to manipulate the data, as appropriate",
+                  "guidance": "Describe data processing steps or provide a scientific workflow you plan to use to manipulate the data, as appropriate.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -554,17 +555,17 @@
                 }, {
                   "question": "Metadata",
                   "level": 1,
-                  "guidance": "Identify the metadata standard that will be used to describe the data and products (FGDC, ISO, EML, etc.",
+                  "guidance": "Identify the metadata standard that will be used to describe the data and products (FGDC, ISO, EML, etc.).",
                   "emptyText": true
                 }, {
                   "question": "Volume Estimate",
                   "level": 1,
-                  "guidance": "Estimate the volume of information generated: megabyte (MB), GB, TB, or PB",
+                  "guidance": "Estimate the volume of information generated: megabyte (MB, GB, TB, or PB).",
                   "emptyText": true
                 }, {
                   "question": "Backup & Storage",
                   "level": 1,
-                  "guidance": "Describe the approach for backup and storage of the information associated with the research project during the project",
+                  "guidance": "Describe the approach for backup and storage of the information associated with the research project during the project.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -574,7 +575,7 @@
                 }, {
                   "question": "Repository for Data",
                   "level": 1,
-                  "guidance": "Identify other repositories where you plan to share your data",
+                  "guidance": "Identify other repositories where you plan to share your data.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -584,7 +585,7 @@
                 }, {
                   "question": "Citation",
                   "level": 1,
-                  "guidance": "Specify how the project’s data should be cited",
+                  "guidance": "Specify how the project’s data should be cited.",
                   "emptyText": true,
                   "config": {
                     "xtype": "textarea",
@@ -594,7 +595,7 @@
                 }, {
                   "question": "Digital Object Identifier (DOI)/Link",
                   "level": 1,
-                  "guidance": "Provide a digital object identifier (DOI)/link to the project when available publicly",
+                  "guidance": "Provide a digital object identifier (DOI)/link to the project when available publicly.",
                   "emptyText": true,
                   "config": {
                     "vtype": "url"
