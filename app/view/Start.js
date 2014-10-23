@@ -9,7 +9,7 @@ Ext.define("DMPlanner.view.Start", {
         pack : 'center',
         type : 'vbox'
     },
-
+    html:'<span id="forkongithub"><a href="https://github.com/arcticlcc/dmplanner">Fork me on GitHub</a></span>',
     defaults: {
         margin: 5
     },
