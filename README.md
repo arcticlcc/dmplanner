@@ -20,6 +20,14 @@ By default, any of the native ExtJS form [field widgets](http://docs.sencha.com/
 
 ---
 
+##Data Model
+
+The image below show the basic data model for the JSON config file. 
+
+![Data Model](resources/model.png)
+
+---
+
 ##Development/Installation
 
 ###Option 1: Using the JSON config
