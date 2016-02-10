@@ -2,448 +2,434 @@
   "levels": ["Default1", "Default2"],
   "startDoc": "Start.md",
   "helpDoc": "Help.md",
-  "templates": [
-    {
-      "templateTitle": "",
-      "levels": ["Base", "Steward"],
-      "version": "0.0.0",
-      "name": null,
-      "code": null,
-      "homeDoc": "Home.md",
-      "helpDoc": null,
-      "docBase": null,
-      "sections": [
-        {
-          "name": "Single Group",
-          "helpDoc": "SingleGroup.md",
-          "groups": [
-            {
-              "name": "Your information",
-              "repeatable": false,
-              "questions": [
-                {
-                  "question": "First name",
-                  "guidance": "Enter your first name.",
-                  "defAnswer": "Joe"
-                }, {
-                  "question": "Last name",
-                  "level": 1
-                }, {
-
-                  "question": "Occupation"
-                }, {
-                  "question": "Age",
-                  "config": {
-                    "xtype": "numberfield",
-                    "maxWidth": 250
-                  }
-                }, {
-                  "question": "True or False",
-                  "defAnswer": {
-                    "trueorfalse": "f"
-                  },
-                  "config": {
-                    "xtype": "radiogroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "True",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "False",
-                        "name": "trueorfalse",
-                        "inputValue": "f"
-                      }
-                    ]
-                  }
-                }, {
-                  "question": "Check It Out",
-                  "config": {
-                    "xtype": "checkboxgroup",
-                    "maxWidth": 400,
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "Item 1",
-                        "name": "cb",
-                        "inputValue": "1"
-                      }, {
-                        "boxLabel": "Item 2",
-                        "name": "cb",
-                        "inputValue": "2",
-                        "checked": true
-                      }, {
-                        "boxLabel": "Item 3",
-                        "name": "cb",
-                        "inputValue": "3"
-                      }, {
-                        "boxLabel": "Item 4",
-                        "name": "cb",
-                        "inputValue": "4"
-                      }, {
-                        "boxLabel": "Item 5",
-                        "name": "cb",
-                        "inputValue": "5"
-                      }, {
-                        "boxLabel": "Item 6",
-                        "name": "cb",
-                        "inputValue": "6"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
+  "templates": [{
+    "templateTitle": "",
+    "levels": ["Base", "Steward"],
+    "version": "0.0.0",
+    "name": null,
+    "code": null,
+    "homeDoc": "Home.md",
+    "helpDoc": null,
+    "docBase": null,
+    "sections": [{
+      "name": "Single Group",
+      "helpDoc": "SingleGroup.md",
+      "groups": [{
+        "name": "Your information",
+        "repeatable": false,
+        "questions": [{
+          "question": "First name",
+          "guidance": "Enter your first name.",
+          "defAnswer": "Joe"
         }, {
-          "name": "Single Group with Sections",
-          "helpDoc": "SingleGroupSections.md",
-          "level": 0,
-          "groups": [
-            {
-              "name": "Your information",
-              "repeatable": false,
-              "questions": [
-                {
-                  "question": "First name",
-                  "guidance": "Enter your first name.",
-                  "defAnswer": "Joe"
-                }, {
-                  "question": "Last name"
-                }, {
-
-                  "question": "Occupation"
-                }, {
-                  "question": "Age",
-                  "config": {
-                    "xtype": "numberfield",
-                    "maxWidth": 250
-                  }
-                }, {
-                  "question": "True or False",
-                  "defAnswer": {
-                    "trueorfalse": "f"
-                  },
-                  "config": {
-                    "xtype": "radiogroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "True",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "False",
-                        "name": "trueorfalse",
-                        "inputValue": "f"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "sections": [
-                {
-                  "name": "Map",
-                  "level": 1,
-                  "config": {
-                    "xtype": "dmpmappanel"
-                  }
-                }, {
-                  "name": "Keywords",
-                  "config": {
-                    "xtype": "dmpkeywords"
-                  }
-                }
-              ]
-            }
-          ]
+          "question": "Last name",
+          "level": 1
         }, {
-          "name": "Repeating Group",
-          "helpDoc": "RepeatingGroup.md",
-          "groups": [
-            {
-              "name": "Your information",
-              "repeatable": true,
-              "questions": [
-                {
-                  "question": "First name",
-                  "guidance": "Enter your first name.",
-                  "defAnswer": "Joe"
-                }, {
-                  "question": "Last name"
-                }, {
 
-                  "question": "Occupation"
-                }, {
-                  "question": "Age",
-                  "config": {
-                    "xtype": "numberfield",
-                    "maxWidth": 250
-                  }
-                }, {
-                  "question": "True or False",
-                  "defAnswer": {
-                    "trueorfalse": "f"
-                  },
-                  "config": {
-                    "xtype": "radiogroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "True",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "False",
-                        "name": "trueorfalse",
-                        "inputValue": "f"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
+          "question": "Occupation"
         }, {
-          "name": "Repeating Group with Sections",
-          "helpDoc": "RepeatingGroupSections.md",
-          "level": 1,
-          "groups": [
-            {
-              "name": "Your information",
-              "repeatable": true,
-              "questions": [
-                {
-                  "question": "First name",
-                  "guidance": "Enter your first name.",
-                  "defAnswer": "Joe"
-                }, {
-                  "question": "Last name"
-                }, {
-
-                  "question": "Occupation"
-                }, {
-                  "question": "Age",
-                  "config": {
-                    "xtype": "numberfield",
-                    "maxWidth": 250
-                  }
-                }, {
-                  "question": "True or False",
-                  "defAnswer": {
-                    "trueorfalse": "f"
-                  },
-                  "config": {
-                    "xtype": "radiogroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "True",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "False",
-                        "name": "trueorfalse",
-                        "inputValue": "f"
-                      }
-                    ]
-                  }
-                }
-              ],
-              "sections": [
-                {
-                  "name": "Map",
-                  "level": 1,
-                  "config": {
-                    "xtype": "dmpmappanel"
-                  }
-                }, {
-                  "name": "Keywords",
-                  "config": {
-                    "xtype": "dmpkeywords"
-                  }
-                }
-              ]
-            }
-          ]
-        }, {
-          "name": "Multiple Groups",
-          "helpDoc": "MultipleGroups.md",
-          "groups": [
-            {
-              "name": "Your information",
-              "repeatable": true,
-              "questions": [
-                {
-                  "question": "First name",
-                  "guidance": "Enter your first name.",
-                  "defAnswer": "First"
-                }, {
-                  "question": "Last name"
-                }, {
-
-                  "question": "Occupation"
-                }, {
-                  "question": "Age",
-                  "config": {
-                    "xtype": "numberfield",
-                    "maxWidth": 250
-                  }
-                }, {
-                  "question": "True or False",
-                  "config": {
-                    "xtype": "radiogroup",
-                    "maxWidth": 300,
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "True",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "False",
-                        "name": "trueorfalse",
-                        "inputValue": "f",
-                        "checked": true
-                      }
-                    ]
-                  }
-                }, {
-                  "question": "Check It Out",
-                  "config": {
-                    "xtype": "checkboxgroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "Item 1",
-                        "name": "cb",
-                        "inputValue": "1"
-                      }, {
-                        "boxLabel": "Item 2",
-                        "name": "cb",
-                        "inputValue": "2",
-                        "checked": true
-                      }, {
-                        "boxLabel": "Item 3",
-                        "name": "cb",
-                        "inputValue": "3"
-                      }, {
-                        "boxLabel": "Item 4",
-                        "name": "cb",
-                        "inputValue": "4"
-                      }, {
-                        "boxLabel": "Item 5",
-                        "name": "cb",
-                        "inputValue": "5"
-                      }, {
-                        "boxLabel": "Item 6",
-                        "name": "cb",
-                        "inputValue": "6"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }, {
-              "name": "Other information",
-              "level": 1,
-              "width": 800,
-              "questions": [
-                {
-                  "question": "Position",
-                  "config": {
-                    "xtype": "htmleditor"
-                  }
-                }, {
-                  "question": "Metric"
-                }, {
-                  "question": "Total # Files",
-                  "config": {
-                    "xtype": "numberfield"
-                  }
-                }, {
-                  "question": "Archived",
-                  "config": {
-                    "xtype": "radiogroup",
-                    "columns": 2,
-                    "vertical": true,
-                    "items": [
-                      {
-                        "boxLabel": "Yes",
-                        "name": "trueorfalse",
-                        "inputValue": "m"
-                      }, {
-                        "boxLabel": "No",
-                        "name": "trueorfalse",
-                        "inputValue": "f",
-                        "checked": true
-                      }
-                    ]
-                  }
-                }, {
-                  "question": "Rate Me",
-                  "guidance": "Use the slider to enter a rating",
-                  "defAnswer": 5,
-                  "config": {
-                    "xtype": "slider",
-                    "width": 200,
-                    "increment": 1,
-                    "minValue": 0,
-                    "maxValue": 10
-                  }
-                }
-              ]
-            }
-          ]
-        }, {
-          "name": "Keywords",
-          "helpDoc": "Plugin.md",
+          "question": "Age",
           "config": {
-            "xtype": "dmpkeywords",
-            "header": false
-          },
-          "data": [
-            {
-              "keywordid": "690be4e9-c48c-4442-8b86-3d0a51abb0c1",
-              "text": "AAO",
-              "definition": null,
-              "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS -> ATMOSPHERIC/OCEAN INDICATORS -> TELECONNECTIONS -> ANTARCTIC OSCILLATION -> AAO"
-            }, {
-              "keywordid": "99db4dca-4d07-48fd-8ba3-393532d04aa6",
-              "text": "ABLATION",
-              "definition": "The process of removal of material from the surface of an object by vaporization, chipping, or other erosive processes. The term occurs in spaceflight associated with atmospheric reentry, in glaciology, medicine, and passive fire protection.",
-              "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH -> GEOMORPHIC LANDFORMS/PROCESSES -> GLACIAL PROCESSES -> ABLATION"
-            }, {
-              "keywordid": "95fbaefd-1afe-4887-a1ba-fc338a8109bb",
-              "text": "ABLATION ZONES/ACCUMULATION ZONES",
-              "definition": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation. \r\n",
-              "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
-            }
-          ]
+            "xtype": "numberfield",
+            "maxWidth": 250
+          }
         }, {
+          "question": "True or False",
+          "defAnswer": {
+            "trueorfalse": "f"
+          },
+          "config": {
+            "xtype": "radiogroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "True",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "False",
+              "name": "trueorfalse",
+              "inputValue": "f"
+            }]
+          }
+        }, {
+          "question": "Check It Out",
+          "config": {
+            "xtype": "checkboxgroup",
+            "maxWidth": 400,
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "Item 1",
+              "name": "cb",
+              "inputValue": "1"
+            }, {
+              "boxLabel": "Item 2",
+              "name": "cb",
+              "inputValue": "2",
+              "checked": true
+            }, {
+              "boxLabel": "Item 3",
+              "name": "cb",
+              "inputValue": "3"
+            }, {
+              "boxLabel": "Item 4",
+              "name": "cb",
+              "inputValue": "4"
+            }, {
+              "boxLabel": "Item 5",
+              "name": "cb",
+              "inputValue": "5"
+            }, {
+              "boxLabel": "Item 6",
+              "name": "cb",
+              "inputValue": "6"
+            }]
+          }
+        }]
+      }]
+    }, {
+      "name": "Single Group with Sections",
+      "helpDoc": "SingleGroupSections.md",
+      "level": 0,
+      "groups": [{
+        "name": "Your information",
+        "repeatable": false,
+        "questions": [{
+          "question": "First name",
+          "guidance": "Enter your first name.",
+          "defAnswer": "Joe"
+        }, {
+          "question": "Last name"
+        }, {
+
+          "question": "Occupation"
+        }, {
+          "question": "Age",
+          "config": {
+            "xtype": "numberfield",
+            "maxWidth": 250
+          }
+        }, {
+          "question": "True or False",
+          "defAnswer": {
+            "trueorfalse": "f"
+          },
+          "config": {
+            "xtype": "radiogroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "True",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "False",
+              "name": "trueorfalse",
+              "inputValue": "f"
+            }]
+          }
+        }],
+        "sections": [{
           "name": "Map",
-          "helpDoc": "Plugin.md",
+          "level": 1,
           "config": {
             "xtype": "dmpmappanel"
           }
         }, {
-          "name": "Map with title",
-          "helpDoc": "Plugin.md",
+          "name": "Keywords",
+          "config": {
+            "xtype": "dmpkeywords"
+          }
+        }]
+      }]
+    }, {
+      "name": "Repeating Group",
+      "helpDoc": "RepeatingGroup.md",
+      "groups": [{
+        "name": "Your information",
+        "repeatable": true,
+        "questions": [{
+          "question": "First name",
+          "guidance": "Enter your first name.",
+          "defAnswer": "Joe"
+        }, {
+          "question": "Last name"
+        }, {
+
+          "question": "Occupation"
+        }, {
+          "question": "Age",
+          "config": {
+            "xtype": "numberfield",
+            "maxWidth": 250
+          }
+        }, {
+          "question": "True or False",
+          "defAnswer": {
+            "trueorfalse": "f"
+          },
+          "config": {
+            "xtype": "radiogroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "True",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "False",
+              "name": "trueorfalse",
+              "inputValue": "f"
+            }]
+          }
+        }]
+      }]
+    }, {
+      "name": "Repeating Group with Sections",
+      "helpDoc": "RepeatingGroupSections.md",
+      "level": 1,
+      "groups": [{
+        "name": "Your information",
+        "repeatable": true,
+        "questions": [{
+          "question": "First name",
+          "guidance": "Enter your first name.",
+          "defAnswer": "Joe"
+        }, {
+          "question": "Last name"
+        }, {
+
+          "question": "Occupation"
+        }, {
+          "question": "Age",
+          "config": {
+            "xtype": "numberfield",
+            "maxWidth": 250
+          }
+        }, {
+          "question": "True or False",
+          "defAnswer": {
+            "trueorfalse": "f"
+          },
+          "config": {
+            "xtype": "radiogroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "True",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "False",
+              "name": "trueorfalse",
+              "inputValue": "f"
+            }]
+          }
+        }],
+        "sections": [{
+          "name": "Map",
           "level": 1,
           "config": {
-            "xtype": "dmpmappanel",
-            "title": "Plan Features"
+            "xtype": "dmpmappanel"
           }
-        }
-      ]
-    }
-  ]
+        }, {
+          "name": "Keywords",
+          "config": {
+            "xtype": "dmpkeywords"
+          }
+        }]
+      }]
+    }, {
+      "name": "Multiple Groups",
+      "helpDoc": "MultipleGroups.md",
+      "groups": [{
+        "name": "Your information",
+        "repeatable": true,
+        "questions": [{
+          "question": "First name",
+          "guidance": "Enter your first name.",
+          "defAnswer": "First"
+        }, {
+          "question": "Last name"
+        }, {
+
+          "question": "Occupation"
+        }, {
+          "question": "Age",
+          "config": {
+            "xtype": "numberfield",
+            "maxWidth": 250
+          }
+        }, {
+          "question": "True or False",
+          "config": {
+            "xtype": "radiogroup",
+            "maxWidth": 300,
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "True",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "False",
+              "name": "trueorfalse",
+              "inputValue": "f",
+              "checked": true
+            }]
+          }
+        }, {
+          "question": "Check It Out",
+          "config": {
+            "xtype": "checkboxgroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "Item 1",
+              "name": "cb",
+              "inputValue": "1"
+            }, {
+              "boxLabel": "Item 2",
+              "name": "cb",
+              "inputValue": "2",
+              "checked": true
+            }, {
+              "boxLabel": "Item 3",
+              "name": "cb",
+              "inputValue": "3"
+            }, {
+              "boxLabel": "Item 4",
+              "name": "cb",
+              "inputValue": "4"
+            }, {
+              "boxLabel": "Item 5",
+              "name": "cb",
+              "inputValue": "5"
+            }, {
+              "boxLabel": "Item 6",
+              "name": "cb",
+              "inputValue": "6"
+            }]
+          }
+        }]
+      }, {
+        "name": "Other information",
+        "level": 1,
+        "width": 800,
+        "questions": [{
+          "question": "Position",
+          "config": {
+            "xtype": "htmleditor"
+          }
+        }, {
+          "question": "Metric"
+        }, {
+          "question": "Total # Files",
+          "config": {
+            "xtype": "numberfield"
+          }
+        }, {
+          "question": "Archived",
+          "config": {
+            "xtype": "radiogroup",
+            "columns": 2,
+            "vertical": true,
+            "items": [{
+              "boxLabel": "Yes",
+              "name": "trueorfalse",
+              "inputValue": "m"
+            }, {
+              "boxLabel": "No",
+              "name": "trueorfalse",
+              "inputValue": "f",
+              "checked": true
+            }]
+          }
+        }, {
+          "question": "Rate Me",
+          "guidance": "Use the slider to enter a rating",
+          "defAnswer": 5,
+          "config": {
+            "xtype": "slider",
+            "width": 200,
+            "increment": 1,
+            "minValue": 0,
+            "maxValue": 10
+          }
+        }]
+      }]
+    }, {
+      "name": "Keywords",
+      "helpDoc": "Plugin.md",
+      "config": {
+        "xtype": "dmpkeywords",
+        "header": false
+      },
+      "data": [{
+        "keywordid": "690be4e9-c48c-4442-8b86-3d0a51abb0c1",
+        "text": "AAO",
+        "definition": null,
+        "fullname": "Science Keywords -> EARTH SCIENCE -> CLIMATE INDICATORS -> ATMOSPHERIC/OCEAN INDICATORS -> TELECONNECTIONS -> ANTARCTIC OSCILLATION -> AAO"
+      }, {
+        "keywordid": "99db4dca-4d07-48fd-8ba3-393532d04aa6",
+        "text": "ABLATION",
+        "definition": "The process of removal of material from the surface of an object by vaporization, chipping, or other erosive processes. The term occurs in spaceflight associated with atmospheric reentry, in glaciology, medicine, and passive fire protection.",
+        "fullname": "Science Keywords -> EARTH SCIENCE -> SOLID EARTH -> GEOMORPHIC LANDFORMS/PROCESSES -> GLACIAL PROCESSES -> ABLATION"
+      }, {
+        "keywordid": "95fbaefd-1afe-4887-a1ba-fc338a8109bb",
+        "text": "ABLATION ZONES/ACCUMULATION ZONES",
+        "definition": "Pertaining to the reduction of a glacier due to melting and/or\r\nevaporation. \r\n",
+        "fullname": "Science Keywords -> EARTH SCIENCE -> CRYOSPHERE -> GLACIERS/ICE SHEETS -> ABLATION ZONES/ACCUMULATION ZONES"
+      }]
+    }, {
+      "name": "Map",
+      "helpDoc": "Plugin.md",
+      "config": {
+        "xtype": "dmpmappanel"
+      }
+    }, {
+      "name": "Map with title",
+      "helpDoc": "Plugin.md",
+      "level": 1,
+      "config": {
+        "xtype": "dmpmappanel",
+        "title": "Plan Features"
+      }
+    }, {
+      "name": "EA",
+      "helpDoc": "Plugin.md",
+      "config": {
+        "xtype": "dmpentity"
+      }
+    }, {
+      "name": "Entity & Attribute",
+      "helpDoc": "RepeatingGroupSections.md",
+      "level": 0,
+      "groups": [{
+        "name": "Entity",
+        "repeatable": true,
+        "questions": [{
+          "question": "Name",
+          "guidance": "Enter the entity name."
+        }, {
+          "question": "Entity ID",
+          "guidance": "Enter the entity identifier."
+        }, {
+          "question": "Definition"
+        }, {
+          "question": "Attributes",
+          "config": {
+            "xtype": "dmpattributes",
+            "title": null,
+            "frame": false,
+            "style": {
+              "marginTop": "2em",
+              "border": "1px solid #DDD"
+            }
+          }
+        }]
+      }]
+    }]
+  }]
 }

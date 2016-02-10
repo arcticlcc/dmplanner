@@ -59,7 +59,12 @@ Ext.define('DMPlanner.ux.Keywords', {
     },
 
     initComponent: function() {
-        var me = this, keywordtree, keywords, keywordStore, addTpl = '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>', removeTpl = '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>', helpCol = {
+        var me = this,
+          keywordtree, keywords, keywordStore, addTpl =
+          '<tpl if="text && depth !== 1"><div data-qtip="Add: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf138;</div></tpl>',
+          removeTpl =
+          '<tpl if="text"><div data-qtip="Remove: {[Ext.htmlEncode(values.text)]}" class="fa dmp-col-move">&#xf137;</div></tpl>',
+          helpCol = {
             xtype: 'templatecolumn',
             width: 28,
             text: '',

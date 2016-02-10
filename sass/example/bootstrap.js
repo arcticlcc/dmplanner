@@ -5,8 +5,11 @@
  * metadata-driven class system features 
  */
 Ext.Loader.addClassPathMappings({
+  "Attribute": "../../app/ux/Attributes.js",
   "DMPlanner": "../../app",
   "DMPlanner.data.PlanTemplate": "../../app/Application.js",
+  "DMPlanner.ux.Atttibutes": "../../app/ux/Attributes.js",
+  "Entity": "../../app/ux/Attributes.js",
   "Ext": "../../ext/src",
   "Ext.Msg": "../../ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "../../ext/src/rtl/EventObject.js",
@@ -16,6 +19,7 @@ Ext.Loader.addClassPathMappings({
   "KeywordNode": "../../app/ux/Keywords.js"
 });
 Ext.ClassManager.addNameAlternateMappings({
+  "Attribute": [],
   "DMPlanner.Application": [],
   "DMPlanner.controller.Help": [],
   "DMPlanner.controller.Plans": [],
@@ -34,6 +38,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.util.MyCombo": [],
   "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
+  "DMPlanner.ux.Atttibutes": [],
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.ux.map.MapFeatureGrid": [],
   "DMPlanner.ux.map.MapPanel": [],
@@ -47,6 +52,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.view.Settings": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
+  "Entity": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -962,6 +968,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "KeywordNode": []
 });
 Ext.ClassManager.addNameAliasMappings({
+  "Attribute": [],
   "DMPlanner.Application": [],
   "DMPlanner.controller.Help": [],
   "DMPlanner.controller.Plans": [],
@@ -982,6 +989,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
+  "DMPlanner.ux.Atttibutes": [
+    "widget.dmpattributes"
+  ],
   "DMPlanner.ux.Keywords": [
     "widget.dmpkeywords"
   ],
@@ -1019,6 +1029,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.view.Viewport": [
     "widget.vp"
   ],
+  "Entity": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],

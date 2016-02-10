@@ -489,6 +489,10 @@ Ext.define('DMPlanner.controller.Questions', {
             question = field ? field.question : false;
         }
 
+        if(field.dmpPlugin === true) {
+          return false;
+        }
+
         if (question) {
             question.set('answer', field.getValue());
         }
