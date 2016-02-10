@@ -1,8 +1,8 @@
 /**
- * GCMD keywords.
+ * Attributes.
  */
 
-Ext.define('DMPlanner.ux.Atttibutes', {
+Ext.define('DMPlanner.ux.Attributes', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.dmpattributes',
     requires: [
