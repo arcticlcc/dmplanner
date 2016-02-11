@@ -14,6 +14,7 @@ Ext.define('DMPlanner.ux.Attributes', {
     ],
     //title: 'Edit Plants',
     //frame: true,
+    addText: 'Add Attribute',
 
     initComponent: function() {
         var removeTpl =
@@ -22,25 +23,6 @@ Ext.define('DMPlanner.ux.Attributes', {
         this.cellEditing = new Ext.grid.plugin.CellEditing({
             clicksToEdit: 1
         });
-
-        if (!Ext.ModelManager.getModel('Entity')) {
-            Ext.define('Entity', {
-                extend: 'Ext.data.Model',
-                fields: [{
-                    name: 'entityid',
-                    type: 'string'
-                }, {
-                    name: 'codename',
-                    type: 'string',
-                    useNull: true
-                }, {
-                    name: 'definition',
-                    type: 'string',
-                    useNull: true
-                }],
-                idProperty: 'entityid'
-            });
-        }
 
         if (!Ext.ModelManager.getModel('Attribute')) {
             Ext.define('Attribute', {
@@ -69,7 +51,7 @@ Ext.define('DMPlanner.ux.Attributes', {
             });
         }
 
-        Ext.apply(this, {
+        Ext.applyIf(this, {
             dmpPlugin: true,
             //width: 680,
             //height: 350,
@@ -105,12 +87,15 @@ Ext.define('DMPlanner.ux.Attributes', {
                     typeAhead: true,
                     triggerAction: 'all',
                     store: [
-                        ['Shade','Shade'],
-                        ['Mostly Shady','Mostly Shady'],
-                        ['Sun or Shade','Sun or Shade'],
-                        ['Mostly Sunny','Mostly Sunny'],
-                        ['Sunny','Sunny']
+                      ['Integer', 'Integer'],
+                      ['Character', 'Character'],
+                      ['Boolean', 'Boolean'],
+                      ['Numeric', 'Numeric'],
+                      ['Date', 'Date'],
+                      ['Time', 'Time'],
+                      ['DateTime', 'DateTime']
                     ]
+
                 })
             }, {
                 xtype: 'checkcolumn',
@@ -134,7 +119,7 @@ Ext.define('DMPlanner.ux.Attributes', {
             }],
             selType: 'cellmodel',
             tbar: [{
-                text: 'Add Attribute',
+                text: this.addText,
                 scope: this,
                 handler: this.onAddClick
             }]

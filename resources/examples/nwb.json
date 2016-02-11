@@ -618,6 +618,11 @@
           "config": {
             "xtype": "dmpentity"
           }
+        }, {
+          "name": "Distribution",
+          "config": {
+            "xtype": "dmpdistribution"
+          }
         }]
       }]
     }, {

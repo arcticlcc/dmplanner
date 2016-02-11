@@ -29,6 +29,25 @@ Ext.define("DMPlanner.ux.Entity", {
         info + '">&#xf059;</span>';
     };
 
+    if (!Ext.ModelManager.getModel('Entity')) {
+        Ext.define('Entity', {
+            extend: 'Ext.data.Model',
+            fields: [{
+                name: 'entityid',
+                type: 'string'
+            }, {
+                name: 'codename',
+                type: 'string',
+                useNull: true
+            }, {
+                name: 'definition',
+                type: 'string',
+                useNull: true
+            }],
+            idProperty: 'entityid'
+        });
+    }
+
     Ext.applyIf(me, {
       dmpPlugin: true,
       items: [{

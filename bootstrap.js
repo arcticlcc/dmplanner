@@ -8,43 +8,12 @@ Ext.Loader.addClassPathMappings({
   "Attribute": "app/ux/Attributes.js",
   "DMPlanner": "app",
   "DMPlanner.data.PlanTemplate": "app/Application.js",
-  "Entity": "app/ux/Attributes.js",
+  "Distribution": "app/ux/Distribution.js",
+  "Entity": "app/ux/Entity.js",
   "Ext": "ext/src",
   "Ext.Msg": "ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "ext/src/rtl/EventObject.js",
   "Ext.ux": "ux",
-  "Ext.ux.BoxReorderer": "ext/src/ux/BoxReorderer.js",
-  "Ext.ux.CellDragDrop": "ext/src/ux/CellDragDrop.js",
-  "Ext.ux.DataTip": "ext/src/ux/DataTip.js",
-  "Ext.ux.DataView": "ext/src/ux/DataView",
-  "Ext.ux.FieldReplicator": "ext/src/ux/FieldReplicator.js",
-  "Ext.ux.GMapPanel": "ext/src/ux/GMapPanel.js",
-  "Ext.ux.GroupTabPanel": "ext/src/ux/GroupTabPanel.js",
-  "Ext.ux.GroupTabRenderer": "ext/src/ux/GroupTabRenderer.js",
-  "Ext.ux.IFrame": "ext/src/ux/IFrame.js",
-  "Ext.ux.LiveSearchGridPanel": "ext/src/ux/LiveSearchGridPanel.js",
-  "Ext.ux.PreviewPlugin": "ext/src/ux/PreviewPlugin.js",
-  "Ext.ux.ProgressBarPager": "ext/src/ux/ProgressBarPager.js",
-  "Ext.ux.RowExpander": "ext/src/ux/RowExpander.js",
-  "Ext.ux.SlidingPager": "ext/src/ux/SlidingPager.js",
-  "Ext.ux.Spotlight": "ext/src/ux/Spotlight.js",
-  "Ext.ux.TabCloseMenu": "ext/src/ux/TabCloseMenu.js",
-  "Ext.ux.TabReorderer": "ext/src/ux/TabReorderer.js",
-  "Ext.ux.TabScrollerMenu": "ext/src/ux/TabScrollerMenu.js",
-  "Ext.ux.ToolbarDroppable": "ext/src/ux/ToolbarDroppable.js",
-  "Ext.ux.TreePicker": "ext/src/ux/TreePicker.js",
-  "Ext.ux.ajax": "ext/src/ux/ajax",
-  "Ext.ux.data": "ext/src/ux/data",
-  "Ext.ux.data.DeepJsonWriter": "ux/data/DeepJsonWriter.js",
-  "Ext.ux.data.DeepModel": "ux/data/DeepModel.js",
-  "Ext.ux.dd": "ext/src/ux/dd",
-  "Ext.ux.event": "ext/src/ux/event",
-  "Ext.ux.form.ItemSelector": "ext/src/ux/form/ItemSelector.js",
-  "Ext.ux.form.MultiSelect": "ext/src/ux/form/MultiSelect.js",
-  "Ext.ux.grid": "ext/src/ux/grid",
-  "Ext.ux.grid.FilterBar": "ux/grid/FilterBar.js",
-  "Ext.ux.layout": "ext/src/ux/layout",
-  "Ext.ux.statusbar": "ext/src/ux/statusbar",
   "ExtThemeNeptune": "ext/packages/ext-theme-neptune/overrides",
   "GeoExt": "lib/geoext2/src/GeoExt",
   "KeywordNode": "app/ux/Keywords.js"
@@ -70,6 +39,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.util.Printer": [],
   "DMPlanner.util.UUID": [],
   "DMPlanner.ux.Attributes": [],
+  "DMPlanner.ux.Distribution": [],
   "DMPlanner.ux.Entity": [],
   "DMPlanner.ux.Keywords": [],
   "DMPlanner.ux.map.MapFeatureGrid": [],
@@ -84,6 +54,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "DMPlanner.view.Settings": [],
   "DMPlanner.view.Start": [],
   "DMPlanner.view.Viewport": [],
+  "Distribution": [],
   "Entity": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -822,71 +793,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
   "Ext.util.TextMetrics": [],
-  "Ext.ux.BoxReorderer": [],
-  "Ext.ux.CellDragDrop": [],
-  "Ext.ux.DataTip": [],
-  "Ext.ux.DataView.Animated": [],
-  "Ext.ux.DataView.DragSelector": [],
-  "Ext.ux.DataView.Draggable": [],
-  "Ext.ux.DataView.LabelEditor": [],
-  "Ext.ux.FieldReplicator": [],
-  "Ext.ux.GMapPanel": [],
-  "Ext.ux.GroupTabPanel": [],
-  "Ext.ux.GroupTabRenderer": [],
-  "Ext.ux.IFrame": [],
-  "Ext.ux.LiveSearchGridPanel": [],
-  "Ext.ux.PreviewPlugin": [],
-  "Ext.ux.ProgressBarPager": [],
-  "Ext.ux.RowExpander": [],
-  "Ext.ux.SlidingPager": [],
-  "Ext.ux.Spotlight": [],
-  "Ext.ux.TabCloseMenu": [],
-  "Ext.ux.TabReorderer": [],
-  "Ext.ux.TabScrollerMenu": [],
-  "Ext.ux.ToolbarDroppable": [],
-  "Ext.ux.TreePicker": [],
-  "Ext.ux.ajax.DataSimlet": [],
-  "Ext.ux.ajax.JsonSimlet": [],
-  "Ext.ux.ajax.SimManager": [],
-  "Ext.ux.ajax.SimXhr": [],
-  "Ext.ux.ajax.Simlet": [],
-  "Ext.ux.ajax.XmlSimlet": [],
   "Ext.ux.data.DeepJsonWriter": [],
   "Ext.ux.data.DeepModel": [],
-  "Ext.ux.data.PagingMemoryProxy": [
-    "Ext.data.PagingMemoryProxy"
-  ],
-  "Ext.ux.dd.CellFieldDropZone": [],
-  "Ext.ux.dd.PanelFieldDragZone": [],
-  "Ext.ux.event.Driver": [],
-  "Ext.ux.event.Maker": [],
-  "Ext.ux.event.Player": [],
-  "Ext.ux.event.Recorder": [],
-  "Ext.ux.event.RecorderManager": [],
-  "Ext.ux.form.ItemSelector": [
-    "Ext.ux.ItemSelector"
-  ],
-  "Ext.ux.form.MultiSelect": [
-    "Ext.ux.Multiselect"
-  ],
   "Ext.ux.form.SearchField": [],
   "Ext.ux.grid.FilterBar": [],
-  "Ext.ux.grid.FiltersFeature": [],
-  "Ext.ux.grid.TransformGrid": [],
-  "Ext.ux.grid.filter.BooleanFilter": [],
-  "Ext.ux.grid.filter.DateFilter": [],
-  "Ext.ux.grid.filter.DateTimeFilter": [],
-  "Ext.ux.grid.filter.Filter": [],
-  "Ext.ux.grid.filter.ListFilter": [],
-  "Ext.ux.grid.filter.NumericFilter": [],
-  "Ext.ux.grid.filter.StringFilter": [],
-  "Ext.ux.grid.menu.ListMenu": [],
-  "Ext.ux.grid.menu.RangeMenu": [],
-  "Ext.ux.layout.Center": [],
-  "Ext.ux.statusbar.StatusBar": [
-    "Ext.ux.StatusBar"
-  ],
-  "Ext.ux.statusbar.ValidationStatus": [],
   "Ext.ux.window.Notification": [],
   "Ext.view.AbstractView": [],
   "Ext.view.BoundList": [
@@ -1085,6 +995,9 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.ux.Attributes": [
     "widget.dmpattributes"
   ],
+  "DMPlanner.ux.Distribution": [
+    "widget.dmpdistribution"
+  ],
   "DMPlanner.ux.Entity": [
     "widget.dmpentity"
   ],
@@ -1125,6 +1038,7 @@ Ext.ClassManager.addNameAliasMappings({
   "DMPlanner.view.Viewport": [
     "widget.vp"
   ],
+  "Distribution": [],
   "Entity": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
@@ -1977,123 +1891,16 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
   "Ext.util.TextMetrics": [],
-  "Ext.ux.BoxReorderer": [],
-  "Ext.ux.CellDragDrop": [
-    "plugin.celldragdrop"
-  ],
-  "Ext.ux.DataTip": [
-    "plugin.datatip"
-  ],
-  "Ext.ux.DataView.Animated": [],
-  "Ext.ux.DataView.DragSelector": [],
-  "Ext.ux.DataView.Draggable": [],
-  "Ext.ux.DataView.LabelEditor": [],
-  "Ext.ux.FieldReplicator": [],
-  "Ext.ux.GMapPanel": [
-    "widget.gmappanel"
-  ],
-  "Ext.ux.GroupTabPanel": [
-    "widget.grouptabpanel"
-  ],
-  "Ext.ux.GroupTabRenderer": [
-    "plugin.grouptabrenderer"
-  ],
-  "Ext.ux.IFrame": [
-    "widget.uxiframe"
-  ],
-  "Ext.ux.LiveSearchGridPanel": [],
-  "Ext.ux.PreviewPlugin": [
-    "plugin.preview"
-  ],
-  "Ext.ux.ProgressBarPager": [],
-  "Ext.ux.RowExpander": [],
-  "Ext.ux.SlidingPager": [],
-  "Ext.ux.Spotlight": [],
-  "Ext.ux.TabCloseMenu": [
-    "plugin.tabclosemenu"
-  ],
-  "Ext.ux.TabReorderer": [],
-  "Ext.ux.TabScrollerMenu": [
-    "plugin.tabscrollermenu"
-  ],
-  "Ext.ux.ToolbarDroppable": [],
-  "Ext.ux.TreePicker": [
-    "widget.treepicker"
-  ],
-  "Ext.ux.ajax.DataSimlet": [],
-  "Ext.ux.ajax.JsonSimlet": [
-    "simlet.json"
-  ],
-  "Ext.ux.ajax.SimManager": [],
-  "Ext.ux.ajax.SimXhr": [],
-  "Ext.ux.ajax.Simlet": [
-    "simlet.basic"
-  ],
-  "Ext.ux.ajax.XmlSimlet": [
-    "simlet.xml"
-  ],
   "Ext.ux.data.DeepJsonWriter": [
     "writer.json"
   ],
   "Ext.ux.data.DeepModel": [],
-  "Ext.ux.data.PagingMemoryProxy": [
-    "proxy.pagingmemory"
-  ],
-  "Ext.ux.dd.CellFieldDropZone": [],
-  "Ext.ux.dd.PanelFieldDragZone": [],
-  "Ext.ux.event.Driver": [],
-  "Ext.ux.event.Maker": [],
-  "Ext.ux.event.Player": [],
-  "Ext.ux.event.Recorder": [],
-  "Ext.ux.event.RecorderManager": [
-    "widget.eventrecordermanager"
-  ],
-  "Ext.ux.form.ItemSelector": [
-    "widget.itemselector",
-    "widget.itemselectorfield"
-  ],
-  "Ext.ux.form.MultiSelect": [
-    "widget.multiselect",
-    "widget.multiselectfield"
-  ],
   "Ext.ux.form.SearchField": [
     "widget.searchfield"
   ],
   "Ext.ux.grid.FilterBar": [
     "widget.filterbar"
   ],
-  "Ext.ux.grid.FiltersFeature": [
-    "feature.filters"
-  ],
-  "Ext.ux.grid.TransformGrid": [],
-  "Ext.ux.grid.filter.BooleanFilter": [
-    "gridfilter.boolean"
-  ],
-  "Ext.ux.grid.filter.DateFilter": [
-    "gridfilter.date"
-  ],
-  "Ext.ux.grid.filter.DateTimeFilter": [
-    "gridfilter.datetime"
-  ],
-  "Ext.ux.grid.filter.Filter": [],
-  "Ext.ux.grid.filter.ListFilter": [
-    "gridfilter.list"
-  ],
-  "Ext.ux.grid.filter.NumericFilter": [
-    "gridfilter.numeric"
-  ],
-  "Ext.ux.grid.filter.StringFilter": [
-    "gridfilter.string"
-  ],
-  "Ext.ux.grid.menu.ListMenu": [],
-  "Ext.ux.grid.menu.RangeMenu": [],
-  "Ext.ux.layout.Center": [
-    "layout.ux.center"
-  ],
-  "Ext.ux.statusbar.StatusBar": [
-    "widget.statusbar"
-  ],
-  "Ext.ux.statusbar.ValidationStatus": [],
   "Ext.ux.window.Notification": [
     "widget.uxNotification"
   ],
