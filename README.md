@@ -4,7 +4,7 @@ DMPlanner
 **Demo**: http://arcticlcc.github.io/dmplanner/
 
 
-##About
+## About
 
 The DMPlanner is a JavaScript application for creating data management plans. The DMPlanner is primarily built using the [ExtJS framework](http://docs.sencha.com/extjs/4.2.1/#). See the [CREDITS](https://github.com/arcticlcc/dmplanner/blob/master/CREDIT.md) for a list of other open source libraries used.
 
